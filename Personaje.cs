@@ -1,5 +1,6 @@
 using System;
-using EspacioPersonajesJS;
+using EspacioDato;
+using EspacioCaracteristica;
 
 namespace EspacioPersonaje
 {
@@ -7,13 +8,11 @@ namespace EspacioPersonaje
     {
         Dato dato;
         Caracteristica caracteristica;
-
-        public Personaje(string nombre, string apodo, string casa, string varita)
+        public Personaje(string nombre, string apodo, string casa, string varita, int vidas)
         {
-            this.datos = new Datos(nombre, apodo, casa, varita);
-            this.caracteristicas = new Caracteristicas();
+            this.dato = new Dato(nombre, apodo, casa, varita);
+            this.caracteristica = new Caracteristica(vidas);
         }
-
     }
    
 }
