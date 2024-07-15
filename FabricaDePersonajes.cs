@@ -7,6 +7,13 @@ namespace EspacioFabricaDePersonajes
     public class FabricaDePersonajes
     {
         private List<Personaje> personajes;        
+
+        // private List<string> nombre = new List<string>
+        // {
+        //     "Cho Chang",
+        //     "Draco Malfoy",
+            
+        // };
         public FabricaDePersonajes(int cantidadDePersonajes, string nombre, string apodo, string casa, string varita)
         {
             personajes = new List<Personaje>(); 
