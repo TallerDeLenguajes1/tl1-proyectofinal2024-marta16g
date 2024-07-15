@@ -1,18 +1,19 @@
 using System;
+using System.Collections;
 using EspacioPersonaje;
-
 
 namespace EspacioFabricaDePersonajes
 {
-    public class FabricaDePersonajes()
+    public class FabricaDePersonajes
     {
-        List<Personaje> personajes = new();
-        
-        public FabricaDePersonajes(int cantidadDePersonajes, string nombre, string casa, string varita, int vidas)
+        private List<Personaje> personajes;        
+        public FabricaDePersonajes(int cantidadDePersonajes, string nombre, string apodo, string casa, string varita)
         {
+            personajes = new List<Personaje>(); 
+            
             for (int i = 0; i < cantidadDePersonajes; i++)
             {
-                var unPersonaje = new Personaje(nombre, casa, varita, vidas);
+                var unPersonaje = new Personaje(nombre, apodo, casa, varita);
                 personajes.Add(unPersonaje);
             }
         }

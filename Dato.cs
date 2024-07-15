@@ -2,7 +2,7 @@ using System;
 
 namespace EspacioDato
 {
-    public class Dato()
+    public class Dato
     {
         private string? nombre;
         private string? apodo;
