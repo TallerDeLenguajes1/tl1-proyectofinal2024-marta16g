@@ -13,8 +13,8 @@ string nombreArchivo = "Personajes.json";
 
 PruebaDepersonajes = pruebaArchivoNuevo.LeerPersonajes(nombreArchivo);
 
-for (int i = 0; i < 3; i++)
+foreach (var personaje in PruebaDepersonajes)
 {
-    Console.WriteLine(PruebaDepersonajes[i].mostrarPersonaje());
+    Console.WriteLine(personaje.mostrarPersonaje);
 }
 

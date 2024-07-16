@@ -14,13 +14,13 @@ namespace EspacioFabricaDePersonajes
         //     "Draco Malfoy",
             
         // };
-        public FabricaDePersonajes(int cantidadDePersonajes, string nombre, string apodo, string casa, string varita)
+        public FabricaDePersonajes(int cantidadDePersonajes, string nombre, string apodo, string casa, string varita, int violencia, int resistencia, int discrecion)
         {
             personajes = new List<Personaje>(); 
             
             for (int i = 0; i < cantidadDePersonajes; i++)
             {
-                var unPersonaje = new Personaje(nombre, apodo, casa, varita);
+                var unPersonaje = new Personaje(nombre, apodo, casa, varita, violencia, resistencia, discrecion);
                 personajes.Add(unPersonaje);
             }
         }

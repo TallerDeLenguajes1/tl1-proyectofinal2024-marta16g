@@ -1,54 +1,16 @@
 [
     {
-        "Dato": {
-            "nombre": "Harry Potter",
-            "apodo": "El Niño Que Sobrevivió",
-            "casa": "Griffyndor",
-            "varita": "Acebo y núcleo de pluma de Fénix"
+        "dato": {
+            "Nombre": "Harry Potter",
+            "Apodo": "El Niño Que Sobrevivió",
+            "Casa": "Griffyndor",
+            "Varita": "Acebo y núcleo de pluma de Fénix"
         },
-        "Caracteristica": {
-            "violencia": 5,
-            "resistencia": 4,
-            "discrecion": 1
-        }
-    },
-    {
-        "Dato":{
-            "nombre": "Hermione Granger",
-            "apodo": "Pequeña Señorita Perfecta",
-            "casa": "Griffyndor",
-            "varita": "Vid y núcleo de fibra de corazón de dragón"
-        },
-        "Caracteristica":{
-            "violencia": 3,
-            "resistencia": 2,
-            "discrecion": 5
-        }
-    },
-    {
-        "Dato":{
-            "nombre": "Ronald Weasley",
-            "apodo": "Won-Won",
-            "casa": "Griffyndor",
-            "varita": "madera de Sauce y núcleo de pelo de cola de unicornio"
-        },
-        "Caracteristica":{
-            "violencia": 1,
-            "resistencia": 4,
-            "discrecion": 2
-        }
-    },
-    {
-        "Dato":{
-            "nombre": "Ginny Weasley",
-            "apodo": "Gin",
-            "casa": "Griffyndor",
-            "varita": "madera de Tejo y núcleo de pelo de Veela"
-        },
-        "Caracteristica":{
-            "violencia": 3,
-            "resistencia": 5,
-            "discrecion": 1
+        "caracteristica": {
+            "Violencia": 5,
+            "Resistencia": 4,
+            "Discrecion": 1
         }
     }
+    
 ]
