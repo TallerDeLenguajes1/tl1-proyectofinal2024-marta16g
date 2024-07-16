@@ -13,6 +13,11 @@ namespace EspacioPersonaje
             this.dato = new Dato(nombre, apodo, casa, varita);
             this.caracteristica = new Caracteristica();
         }
+
+        public string mostrarPersonaje()
+        {
+            return($"nombre: {dato.Nombre}");
+        }
     }
    
 }

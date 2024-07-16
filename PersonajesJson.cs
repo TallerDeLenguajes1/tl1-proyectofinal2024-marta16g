@@ -19,7 +19,7 @@ namespace EspacioPersonajesJS
 
         }
 
-        public List<Personaje> LeerPersonajes(string nombreArchivo)
+        public List<Personaje>? LeerPersonajes(string nombreArchivo)
         {
             string archivoJson;
             using(FileStream abrir = new(nombreArchivo, FileMode.Open))
@@ -31,7 +31,8 @@ namespace EspacioPersonajesJS
                 }
             }
 
-            var ListaPersonajesLeidos = JsonSerializer.Deserialize<List<Personaje>>(archivoJson); 
+            var ListaPersonajesLeidos = JsonSerializer.Deserialize<List<Personaje>>(archivoJson);
+            return ListaPersonajesLeidos; 
         }
     }
 }
