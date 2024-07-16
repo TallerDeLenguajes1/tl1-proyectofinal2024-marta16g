@@ -6,9 +6,9 @@ namespace EspacioPersonaje
 {
     public class Personaje
     {
-        Dato dato;
-        Caracteristica caracteristica;
-
+        public Dato dato{get;set;}
+        public Caracteristica caracteristica{get;set;}
+        
         public Personaje()
         {
             this.dato = new Dato();
@@ -27,7 +27,7 @@ namespace EspacioPersonaje
 
         public string mostrarPersonaje()
         {
-            return($"nombre: {dato.Nombre}");
+            return$"nombre: {dato.Nombre}";
         }
     }
    
