@@ -9,7 +9,11 @@ namespace EspacioPersonaje
         Dato dato;
         Caracteristica caracteristica;
 
-        public Personaje(){}
+        public Personaje()
+        {
+            this.dato = new Dato();
+            this.caracteristica = new Caracteristica();
+        }
         public Personaje(string nombre, string apodo, string casa, string varita)
         {
             this.dato = new Dato(nombre, apodo, casa, varita);
