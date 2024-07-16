@@ -13,16 +13,21 @@ namespace EspacioCaracteristica
         public int Violencia { get;set; }
         public int Resistencia { get;set; }
         public int Discrecion { get;set; }
-        public int Salud { get;set;} = 100;
-        public int Vidas { get;set; } = 3;
+        public int Salud { get; } = 100;
+        public int Vidas { get; } = 3;
 
+        public Caracteristica()
+        {
+            this.violencia = rand.Next(1,5);
+            this.resistencia = rand.Next(1,5);
+            this.discrecion = rand.Next(1,5);
+
+        }
         public Caracteristica(int violencia, int resistencia, int discrecion)
         {
             this.violencia = violencia;
             this.resistencia = resistencia;
             this.discrecion = discrecion;
-            this.salud = 100;
-            this.vidas = 3;
         }
 
     }
