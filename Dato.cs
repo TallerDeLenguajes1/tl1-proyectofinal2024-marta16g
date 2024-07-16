@@ -13,6 +13,7 @@ namespace EspacioDato
         public string? Casa { get => casa; set => casa = value; }
         public string? Varita { get => varita; set => varita = value; }
 
+        public Dato(){}
         public Dato(string nombre, string apodo, string casa, string varita)
         {
             this.nombre = nombre;

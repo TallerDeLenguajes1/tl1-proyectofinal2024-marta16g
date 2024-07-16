@@ -15,7 +15,6 @@ namespace EspacioCaracteristica
         public int Discrecion { get;set; }
         public int Salud { get; } = 100;
         public int Vidas { get; } = 3;
-
         public Caracteristica()
         {
             this.violencia = rand.Next(1,5);

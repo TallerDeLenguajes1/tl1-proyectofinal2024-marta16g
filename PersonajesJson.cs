@@ -31,7 +31,12 @@ namespace EspacioPersonajesJS
                 }
             }
 
-            var ListaPersonajesLeidos = JsonSerializer.Deserialize<List<Personaje>>(archivoJson);
+            var opciones = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
+            var ListaPersonajesLeidos = JsonSerializer.Deserialize<List<Personaje>>(archivoJson, opciones);
             return ListaPersonajesLeidos; 
         }
     }
