@@ -15,6 +15,6 @@ PruebaDepersonajes = pruebaArchivoNuevo.LeerPersonajes(nombreArchivo);
 
 foreach (var personaje in PruebaDepersonajes)
 {
-    Console.WriteLine(personaje.mostrarPersonaje);
+    Console.WriteLine(personaje.mostrarPersonaje());
 }
 

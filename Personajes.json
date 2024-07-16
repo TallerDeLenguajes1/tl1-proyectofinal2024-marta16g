@@ -1,15 +1,15 @@
 [
     {
         "dato": {
-            "Nombre": "Harry Potter",
-            "Apodo": "El Niño Que Sobrevivió",
-            "Casa": "Griffyndor",
-            "Varita": "Acebo y núcleo de pluma de Fénix"
+            "nombre": "Harry Potter",
+            "apodo": "El Niño Que Sobrevivió",
+            "casa": "Griffyndor",
+            "varita": "Acebo y núcleo de pluma de Fénix"
         },
         "caracteristica": {
-            "Violencia": 5,
-            "Resistencia": 4,
-            "Discrecion": 1
+            "violencia": 5,
+            "resistencia": 4,
+            "discrecion": 1
         }
     }
     
