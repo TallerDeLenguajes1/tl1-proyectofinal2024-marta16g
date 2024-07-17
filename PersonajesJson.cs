@@ -14,7 +14,6 @@ namespace EspacioPersonajesJS
                 using (StreamWriter escribir = new(abrir))
                 {
                     escribir.WriteLine(personajesJson);
-                    escribir.Close();
                 }
             };
 
@@ -28,21 +27,20 @@ namespace EspacioPersonajesJS
                 using (StreamReader leer = new(abrir))
                 {
                     archivoJson = leer.ReadToEnd();
-                    leer.Close();
                 }
             }
 
-            // var opciones = new JsonSerializerOptions
-            // {
-            //     PropertyNameCaseInsensitive = true
-            // };
+            var opciones = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
 
-            var listaPersonajesLeidos = JsonSerializer.Deserialize<List<Personaje>>(archivoJson);
+            var listaPersonajesLeidos = JsonSerializer.Deserialize<List<Personaje>>(archivoJson, opciones);
             if (listaPersonajesLeidos != null)
                         {
                             foreach (var personaje in listaPersonajesLeidos)
                             {
-                                if (personaje.Caracteristica.Violencia == 0 && personaje.Caracteristica.Resistencia == 0 && personaje.Caracteristica.Discrecion == 0)
+                                if (personaje.Caracteristica == null)
                                 {
                                     personaje.Caracteristica = new Caracteristica();
                                 }
