@@ -10,24 +10,50 @@ namespace EspacioFabricaDePersonajes
 
         private List<string> nombres = new List<string>
         {
-            "Cho Chang",
-            "Draco Malfoy",
-            "Severus Snape",
-            "Luna Lovegood",
-            "Ginny Weasley",
-            "Sirius black",
-            "Bellatrix Lestrange",
-            "Albus Dumbledore",
-            "Seamus Finnigan",
-            "Lavender Brown",
-            "Minerva McGonagall",
-            "Lucius Malfoy",
-            "Neville Longbottom",
-            "Dolores Umbridge",
-            "George Weasley",
-            "Fred Weasley",
-            "Fleur Delacour",
-            "Nymphadora Tonks"
+            "Alyssa Goldworthy",
+            "Jasper Nightshade",
+            "Elara Moonstone",
+            "Cedric Thistledown",
+            "Fiona Ravenshade",
+            "Orion Ashcroft",
+            "Lilith Hawthorne",
+            "Thaddeus Stormrider",
+            "Luna Brightwood",
+            "Felix Darkwater",
+            "Morgana Spellbound",
+            "Silas Windwalker",
+            "Ivy Greenbriar",
+            "Gideon Shadowmire",
+            "Daphne Silverleaf",
+            "Lysander Blackthorn",
+            "Penelope Starfall",
+            "Rowan Frostwood",
+            "Selene Emberheart",
+            "Cassius Ironwood"
+        };
+
+        private List<string> apodos = new List<string>
+        {
+            "Sabelotodo",
+            "Rana",
+            "Guardián",
+            "Rayo escarlata",
+            "Bomba de Azufre",
+            "Tiqui-Taca",
+            "Seda majestuosa",
+            "Caramelo de cianuro",
+            "Doble cara",
+            "Diablo en botella",
+            "Majestad",
+            "Lince",
+            "Fantasma de Canterville",
+            "Espectro del bosque",
+            "Chispa de Luz",
+            "Media Naranja",
+            "Luna llena",
+            "Catástrofe",
+            "Encanto",
+            "Corazón de Piedra"
         };
 
         private List<string> varitas = new List<string>
@@ -56,13 +82,13 @@ namespace EspacioFabricaDePersonajes
         };
 
         
-        public FabricaDePersonajes(int cantidadDePersonajes, string nombre, string apodo, string casa, string varita)
+        public FabricaDePersonajes(int cantidadDePersonajes)
         {
             personajes = new List<Personaje>(); 
             
             for (int i = 0; i < cantidadDePersonajes; i++)
             {
-                var unPersonaje = new Personaje(nombre, apodo, casa, varita);
+                var unPersonaje = new Personaje();
                 personajes.Add(unPersonaje);
             }
         }
