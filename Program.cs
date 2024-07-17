@@ -15,14 +15,18 @@ class Program
         List<Personaje>? PruebaDepersonajes = new();
         PersonajesJson pruebaArchivoNuevo = new();
 
-        string nombreArchivo = "Personajes.json";
+        string nombreArchivo = "PRUEBA.json";
 
-        PruebaDepersonajes = pruebaArchivoNuevo.LeerPersonajes(nombreArchivo);
+        // PruebaDepersonajes = pruebaArchivoNuevo.LeerPersonajes(nombreArchivo);
 
-        foreach (var personaje in PruebaDepersonajes)
-        {
-            Console.WriteLine(personaje.mostrarPersonaje());
-        }
+        Personaje p1 = new Personaje("Harry", "Wachin", "Gryffindor", "Palo santo");
+        Personaje p2 = new Personaje("Ronald", "Ron el pelirrojo", "Ravenclaw", "Escoba", 1, 2, 3);
+
+        PruebaDepersonajes.Add(p1);
+        PruebaDepersonajes.Add(p2);
+
+        pruebaArchivoNuevo.GuardarPersonajes(PruebaDepersonajes, nombreArchivo);
+        
 
     }
 }
