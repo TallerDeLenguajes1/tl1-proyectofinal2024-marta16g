@@ -47,6 +47,14 @@ namespace EspacioFabricaDePersonajes
             "Pino y pelo de gato Wampus"
         };
 
+        private List<string> casas = new List<string>
+        {
+            "Gryffindor",
+            "Ravenclaw",
+            "Slytherin",
+            "Hufflepuff"
+        };
+
         
         public FabricaDePersonajes(int cantidadDePersonajes, string nombre, string apodo, string casa, string varita)
         {
