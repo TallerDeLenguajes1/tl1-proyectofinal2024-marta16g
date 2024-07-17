@@ -110,7 +110,13 @@ namespace EspacioFabricaDePersonajes
                     var unPersonaje = new Personaje(randomNombre, randomApodo, randomCasa, randomVarita);
                     personajes.Add(unPersonaje);
                 }
+
             }
+        }
+
+        public Personaje mostrarUnPersonaje(int eleccion)
+        {
+            return personajes[eleccion-1];
         }
     }
 }
