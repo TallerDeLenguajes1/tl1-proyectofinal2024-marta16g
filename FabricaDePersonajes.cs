@@ -6,7 +6,9 @@ namespace EspacioFabricaDePersonajes
 {
     public class FabricaDePersonajes
     {
-        private List<Personaje> personajes;        
+
+        private Random Rand = new();
+        private List<Personaje> personajes;
 
         private List<string> nombres = new List<string>
         {
@@ -81,15 +83,33 @@ namespace EspacioFabricaDePersonajes
             "Hufflepuff"
         };
 
-        
-        public FabricaDePersonajes(int cantidadDePersonajes)
+
+        public FabricaDePersonajes()
         {
-            personajes = new List<Personaje>(); 
-            
-            for (int i = 0; i < cantidadDePersonajes; i++)
+            personajes = new List<Personaje>();
+
+            for (int i = 0; i < 10; i++)
             {
-                var unPersonaje = new Personaje();
-                personajes.Add(unPersonaje);
+                int iNombreYApodo = Rand.Next(20);
+                int iVarita = Rand.Next(13);
+                int iCasa = Rand.Next(4);
+
+                string randomNombre = nombres[iNombreYApodo];
+                string randomApodo = apodos[iNombreYApodo];
+                string randomVarita = varitas[iVarita];
+                string randomCasa = casas[iCasa];
+
+                bool existe = personajes.Any(p => p.Dato.Nombre == randomNombre);
+
+                if (existe)
+                {
+                    i--;
+                }
+                else
+                {
+                    var unPersonaje = new Personaje(randomNombre, randomApodo, randomCasa, randomVarita);
+                    personajes.Add(unPersonaje);
+                }
             }
         }
     }
