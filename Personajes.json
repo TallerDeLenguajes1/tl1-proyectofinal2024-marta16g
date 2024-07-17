@@ -4,13 +4,22 @@
             "nombre": "Harry Potter",
             "apodo": "El Niño Que Sobrevivió",
             "casa": "Griffyndor",
-            "varita": "Acebo y núcleo de pluma de Fénix"
+            "varita": "Acebo y pluma de Fénix"
         },
         "caracteristica": {
             "violencia": 5,
             "resistencia": 4,
             "discrecion": 1
         }
+    },
+    {
+        "dato": {
+            "nombre": "Hermione Granger",
+            "apodo": "Pequeña Señorita Perfecta",
+            "casa": "Griffyndor",
+            "varita": "Vid y fibra de corazón de dragón"
+        },
+        "caracteristica": {}
     }
     
 ]

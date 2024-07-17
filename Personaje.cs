@@ -6,28 +6,28 @@ namespace EspacioPersonaje
 {
     public class Personaje
     {
-        public Dato dato{get;set;}
-        public Caracteristica caracteristica{get;set;}
+        public Dato Dato{get;set;}
+        public Caracteristica Caracteristica{get;set;}
         
         public Personaje()
         {
-            this.dato = new Dato();
-            this.caracteristica = new Caracteristica();
+            this.Dato = new Dato();
+            this.Caracteristica = new Caracteristica();
         }
         public Personaje(string nombre, string apodo, string casa, string varita)
         {
-            this.dato = new Dato(nombre, apodo, casa, varita);
-            this.caracteristica = new Caracteristica();
+            this.Dato = new Dato(nombre, apodo, casa, varita);
+            this.Caracteristica = new Caracteristica();
         }
         public Personaje(string nombre, string apodo, string casa, string varita, int violencia, int resistencia, int discrecion)
         {
-            this.dato = new Dato(nombre, apodo, casa, varita);
-            this.caracteristica = new Caracteristica(violencia, resistencia, discrecion);
+            this.Dato = new Dato(nombre, apodo, casa, varita);
+            this.Caracteristica = new Caracteristica(violencia, resistencia, discrecion);
         }
 
         public string mostrarPersonaje()
         {
-            return$"nombre: {dato.Nombre}";
+            return($"nombre: {Dato.Nombre}, violencia: {Caracteristica.Violencia}, salud: {Caracteristica.Salud}");
         }
     }
    

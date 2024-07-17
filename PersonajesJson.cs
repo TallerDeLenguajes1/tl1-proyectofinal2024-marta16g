@@ -1,5 +1,6 @@
 using System.Text.Json;
 using EspacioPersonaje;
+using EspacioCaracteristica;
 
 namespace EspacioPersonajesJS
 {
@@ -31,13 +32,23 @@ namespace EspacioPersonajesJS
                 }
             }
 
-            var opciones = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
+            // var opciones = new JsonSerializerOptions
+            // {
+            //     PropertyNameCaseInsensitive = true
+            // };
 
-            var ListaPersonajesLeidos = JsonSerializer.Deserialize<List<Personaje>>(archivoJson, opciones);
-            return ListaPersonajesLeidos; 
+            var listaPersonajesLeidos = JsonSerializer.Deserialize<List<Personaje>>(archivoJson);
+            if (listaPersonajesLeidos != null)
+                        {
+                            foreach (var personaje in listaPersonajesLeidos)
+                            {
+                                if (personaje.Caracteristica.Violencia == 0 && personaje.Caracteristica.Resistencia == 0 && personaje.Caracteristica.Discrecion == 0)
+                                {
+                                    personaje.Caracteristica = new Caracteristica();
+                                }
+                            }
+                        }
+            return listaPersonajesLeidos; 
         }
     }
 }
