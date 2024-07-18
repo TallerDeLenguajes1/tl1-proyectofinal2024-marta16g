@@ -9,9 +9,9 @@ namespace EspacioPersonaje
         public Dato Dato{get;set;}
         public Caracteristica Caracteristica{get;set;}
         
-        public Personaje(int iNombre, int iApodo, int iCasa, int iVarita)
+        public Personaje()
         {
-            this.Dato = new Dato(iNombre, iApodo, iCasa, iVarita);
+            this.Dato = new Dato();
             this.Caracteristica = new Caracteristica();
         }
         public Personaje(string nombre, string apodo, string casa, string varita)

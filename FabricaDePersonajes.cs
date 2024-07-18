@@ -10,32 +10,7 @@ namespace EspacioFabricaDePersonajes
         private Random Rand = new();
         private List<Personaje> personajes;
 
-        public FabricaDePersonajes()
-        {
-            this.personajes = new List<Personaje>();
-        }
-
-        public List<Personaje> GenerarPersonajesAleatorios()
-        {
-            personajes.Clear();
-
-            int numPersonajes = 10;
-            for (int i = 0; i < numPersonajes; i++)
-            {
-
-
-                var unPersonaje = new Personaje();
-                personajes.Add(unPersonaje);
-
-                nombreYApodoLength--;
-                varitaLength--;
-
-            }
-
-            return personajes;
-        }
-
-        private List<string> nombres = new List<string>
+        private List<string> nombres = new()
         {
             "Alyssa Goldworthy",
             "Jasper Nightshade",
@@ -59,7 +34,7 @@ namespace EspacioFabricaDePersonajes
             "Cassius Ironwood"
         };
 
-        private List<string> apodos = new List<string>
+        private List<string> apodos = new()
         {
             "Sabelotodo",
             "Rana",
@@ -83,14 +58,14 @@ namespace EspacioFabricaDePersonajes
             "Corazón de Piedra"
         };
 
-        private List<string> casas = new List<string>
+        private List<string> casas = new()
         {
             "Gryffindor",
             "Ravenclaw",
             "Slytherin",
             "Hufflepuff"
         };
-        private List<string> varitas = new List<string>
+        private List<string> varitas = new()
         {
             "Cerezo y pelos de Veela",
             "Pino y bigotes de trol",
@@ -106,10 +81,45 @@ namespace EspacioFabricaDePersonajes
             "Arce y pelo de cola de thestral",
             "Pino y pelo de gato Wampus"
         };
+        public FabricaDePersonajes()
+        {
+            this.personajes = new List<Personaje>();
+        }
+
+        public List<Personaje> GenerarPersonajesAleatorios()
+        {
+            personajes.Clear();
+
+            List<string> nombresDisponibles = new List<string>(nombres);
+            List<string> apodosDisponibles = new List<string>(apodos);
+            List<string> casasDisponibles = new List<string>(casas);
+            List<string> varitasDisponibles = new List<string>(varitas);
+
+            int numPersonajes = 10;
+            for (int i = 0; i < numPersonajes; i++)
+            {
+                int iNombre = Rand.Next(nombresDisponibles.Count);
+                int iApodo = Rand.Next(apodosDisponibles.Count);
+                int iCasa = Rand.Next(casasDisponibles.Count);
+                int iVarita = Rand.Next(varitasDisponibles.Count);
+
+                Console.WriteLine("HOLA:" + iVarita);
+
+                var unPersonaje = new Personaje(nombresDisponibles[iNombre], apodosDisponibles[iApodo], casasDisponibles[iCasa], varitasDisponibles[iVarita]);
+
+                personajes.Add(unPersonaje);
+
+                nombresDisponibles.RemoveAt(iNombre);
+                apodosDisponibles.RemoveAt(iApodo);
+            }
+
+            return personajes;
+        }
+
 
         public Personaje DevolverUnPersonaje(int eleccion)
         {
-            return personajes[eleccion-1];
+            return personajes[eleccion - 1];
         }
     }
 }
