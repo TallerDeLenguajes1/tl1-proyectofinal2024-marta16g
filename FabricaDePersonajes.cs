@@ -10,7 +10,7 @@ namespace EspacioFabricaDePersonajes
         private Random Rand = new();
         private List<Personaje> personajes;
 
-        public FabricaDePersonajes()
+        public List<Personaje> GenerarPersonajesAleatorios()
         {
             personajes = new List<Personaje>();
 
@@ -33,6 +33,8 @@ namespace EspacioFabricaDePersonajes
                 varitaLength--;
 
             }
+
+            return personajes;
         }
 
         public Personaje devolverUnPersonaje(int eleccion)
