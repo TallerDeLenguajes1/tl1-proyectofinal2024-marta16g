@@ -6,6 +6,8 @@ namespace EspacioFabricaDePersonajes
 {
     public class FabricaDePersonajes
     {
+
+        private Random Rand = new();
         private List<Personaje> personajes;
 
         public FabricaDePersonajes()
@@ -14,8 +16,21 @@ namespace EspacioFabricaDePersonajes
 
             for (int i = 0; i < 10; i++)
             {
-                var unPersonaje = new Personaje();
+                int nombreYApodoLength = 20;
+                int casaLength = 4;
+                int varitaLength = 13;
+
+                int iNombreYApodo = Rand.Next(nombreYApodoLength);
+                int iCasa = Rand.Next(casaLength);
+                int iVarita = Rand.Next(varitaLength);
+
+                var unPersonaje = new Personaje(iNombreYApodo, iCasa, iVarita);
                 personajes.Add(unPersonaje);
+
+                nombreYApodoLength--;
+                casaLength--;
+                varitaLength--;
+
             }
         }
 

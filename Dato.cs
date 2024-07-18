@@ -4,6 +4,7 @@ namespace EspacioDato
 {
     public class Dato
     {
+        private Random Rand = new();
         private string? nombre;
         private string? apodo;
         private string? casa;
@@ -62,6 +63,13 @@ namespace EspacioDato
             "Corazón de Piedra"
         };
 
+        private List<string> casas = new List<string>
+        {
+            "Gryffindor",
+            "Ravenclaw",
+            "Slytherin",
+            "Hufflepuff"
+        };
         private List<string> varitas = new List<string>
         {
             "Cerezo y pelos de Veela",
@@ -79,18 +87,9 @@ namespace EspacioDato
             "Pino y pelo de gato Wampus"
         };
 
-        private List<string> casas = new List<string>
-        {
-            "Gryffindor",
-            "Ravenclaw",
-            "Slytherin",
-            "Hufflepuff"
-        };
 
-
-
-
-        public Dato(){}
+        public Dato(int iNombreYApodo, int iCasa, int iVarita)
+        {}
         public Dato(string nombre, string apodo, string casa, string varita)
         {
             this.nombre = nombre;
