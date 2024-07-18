@@ -16,7 +16,7 @@ class Program
         FabricaDePersonajes pruebaFabrica = new();
         Console.WriteLine("Mostrando un personaje");
 
-        var unPersonaje = pruebaFabrica.mostrarUnPersonaje(1);
+        var unPersonaje = pruebaFabrica.devolverUnPersonaje(1);
         Console.WriteLine(unPersonaje.Dato.Nombre);
        
 
