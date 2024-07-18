@@ -103,8 +103,6 @@ namespace EspacioFabricaDePersonajes
                 int iCasa = Rand.Next(casasDisponibles.Count);
                 int iVarita = Rand.Next(varitasDisponibles.Count);
 
-                Console.WriteLine("HOLA:" + iVarita);
-
                 var unPersonaje = new Personaje(nombresDisponibles[iNombre], apodosDisponibles[iApodo], casasDisponibles[iCasa], varitasDisponibles[iVarita]);
 
                 personajes.Add(unPersonaje);
@@ -120,6 +118,24 @@ namespace EspacioFabricaDePersonajes
         public Personaje DevolverUnPersonaje(int eleccion)
         {
             return personajes[eleccion - 1];
+        }
+
+        public void MostrarListaDePersonajes(List<Personaje> listaPersonajes, int cantPersonajes)
+        {
+            for (int i = 0; i < cantPersonajes; i++)
+            {
+                Console.WriteLine($"--PERSONAJE NÚMERO {i+1}--");
+
+                Console.WriteLine($"Nombre: {listaPersonajes[i].Dato.Nombre}");
+                Console.WriteLine($"Apodo: {listaPersonajes[i].Dato.Apodo}");
+                Console.WriteLine($"Casa: {listaPersonajes[i].Dato.Casa}");
+                Console.WriteLine($"Varita: {listaPersonajes[i].Dato.Varita}");
+                Console.WriteLine($"Violencia: {listaPersonajes[i].Caracteristica.Violencia}");
+                Console.WriteLine($"Resistencia: {listaPersonajes[i].Caracteristica.Resistencia}");
+                Console.WriteLine($"Discrecion: {listaPersonajes[i].Caracteristica.Discrecion}");
+
+                Console.WriteLine("------------------");
+            }
         }
     }
 }
