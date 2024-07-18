@@ -19,7 +19,7 @@ class Program
         for (int i = 1; i < 11; i++)
         {
             Console.WriteLine($"--PERSONAJE NÚMERO {i}--");
-            var unPersonaje = pruebaFabrica.devolverUnPersonaje(i);
+            var unPersonaje = pruebaFabrica.DevolverUnPersonaje(i);
             Console.WriteLine($"Nombre: {unPersonaje.Dato.Nombre}");
             Console.WriteLine($"Apodo: {unPersonaje.Dato.Apodo}");
             Console.WriteLine($"Casa: {unPersonaje.Dato.Casa}");

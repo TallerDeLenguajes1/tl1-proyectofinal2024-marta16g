@@ -48,5 +48,17 @@ namespace EspacioPersonajesJS
                         }
             return listaPersonajesLeidos; 
         }
+
+        public bool ExisteArchivo(string nombreArchivo)
+        {
+            if(File.Exists(nombreArchivo))
+            {
+                FileInfo fileInfo = new(nombreArchivo);
+                return fileInfo.Length > 0;
+            }else
+            {
+                return false;
+            }
+        }
     }
 }

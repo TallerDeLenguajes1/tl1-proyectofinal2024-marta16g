@@ -42,7 +42,7 @@ namespace EspacioFabricaDePersonajes
             return personajes;
         }
 
-        public Personaje devolverUnPersonaje(int eleccion)
+        public Personaje DevolverUnPersonaje(int eleccion)
         {
             return personajes[eleccion-1];
         }
