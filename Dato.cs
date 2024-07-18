@@ -95,10 +95,10 @@ namespace EspacioDato
             this.casa = casas[iCasa];
             this.varita = varitas[iVarita];
 
-            nombres.Remove(nombres[iNombre]);
-            apodos.Remove(apodos[iApodo]);
-            casas.Remove(casas[iCasa]);
-            varitas.Remove(varitas[iVarita]);
+            nombres.RemoveAt(iNombre);
+            apodos.RemoveAt(iApodo);
+            casas.RemoveAt(iCasa);
+            varitas.RemoveAt(iVarita);
         }
         public Dato(string nombre, string apodo, string casa, string varita)
         {
