@@ -89,7 +89,17 @@ namespace EspacioDato
 
 
         public Dato(int iNombreYApodo, int iCasa, int iVarita)
-        {}
+        {
+            this.nombre = nombres[iNombreYApodo];
+            this.apodo = apodos[iNombreYApodo];
+            this.casa = casas[iCasa];
+            this.varita = varitas[iVarita];
+
+            nombres.Remove(nombres[iNombreYApodo]);
+            apodos.Remove(apodos[iNombreYApodo]);
+            casas.Remove(casas[iCasa]);
+            varitas.Remove(varitas[iVarita]);
+        }
         public Dato(string nombre, string apodo, string casa, string varita)
         {
             this.nombre = nombre;
