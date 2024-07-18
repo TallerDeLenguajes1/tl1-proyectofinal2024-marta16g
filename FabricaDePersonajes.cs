@@ -20,11 +20,12 @@ namespace EspacioFabricaDePersonajes
                 int casaLength = 4;
                 int varitaLength = 13;
 
-                int iNombreYApodo = Rand.Next(nombreYApodoLength);
+                int iNombre = Rand.Next(nombreYApodoLength);
+                int iApodo = Rand.Next(nombreYApodoLength);
                 int iCasa = Rand.Next(casaLength);
                 int iVarita = Rand.Next(varitaLength);
 
-                var unPersonaje = new Personaje(iNombreYApodo, iCasa, iVarita);
+                var unPersonaje = new Personaje(iNombre, iApodo, iCasa, iVarita);
                 personajes.Add(unPersonaje);
 
                 nombreYApodoLength--;

@@ -14,27 +14,25 @@ class Program
         Console.WriteLine("-----Probando Fábrica de personajes-----");
 
         FabricaDePersonajes pruebaFabrica = new();
-        Console.WriteLine("Mostrando un personaje");
+        Console.WriteLine("Mostrando lista de personajes");
 
-        var unPersonaje = pruebaFabrica.devolverUnPersonaje(1);
-        Console.WriteLine(unPersonaje.Dato.Nombre);
+        for (int i = 1; i < 11; i++)
+        {
+            Console.WriteLine($"--PERSONAJE NÚMERO {i}--");
+            var unPersonaje = pruebaFabrica.devolverUnPersonaje(i);
+            Console.WriteLine($"Nombre: {unPersonaje.Dato.Nombre}");
+            Console.WriteLine($"Apodo: {unPersonaje.Dato.Apodo}");
+            Console.WriteLine($"Casa: {unPersonaje.Dato.Casa}");
+            Console.WriteLine($"Varita: {unPersonaje.Dato.Varita}");
+            Console.WriteLine($"Violencia: {unPersonaje.Caracteristica.Violencia}");
+            Console.WriteLine($"Resistencia: {unPersonaje.Caracteristica.Resistencia}");
+            Console.WriteLine($"Discrecion: {unPersonaje.Caracteristica.Discrecion}");
+
+
+
+
+        }
        
-
-
-        // List<Personaje>? PruebaDepersonajes = new();
-        // PersonajesJson pruebaArchivoNuevo = new();
-
-        // string nombreArchivo = "PRUEBA.json";
-
-        // // PruebaDepersonajes = pruebaArchivoNuevo.LeerPersonajes(nombreArchivo);
-
-        // Personaje p1 = new Personaje("Harry", "Wachin", "Gryffindor", "Palo santo");
-        // Personaje p2 = new Personaje("Ronald", "Ron el pelirrojo", "Ravenclaw", "Escoba", 1, 2, 3);
-
-        // PruebaDepersonajes.Add(p1);
-        // PruebaDepersonajes.Add(p2);
-
-        // pruebaArchivoNuevo.GuardarPersonajes(PruebaDepersonajes, nombreArchivo);
 
 
     }

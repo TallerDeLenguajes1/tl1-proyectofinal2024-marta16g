@@ -88,15 +88,15 @@ namespace EspacioDato
         };
 
 
-        public Dato(int iNombreYApodo, int iCasa, int iVarita)
+        public Dato(int iNombre, int iApodo, int iCasa, int iVarita)
         {
-            this.nombre = nombres[iNombreYApodo];
-            this.apodo = apodos[iNombreYApodo];
+            this.nombre = nombres[iNombre];
+            this.apodo = apodos[iApodo];
             this.casa = casas[iCasa];
             this.varita = varitas[iVarita];
 
-            nombres.Remove(nombres[iNombreYApodo]);
-            apodos.Remove(apodos[iNombreYApodo]);
+            nombres.Remove(nombres[iNombre]);
+            apodos.Remove(apodos[iApodo]);
             casas.Remove(casas[iCasa]);
             varitas.Remove(varitas[iVarita]);
         }
