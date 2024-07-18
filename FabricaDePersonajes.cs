@@ -10,6 +10,11 @@ namespace EspacioFabricaDePersonajes
         private Random Rand = new();
         private List<Personaje> personajes;
 
+        public FabricaDePersonajes()
+        {
+            this.personajes = new List<Personaje>();
+        }
+
         public List<Personaje> GenerarPersonajesAleatorios()
         {
             personajes = new List<Personaje>();
