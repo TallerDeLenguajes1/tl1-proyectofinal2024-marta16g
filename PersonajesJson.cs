@@ -9,7 +9,7 @@ namespace EspacioPersonajesJS
         public void GuardarPersonajes(List<Personaje> listaPersonajes, string nombreArchivo)
         {
             string personajesJson = JsonSerializer.Serialize(listaPersonajes);
-            using (FileStream abrir = new(nombreArchivo,  FileMode.OpenOrCreate))
+            using (FileStream abrir = new(nombreArchivo, FileMode.Create, FileAccess.Write))
             {
                 using (StreamWriter escribir = new(abrir))
                 {

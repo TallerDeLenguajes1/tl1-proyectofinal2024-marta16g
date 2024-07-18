@@ -17,7 +17,7 @@ namespace EspacioFabricaDePersonajes
 
         public List<Personaje> GenerarPersonajesAleatorios()
         {
-            personajes = new List<Personaje>();
+            personajes.Clear();
 
             for (int i = 0; i < 10; i++)
             {

@@ -11,9 +11,18 @@ class Program
 
         Console.WriteLine("---BIENVENIDA---");
 
-        Console.WriteLine("-----Probando Fábrica de personajes-----");
+        Console.WriteLine("-----Probando Fábrica de personajes y json-----");
 
         FabricaDePersonajes pruebaFabrica = new();
+        List<Personaje> listache = pruebaFabrica.GenerarPersonajesAleatorios();
+
+        PersonajesJson pruebaJson = new();
+
+        bool existeono = pruebaJson.ExisteArchivo("personajes.json");
+
+        
+            pruebaJson.GuardarPersonajes(listache, "personajes.json");
+          
         Console.WriteLine("Mostrando lista de personajes");
 
         for (int i = 1; i < 11; i++)
@@ -27,12 +36,9 @@ class Program
             Console.WriteLine($"Violencia: {unPersonaje.Caracteristica.Violencia}");
             Console.WriteLine($"Resistencia: {unPersonaje.Caracteristica.Resistencia}");
             Console.WriteLine($"Discrecion: {unPersonaje.Caracteristica.Discrecion}");
-
-
-
-
         }
        
+
 
 
     }
