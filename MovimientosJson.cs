@@ -4,7 +4,7 @@ using EspacioMovimiento;
 
 namespace EspacioMovimientoJson
 {
-    public class EspacioMovimientosJson
+    public class MovimientosJson
     {
         public List<Movimiento>? LeerMovimientos(string nombreArchivo)
         {

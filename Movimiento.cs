@@ -17,6 +17,7 @@ namespace EspacioMovimiento
 
         public uint Danio{get;set;}
 
+        public Movimiento(){}
         public Movimiento(Posiciones posicion, string hechizo, string descripcion, int persona, uint danio)
         {
             this.posicion = posicion;

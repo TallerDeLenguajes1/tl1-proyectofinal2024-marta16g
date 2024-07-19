@@ -1,83 +1,83 @@
 [
     {
-        "Posicion": "Agresivo",
+        "Posicion": 0,
         "Hechizo" : "Expelliarmus",
         "Descripcion": "Desarma a tu contrincante",
         "Persona": 2,
         "Danio": 20
     },
     {
-        "Posicion": "Agresivo",
+        "Posicion": 0,
         "Hechizo": "Incendio",
         "Descripcion": "Conjura una llama a la toga de tu contrincante",
         "Persona": 2,
         "Danio": 20
     },
     {
-        "Posicion": "Agresivo",
+        "Posicion": 0,
         "Hechizo": "Desmaius",
         "Descripcion": "Aturde a tu contrincante",
         "Persona": 2,
         "Danio": 30
     },
     {
-        "Posicion": "Agresivo",
+        "Posicion": 0,
         "Hechizo": "Depulso",
         "Descripcion": "Aleja a tu contrincante mandándolo a volar",
         "Persona": 2,
         "Danio": 30
     },
     {
-        "Posicion": "Defensivo",
+        "Posicion": 1,
         "Hechizo": "Episkey",
         "Descripcion": "Sana pequeñas heridas y arregla huesos rotos",
         "Persona": 1,
         "Danio": 15
     },
     {
-        "Posicion": "Defensivo",
+        "Posicion": 1,
         "Hechizo": "Bombarda",
         "Descripcion": "Causa una pequeña explosión",
         "Persona": 2,
         "Danio": 10
     },
     {
-        "Posicion": "Defensivo",
+        "Posicion": 1,
         "Hechizo": "Petrificus Totalus",
         "Descripcion": "Inmoviliza a tu contrincante",
         "Persona": 2,
         "Danio": 15
     },
     {
-        "Posicion": "Defensivo",
+        "Posicion": 1,
         "Hechizo": "Incarcerous",
         "Descripcion": "Envuelve a tu contrincante con cuerdas",
         "Persona": 2,
         "Danio": 15
     },
     {
-        "Posicion": "Furtivo",
+        "Posicion": 2,
         "Hechizo": "Rictusempra",
         "Descripcion": "Ataca a tu contrincante con cosquillas",
         "Persona": 2,
         "Danio": 10
     },
     {
-        "Posicion": "Furtivo",
+        "Posicion": 2,
         "Hechizo": "Diffindo",
         "Descripcion": "Provoca cortes en el cuerpo del contrincante",
         "Persona": 2,
         "Danio": 20
     },
     {
-        "Posicion": "Furtivo",
+        "Posicion": 2,
         "Hechizo": "Flagrante",
         "Descripcion": "La varita de tu contrincante quemará su mano",
         "Persona": 2,
         "Danio": 20
     },
     {
-        "Posicion": "Furtivo",
+        "Posicion": 2,
         "Hechizo": "Melofors",
         "Descripcion": "Encierra la cabeza de tu oponente en una calabaza",
         "Persona": 2,
