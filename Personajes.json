@@ -1,1 +1,152 @@
-[{"Dato":{"Nombre":"Morgana Spellbound","Apodo":"Chispa de Luz","Casa":"Gryffindor","Varita":"Cedro y plumas de cola de ave del trueno"},"Caracteristica":{"Violencia":2,"Resistencia":1,"Discrecion":1,"Salud":100,"Vidas":3}},{"Dato":{"Nombre":"Alyssa Goldworthy","Apodo":"Fantasma de Canterville","Casa":"Ravenclaw","Varita":"Cerezo y pelos de Veela"},"Caracteristica":{"Violencia":2,"Resistencia":1,"Discrecion":5,"Salud":100,"Vidas":3}},{"Dato":{"Nombre":"Rowan Frostwood","Apodo":"Guardi\u00E1n","Casa":"Gryffindor","Varita":"Pino y pelo de gato Wampus"},"Caracteristica":{"Violencia":2,"Resistencia":1,"Discrecion":4,"Salud":100,"Vidas":3}},{"Dato":{"Nombre":"Lilith Hawthorne","Apodo":"Doble cara","Casa":"Gryffindor","Varita":"Acebo y Coral"},"Caracteristica":{"Violencia":5,"Resistencia":3,"Discrecion":5,"Salud":100,"Vidas":3}},{"Dato":{"Nombre":"Luna Brightwood","Apodo":"Cat\u00E1strofe","Casa":"Ravenclaw","Varita":"Cedro y pelo de cola de unicornio"},"Caracteristica":{"Violencia":2,"Resistencia":2,"Discrecion":2,"Salud":100,"Vidas":3}},{"Dato":{"Nombre":"Cedric Thistledown","Apodo":"Diablo en botella","Casa":"Gryffindor","Varita":"Cedro y pelo de cola de unicornio"},"Caracteristica":{"Violencia":1,"Resistencia":4,"Discrecion":2,"Salud":100,"Vidas":3}},{"Dato":{"Nombre":"Elara Moonstone","Apodo":"Media Naranja","Casa":"Slytherin","Varita":"Cedro y fibra de coraz\u00F3n de drag\u00F3n"},"Caracteristica":{"Violencia":1,"Resistencia":4,"Discrecion":1,"Salud":100,"Vidas":3}},{"Dato":{"Nombre":"Fiona Ravenshade","Apodo":"Rana","Casa":"Slytherin","Varita":"Arce y pelo de cola de thestral"},"Caracteristica":{"Violencia":2,"Resistencia":4,"Discrecion":1,"Salud":100,"Vidas":3}},{"Dato":{"Nombre":"Lysander Blackthorn","Apodo":"Lince","Casa":"Slytherin","Varita":"Cerezo y pelos de Veela"},"Caracteristica":{"Violencia":2,"Resistencia":1,"Discrecion":1,"Salud":100,"Vidas":3}},{"Dato":{"Nombre":"Penelope Starfall","Apodo":"Encanto","Casa":"Ravenclaw","Varita":"Cedro y pelo de cola de unicornio"},"Caracteristica":{"Violencia":1,"Resistencia":3,"Discrecion":4,"Salud":100,"Vidas":3}}]
+﻿[
+  {
+    "Dato": {
+      "Nombre": "Thaddeus Stormrider",
+      "Apodo": "Luna llena",
+      "Casa": "Hufflepuff",
+      "Varita": "Pino y pelo de gato Wampus"
+    },
+    "Caracteristica": {
+      "Violencia": 1,
+      "Resistencia": 5,
+      "Discrecion": 3,
+      "Salud": 100,
+      "Vidas": 3
+    }
+  },
+  {
+    "Dato": {
+      "Nombre": "Fiona Ravenshade",
+      "Apodo": "Lince",
+      "Casa": "Ravenclaw",
+      "Varita": "Pino y pelo de gato Wampus"
+    },
+    "Caracteristica": {
+      "Violencia": 3,
+      "Resistencia": 5,
+      "Discrecion": 4,
+      "Salud": 100,
+      "Vidas": 3
+    }
+  },
+  {
+    "Dato": {
+      "Nombre": "Gideon Shadowmire",
+      "Apodo": "Majestad",
+      "Casa": "Hufflepuff",
+      "Varita": "Cedro y pelo de cola de unicornio"
+    },
+    "Caracteristica": {
+      "Violencia": 1,
+      "Resistencia": 2,
+      "Discrecion": 2,
+      "Salud": 100,
+      "Vidas": 3
+    }
+  },
+  {
+    "Dato": {
+      "Nombre": "Selene Emberheart",
+      "Apodo": "Espectro del bosque",
+      "Casa": "Slytherin",
+      "Varita": "Pino y bigotes de trol"
+    },
+    "Caracteristica": {
+      "Violencia": 2,
+      "Resistencia": 1,
+      "Discrecion": 5,
+      "Salud": 100,
+      "Vidas": 3
+    }
+  },
+  {
+    "Dato": {
+      "Nombre": "Rowan Frostwood",
+      "Apodo": "Rana",
+      "Casa": "Ravenclaw",
+      "Varita": "Arce y pelo de cola de thestral"
+    },
+    "Caracteristica": {
+      "Violencia": 5,
+      "Resistencia": 2,
+      "Discrecion": 2,
+      "Salud": 100,
+      "Vidas": 3
+    }
+  },
+  {
+    "Dato": {
+      "Nombre": "Penelope Starfall",
+      "Apodo": "Tiqui-Taca",
+      "Casa": "Hufflepuff",
+      "Varita": "Cerezo y pluma de cola de ave F\u00E9nix"
+    },
+    "Caracteristica": {
+      "Violencia": 1,
+      "Resistencia": 3,
+      "Discrecion": 1,
+      "Salud": 100,
+      "Vidas": 3
+    }
+  },
+  {
+    "Dato": {
+      "Nombre": "Ivy Greenbriar",
+      "Apodo": "Caramelo de cianuro",
+      "Casa": "Ravenclaw",
+      "Varita": "Cedro y plumas de cola de ave del trueno"
+    },
+    "Caracteristica": {
+      "Violencia": 3,
+      "Resistencia": 1,
+      "Discrecion": 1,
+      "Salud": 100,
+      "Vidas": 3
+    }
+  },
+  {
+    "Dato": {
+      "Nombre": "Cassius Ironwood",
+      "Apodo": "Coraz\u00F3n de Piedra",
+      "Casa": "Slytherin",
+      "Varita": "Arce y pelo de cola de thestral"
+    },
+    "Caracteristica": {
+      "Violencia": 4,
+      "Resistencia": 5,
+      "Discrecion": 1,
+      "Salud": 100,
+      "Vidas": 3
+    }
+  },
+  {
+    "Dato": {
+      "Nombre": "Daphne Silverleaf",
+      "Apodo": "Media Naranja",
+      "Casa": "Slytherin",
+      "Varita": "Cedro y fibra de coraz\u00F3n de drag\u00F3n"
+    },
+    "Caracteristica": {
+      "Violencia": 4,
+      "Resistencia": 5,
+      "Discrecion": 5,
+      "Salud": 100,
+      "Vidas": 3
+    }
+  },
+  {
+    "Dato": {
+      "Nombre": "Elara Moonstone",
+      "Apodo": "Doble cara",
+      "Casa": "Ravenclaw",
+      "Varita": "Cerezo y pluma de cola de ave F\u00E9nix"
+    },
+    "Caracteristica": {
+      "Violencia": 4,
+      "Resistencia": 5,
+      "Discrecion": 1,
+      "Salud": 100,
+      "Vidas": 3
+    }
+  }
+]

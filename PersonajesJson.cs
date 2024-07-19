@@ -1,3 +1,4 @@
+using System.Text;
 using System.Text.Json;
 using EspacioPersonaje;
 using EspacioCaracteristica;
@@ -8,10 +9,12 @@ namespace EspacioPersonajesJS
     {
         public void GuardarPersonajes(List<Personaje> listaPersonajes, string nombreArchivo)
         {
-            string personajesJson = JsonSerializer.Serialize(listaPersonajes);
+            var opciones = new JsonSerializerOptions { WriteIndented = true };
+
+            string personajesJson = JsonSerializer.Serialize(listaPersonajes, opciones);
             using (FileStream abrir = new(nombreArchivo, FileMode.Create, FileAccess.Write))
             {
-                using (StreamWriter escribir = new(abrir))
+                using (StreamWriter escribir = new(abrir, Encoding.UTF8))
                 {
                     escribir.WriteLine(personajesJson);
                 }
@@ -30,10 +33,7 @@ namespace EspacioPersonajesJS
                 }
             }
 
-            var opciones = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
+            var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
             var listaPersonajesLeidos = JsonSerializer.Deserialize<List<Personaje>>(archivoJson, opciones);
             if (listaPersonajesLeidos != null)
