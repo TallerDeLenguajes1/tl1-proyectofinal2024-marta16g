@@ -1,0 +1,20 @@
+[
+    {
+        "Posicion": "Agresivo",
+        "Hechizo" : "Expelliarmus",
+        "Descripcion": "Desarma a tu contrincante",
+        "Danio": "3"
+    },
+    {
+        "Posicion": "Agresivo",
+        "Hechizo": "Incendio",
+        "Descripcion": "Conjura una llama a la toga de tu contrincante",
+        "Danio": "5"
+    },
+    {
+        "Posicion": "Defensivo",
+        "Hechizo": "Incendio",
+        "Descripcion": "Conjura una llama a la toga de tu contrincante",
+        "Danio": "5"
+    }    
+]

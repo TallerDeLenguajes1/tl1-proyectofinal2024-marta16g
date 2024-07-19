@@ -3,18 +3,18 @@ using EspacioDuelo;
 using EspacioPosiciones;
 namespace EspacioMovimiento
 {
-    class Movimiento{
+    public class Movimiento{
         private Posiciones posicion; 
         private string? hechizo;
         private string? descripcion;
-        private int danio;
+        private uint danio;
 
         public Posiciones Posicion {get;set;}
         public string? Hechizo {get;set;}
         public string? Descripcion{get;set;}
-        public int Danio{get;set;}
+        public uint Danio{get;set;}
 
-        public Movimiento(Posiciones posicion, string hechizo, string descripcion, int danio)
+        public Movimiento(Posiciones posicion, string hechizo, string descripcion, uint danio)
         {
             this.posicion = posicion;
             this.hechizo = hechizo;
