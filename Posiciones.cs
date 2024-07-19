@@ -1,11 +1,11 @@
 using System;
 
-namespace EspacioPosicion
+namespace EspacioPosiciones
 {
-           public enum Posiciones
-        {
-            Agresivo,
-            Defensivo,
-            Furtivo
-        }
+    public enum Posiciones
+    {
+        Agresivo,
+        Defensivo,
+        Furtivo
+    }
 }
