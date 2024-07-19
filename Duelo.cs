@@ -2,15 +2,16 @@ using System;
 
 namespace EspacioDuelo
 {
-    public class Duelo
+    public partial class Duelo
     {
-        public enum Posicion
-        {
-            Agresivo,
-            Defensivo,
-            Furtivo
-        } 
 
+        public enum Agresivo
+        {
+            Desmaius,
+            Expelliarmus
+        }
+
+        public
         
     }
 }
