@@ -24,18 +24,18 @@ namespace EspacioPersonajesJS
 
         public List<Personaje>? LeerPersonajes(string nombreArchivo)
         {
-            string archivoJson;
+            string archivoExtraido;
             using(FileStream abrir = new(nombreArchivo, FileMode.Open))
             {
                 using (StreamReader leer = new(abrir))
                 {
-                    archivoJson = leer.ReadToEnd();
+                    archivoExtraido = leer.ReadToEnd();
                 }
             }
 
             var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
-            var listaPersonajesLeidos = JsonSerializer.Deserialize<List<Personaje>>(archivoJson, opciones);
+            var listaPersonajesLeidos = JsonSerializer.Deserialize<List<Personaje>>(archivoExtraido, opciones);
             if (listaPersonajesLeidos != null)
                         {
                             foreach (var personaje in listaPersonajesLeidos)
