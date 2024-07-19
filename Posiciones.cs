@@ -2,13 +2,10 @@ using System;
 
 namespace EspacioPosicion
 {
-    public class Posicion
-    {
-        public enum Posiciones
+           public enum Posiciones
         {
             Agresivo,
             Defensivo,
             Furtivo
         }
-    }
 }
