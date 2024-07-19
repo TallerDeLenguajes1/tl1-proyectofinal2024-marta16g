@@ -12,20 +12,20 @@ class Program
     private static void Main(string[] args)
     {
 
-        Console.WriteLine("Probando Traer archivo de movimientos");
+        // Console.WriteLine("Probando Traer archivo de movimientos");
 
-        MovimientosJson pruebaDeMovimientoJson = new();
+        // MovimientosJson pruebaDeMovimientoJson = new();
 
-        List<Movimiento>? listaDePrueba = pruebaDeMovimientoJson.LeerMovimientos("Movimientos.json");
+        // List<Movimiento>? listaDePrueba = pruebaDeMovimientoJson.LeerMovimientos("Movimientos.json");
 
-        if(listaDePrueba != null)
-        {
-            foreach (var movimiento in listaDePrueba)
-            {
-                Console.WriteLine($"Nombre de la posicion: {movimiento.Posicion}");
-                Console.WriteLine("------");
-            }
-        }
+        // if(listaDePrueba != null)
+        // {
+        //     foreach (var movimiento in listaDePrueba)
+        //     {
+        //         Console.WriteLine($"Nombre de la posicion: {movimiento.Posicion}");
+        //         Console.WriteLine("------");
+        //     }
+        // }
 
         
     }
