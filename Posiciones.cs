@@ -4,8 +4,8 @@ namespace EspacioPosiciones
 {
     public enum Posiciones
     {
-        Agresivo,
-        Defensivo,
-        Furtivo
+        Agresivo = 1,
+        Defensivo = 2,
+        Furtivo = 3
     }
 }
