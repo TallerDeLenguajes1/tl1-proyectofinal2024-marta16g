@@ -1,5 +1,4 @@
 using System;
-using EspacioDuelo;
 using EspacioPosiciones;
 namespace EspacioMovimiento
 {

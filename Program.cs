@@ -3,7 +3,7 @@ using EspacioPersonaje;
 using EspacioCaracteristica;
 using EspacioPersonajesJS;
 using EspacioFabricaDePersonajes;
-using EspacioDuelo;
+using EspacioAtaque;
 using EspacioMovimiento;
 using EspacioMovimientoJson;
 
