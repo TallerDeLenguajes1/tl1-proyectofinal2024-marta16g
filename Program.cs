@@ -6,27 +6,31 @@ using EspacioFabricaDePersonajes;
 using EspacioAtaque;
 using EspacioMovimiento;
 using EspacioMovimientoJson;
+using EspacioDuelo;
+using EspacioPosiciones;
 
 class Program
 {
     private static void Main(string[] args)
     {
 
-        // Console.WriteLine("Probando Traer archivo de movimientos");
+        Console.WriteLine("Probando calcularDanio");
 
-        // MovimientosJson pruebaDeMovimientoJson = new();
+        MovimientosJson pruebaJsonMovimientos = new();
+        FabricaDePersonajes pruebaFabrica = new();
+        List<Personaje> pruebaListaDePersonajes = new();
+        
+        pruebaListaDePersonajes = pruebaFabrica.GenerarPersonajesAleatorios();
 
-        // List<Movimiento>? listaDePrueba = pruebaDeMovimientoJson.LeerMovimientos("Movimientos.json");
+        List<Movimiento>? listaMovimientosche = new();
 
-        // if(listaDePrueba != null)
-        // {
-        //     foreach (var movimiento in listaDePrueba)
-        //     {
-        //         Console.WriteLine($"Nombre de la posicion: {movimiento.Posicion}");
-        //         Console.WriteLine("------");
-        //     }
-        // }
+        listaMovimientosche = pruebaJsonMovimientos.LeerMovimientos("Movimientos.json");
 
+        Ataque pruebaAtaque = new(Posiciones.Furtivo, listaMovimientosche[2]);
+        Duelo pruebaDuelo = new();
+
+        pruebaDuelo.CalcularDanio(pruebaAtaque, pruebaListaDePersonajes[9]);
+    
         
     }
 }

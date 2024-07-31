@@ -11,14 +11,10 @@ namespace EspacioAtaque
         public Posiciones Posicion { get; set; }
         public Movimiento Movimiento
         {
-            get => movimiento; set
+            get => movimiento; 
+            set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(value), "El movimiento no debe ser nulo");
-
-                }
-                movimiento = value;
+                movimiento = value ?? throw new ArgumentNullException(nameof(value), "El movimiento no debe ser nulo");
                 
             }
         }

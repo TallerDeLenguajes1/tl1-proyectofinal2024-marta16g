@@ -4,12 +4,10 @@ namespace EspacioCaracteristica
 {
     public class Caracteristica
     {
-        private Random rand = new();
+        private static readonly Random rand = new();
         private int violencia;
         private int resistencia; 
         private int discrecion ;
-        private int salud;
-        private int vidas;
         public int Violencia
         {
             get => violencia;
