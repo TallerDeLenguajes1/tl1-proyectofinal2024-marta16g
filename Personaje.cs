@@ -25,9 +25,17 @@ namespace EspacioPersonaje
             this.Caracteristica = new Caracteristica(violencia, resistencia, discrecion);
         }
 
-        public string MostrarPersonaje(Personaje personaje)
+        public override string ToString()
         {
-            return($"Nombre: {personaje.Dato.Nombre}\n Apodo: {personaje.Dato.Apodo}\n Casa: {personaje.Dato.Casa}\n Varita: {personaje.Dato.Varita}\n Violencia: {personaje.Caracteristica.Violencia}\n Resistencia: {personaje.Caracteristica.Resistencia}\n Discrecion: {personaje.Caracteristica.Discrecion}\n Salud: {personaje.Caracteristica.Salud}\n Vidas: {personaje.Caracteristica.Vidas}");
+            return $"Nombre: {this.Dato.Nombre}\n" +
+            $"Apodo: {this.Dato.Apodo}\n" +
+            $"Casa: {this.Dato.Casa}\n" +
+            $"Varita: {this.Dato.Varita}\n" +
+            $"Violencia: {this.Caracteristica.Violencia}\n" +
+            $"Resistencia: {this.Caracteristica.Resistencia}\n" +
+            $"Discrecion: {this.Caracteristica.Discrecion}\n" +
+            $"Salud: {this.Caracteristica.Salud}\n" +
+            $"Vidas: {this.Caracteristica.Vidas}";
         }
     }
    

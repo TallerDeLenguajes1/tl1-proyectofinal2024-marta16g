@@ -23,14 +23,16 @@ namespace EspacioJuego
         private FabricaDePersonajes fabricaDePersonajes;
         private List<Personaje> jugadores;
         private List<Personaje> personajes;
+        private Personaje jugador;
+        private Personaje contrincante;
         private string? input;
         private bool validez;
-        private int jugador;
+        private int seleccionJugador;
         private int posicion1;
         private int posicion2;
-    
 
-    public Juego()
+
+        public Juego()
         {
             personaje = new Personaje();
             duelo = new Duelo();
@@ -51,34 +53,38 @@ namespace EspacioJuego
         public void Jugar()
         {
             Console.WriteLine("Bienvenido al Juego de Harry Potter: Duelo de varitas");
-            do{
-            Console.WriteLine("Seleccione el personaje para jugar");
-            Inicializar();
-
-            fabricaDePersonajes.MostrarListaDePersonajes(jugadores, cantJugadores);
-
-            input = Console.ReadLine();
-            validez = int.TryParse(input, out jugador);
-            if(!validez)
+            do
             {
-                Console.WriteLine("Lo ingresado no es un número. Intenta de nuevo.");
-                validez = false;
-            }else
-            {
-                if(3<jugador || jugador <1)
+                Console.WriteLine("Seleccione el personaje para jugar");
+                Inicializar();
+
+                fabricaDePersonajes.MostrarListaDePersonajes(jugadores, cantJugadores);
+
+                input = Console.ReadLine();
+                validez = int.TryParse(input, out seleccionJugador);
+                if (!validez)
                 {
-                    Console.WriteLine("Lo ingresado no es un número válido. Intenta de nuevo.");
+                    Console.WriteLine("Lo ingresado no es un número. Intenta de nuevo.");
                     validez = false;
-                }else{
-                    validez = true;
                 }
-            }
-            }while(!validez);
+                else
+                {
+                    if (3 < seleccionJugador || seleccionJugador < 1)
+                    {
+                        Console.WriteLine("Lo ingresado no es un número válido. Intenta de nuevo.");
+                        validez = false;
+                    }
+                    else
+                    {
+                        validez = true;
+                    }
+                }
+            } while (!validez);
 
 
-            
 
-           
+
+
         }
 
     }
