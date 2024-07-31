@@ -25,9 +25,9 @@ namespace EspacioPersonaje
             this.Caracteristica = new Caracteristica(violencia, resistencia, discrecion);
         }
 
-        public string mostrarPersonaje()
+        public string mostrarPersonaje(Personaje personaje)
         {
-            return($"Nombre: {Dato.Nombre}\n Apodo: {Dato.Apodo}\n Casa: {Dato.Casa}\n Varita: {Dato.Varita} Violencia: {Caracteristica.Violencia}\n Resistencia: {Caracteristica.Resistencia}\n Discrecion: {Caracteristica.Discrecion}\n Salud: {Caracteristica.Salud}\n Vidas: {Caracteristica.Vidas}");
+            return($"Nombre: {personaje.Dato.Nombre}\n Apodo: {personaje.Dato.Apodo}\n Casa: {personaje.Dato.Casa}\n Varita: {personaje.Dato.Varita} Violencia: {personaje.Caracteristica.Violencia}\n Resistencia: {personaje.Caracteristica.Resistencia}\n Discrecion: {personaje.Caracteristica.Discrecion}\n Salud: {personaje.Caracteristica.Salud}\n Vidas: {personaje.Caracteristica.Vidas}");
         }
     }
    
