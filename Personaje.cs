@@ -27,7 +27,7 @@ namespace EspacioPersonaje
 
         public string MostrarPersonaje(Personaje personaje)
         {
-            return($"Nombre: {personaje.Dato.Nombre}\n Apodo: {personaje.Dato.Apodo}\n Casa: {personaje.Dato.Casa}\n Varita: {personaje.Dato.Varita} Violencia: {personaje.Caracteristica.Violencia}\n Resistencia: {personaje.Caracteristica.Resistencia}\n Discrecion: {personaje.Caracteristica.Discrecion}\n Salud: {personaje.Caracteristica.Salud}\n Vidas: {personaje.Caracteristica.Vidas}");
+            return($"Nombre: {personaje.Dato.Nombre}\n Apodo: {personaje.Dato.Apodo}\n Casa: {personaje.Dato.Casa}\n Varita: {personaje.Dato.Varita}\n Violencia: {personaje.Caracteristica.Violencia}\n Resistencia: {personaje.Caracteristica.Resistencia}\n Discrecion: {personaje.Caracteristica.Discrecion}\n Salud: {personaje.Caracteristica.Salud}\n Vidas: {personaje.Caracteristica.Vidas}");
         }
     }
    

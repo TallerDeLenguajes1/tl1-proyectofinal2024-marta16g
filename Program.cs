@@ -8,12 +8,15 @@ using EspacioMovimiento;
 using EspacioMovimientoJson;
 using EspacioDuelo;
 using EspacioPosiciones;
+using EspacioJuego;
 
 class Program
 {
     private static void Main(string[] args)
     {
-        
+        Juego nuevoJuego = new();
+
+        nuevoJuego.Jugar();
         
     }
 }
