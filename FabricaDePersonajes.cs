@@ -83,7 +83,7 @@ namespace EspacioFabricaDePersonajes
         };
         public FabricaDePersonajes()
         {
-            this.personajes = new List<Personaje>();
+            this.personajes = [];
         }
 
         public List<Personaje> GenerarPersonajesAleatorios()
