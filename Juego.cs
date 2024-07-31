@@ -81,6 +81,9 @@ namespace EspacioJuego
                 }
             } while (!validez);
 
+            Console.WriteLine("Elegiste el personaje: ");
+            Console.WriteLine(jugadores[seleccionJugador-1]);
+
 
 
 
