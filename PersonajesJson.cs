@@ -40,10 +40,7 @@ namespace EspacioPersonajesJS
                         {
                             foreach (var personaje in listaPersonajesLeidos)
                             {
-                                if (personaje.Caracteristica == null)
-                                {
-                                    personaje.Caracteristica = new Caracteristica();
-                                }
+                                personaje.Caracteristica ??= new Caracteristica();
                             }
                         }
             return listaPersonajesLeidos; 
