@@ -28,8 +28,9 @@ namespace EspacioJuego
         private string? input;
         private bool validez;
         private int seleccionJugador;
-        private int posicion1;
-        private int posicion2;
+        private Posiciones posicion1;
+        private Posiciones posicion2;
+        private Random rand;
 
 
         public Juego()
@@ -52,11 +53,11 @@ namespace EspacioJuego
         }
         public void Jugar()
         {
+            Inicializar();
             Console.WriteLine("Bienvenido al Juego de Harry Potter: Duelo de varitas");
             do
             {
                 Console.WriteLine("Seleccione el personaje para jugar");
-                Inicializar();
 
                 fabricaDePersonajes.MostrarListaDePersonajes(jugadores, cantJugadores, "PERSONAJE");
 
@@ -81,7 +82,7 @@ namespace EspacioJuego
                 }
             } while (!validez);
 
-            jugador = jugadores[seleccionJugador-1];
+            jugador = jugadores[seleccionJugador - 1];
 
             Console.WriteLine("Elegiste el personaje: ");
             Console.WriteLine(jugador.Dato.Nombre);
@@ -93,6 +94,32 @@ namespace EspacioJuego
             Console.WriteLine("QUE EMPIECE LA BATALLA");
             Console.WriteLine("------------------------");
             Console.WriteLine("------------------------");
+            Console.WriteLine($"PRIMERA RONDA: {jugador.Dato.Nombre} vs {enemigos[0].Dato.Nombre}");
+
+
+            Console.WriteLine("Elige tu posición");
+            Console.WriteLine("1: AGRESIVO");
+            Console.WriteLine("2: DEFENSIVO");
+            Console.WriteLine("3: FURTIVO");
+
+            input = Console.ReadLine();
+            if (int.TryParse(input, out int estadoNumero))
+            {
+                if (Enum.IsDefined(typeof(Posiciones), estadoNumero))
+                {
+                    posicion1 = (Posiciones)estadoNumero;
+                    Console.WriteLine($"La posición del personaje es: {posicion1}");
+                }
+            }
+                posicion2 = Posiciones.Defensivo;
+
+                bool quienGana = claseDuelo.compararPosiciones(posicion1, posicion2);
+                if(quienGana)
+                {
+                    Console.WriteLine($"{jugador.Dato.Nombre} tiene la jugada");
+                }else{
+                    Console.WriteLine($"{enemigos[0].Dato.Nombre} tiene la jugada");
+                }
 
 
 
@@ -101,8 +128,10 @@ namespace EspacioJuego
 
 
 
+
+
+
+            }
 
         }
-
     }
-}
