@@ -11,6 +11,11 @@ namespace EspacioPersonajesJS
         {
             var opciones = new JsonSerializerOptions { WriteIndented = true };
 
+             var options = new JsonSerializerOptions
+        {
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+            WriteIndented = true
+        };
             string personajesJson = JsonSerializer.Serialize(listaPersonajes, opciones);
             using (FileStream abrir = new(nombreArchivo, FileMode.Create, FileAccess.Write))
             {
@@ -22,7 +27,7 @@ namespace EspacioPersonajesJS
 
         }
 
-        public List<Personaje>? LeerPersonajes(string nombreArchivo)
+        public List<Personaje> LeerPersonajes(string nombreArchivo)
         {
             string archivoExtraido;
             using(FileStream abrir = new(nombreArchivo, FileMode.Open))
