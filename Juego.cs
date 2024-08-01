@@ -24,7 +24,7 @@ namespace EspacioJuego
         private List<Personaje> jugadores;
         private List<Personaje> enemigos;
         private Personaje jugador;
-        private Personaje contrincante;
+        private Personaje enemigo;
         private string? input;
         private bool validez;
         private int seleccionJugador;
@@ -43,6 +43,9 @@ namespace EspacioJuego
             fabricaDePersonajes = new FabricaDePersonajes();
             jugadores = new List<Personaje>();
             enemigos = new List<Personaje>();
+            jugador = new();
+            enemigo = new();
+            rand = new();
         }
 
         public void Inicializar()
@@ -94,6 +97,7 @@ namespace EspacioJuego
             Console.WriteLine("QUE EMPIECE LA BATALLA");
             Console.WriteLine("------------------------");
             Console.WriteLine("------------------------");
+
             Console.WriteLine($"PRIMERA RONDA: {jugador.Dato.Nombre} vs {enemigos[0].Dato.Nombre}");
 
 
