@@ -22,7 +22,7 @@ namespace EspacioJuego
         private Posiciones posiciones;
         private FabricaDePersonajes fabricaDePersonajes;
         private List<Personaje> jugadores;
-        private List<Personaje> personajes;
+        private List<Personaje> enemigos;
         private Personaje jugador;
         private Personaje contrincante;
         private string? input;
@@ -41,13 +41,13 @@ namespace EspacioJuego
             posiciones = new Posiciones();
             fabricaDePersonajes = new FabricaDePersonajes();
             jugadores = new List<Personaje>();
-            personajes = new List<Personaje>();
+            enemigos = new List<Personaje>();
         }
 
         public void Inicializar()
         {
             jugadores = personajesJson.LeerPersonajes(archivoJugadores);
-            personajes = personajesJson.LeerPersonajes(archivoPersonajes);
+            enemigos = fabricaDePersonajes.GenerarPersonajesAleatorios();
             validez = false;
         }
         public void Jugar()
@@ -81,8 +81,15 @@ namespace EspacioJuego
                 }
             } while (!validez);
 
+            jugador = jugadores[seleccionJugador-1];
+
             Console.WriteLine("Elegiste el personaje: ");
-            Console.WriteLine(jugadores[seleccionJugador-1]);
+            Console.WriteLine(jugador.Dato.Nombre);
+            Console.WriteLine("------------------------");
+
+            fabricaDePersonajes.MostrarListaDePersonajes(enemigos, 10);
+
+
 
 
 

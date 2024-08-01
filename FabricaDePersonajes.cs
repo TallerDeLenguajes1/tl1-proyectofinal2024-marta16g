@@ -7,7 +7,7 @@ namespace EspacioFabricaDePersonajes
     public class FabricaDePersonajes
     {
 
-        private Random Rand = new();
+        private static Random Rand = new();
         private List<Personaje> personajes;
 
         private List<string> nombres = new()
