@@ -19,7 +19,7 @@ namespace EspacioJuego
         private Duelo claseDuelo;
         private PersonajesJson personajesJson;
         private MovimientosJson movimientosJson;
-        private Posiciones posiciones;
+        private Posiciones enumPosiciones;
         private FabricaDePersonajes fabricaDePersonajes;
         private List<Personaje> jugadores;
         private List<Personaje> enemigos;
@@ -38,7 +38,7 @@ namespace EspacioJuego
             claseDuelo = new Duelo();
             personajesJson = new PersonajesJson();
             movimientosJson = new MovimientosJson();
-            posiciones = new Posiciones();
+            enumPosiciones = new Posiciones();
             fabricaDePersonajes = new FabricaDePersonajes();
             jugadores = new List<Personaje>();
             enemigos = new List<Personaje>();
@@ -86,8 +86,15 @@ namespace EspacioJuego
             Console.WriteLine("Elegiste el personaje: ");
             Console.WriteLine(jugador.Dato.Nombre);
             Console.WriteLine("------------------------");
-
+            Console.WriteLine("Estos son tus enemigos");
             fabricaDePersonajes.MostrarListaDePersonajes(enemigos, 10, "ENEMIGO");
+            Console.WriteLine("------------------------");
+            Console.WriteLine("------------------------");
+            Console.WriteLine("QUE EMPIECE LA BATALLA");
+            Console.WriteLine("------------------------");
+            Console.WriteLine("------------------------");
+
+
 
 
 
