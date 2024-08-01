@@ -9,13 +9,13 @@ namespace EspacioPersonajesJS
     {
         public void GuardarPersonajes(List<Personaje> listaPersonajes, string nombreArchivo)
         {
-            var opciones = new JsonSerializerOptions { WriteIndented = true };
+           
 
-             var options = new JsonSerializerOptions
-        {
-            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-            WriteIndented = true
-        };
+            var opciones = new JsonSerializerOptions
+            {
+                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                WriteIndented = true
+            };
             string personajesJson = JsonSerializer.Serialize(listaPersonajes, opciones);
             using (FileStream abrir = new(nombreArchivo, FileMode.Create, FileAccess.Write))
             {
@@ -30,7 +30,7 @@ namespace EspacioPersonajesJS
         public List<Personaje> LeerPersonajes(string nombreArchivo)
         {
             string archivoExtraido;
-            using(FileStream abrir = new(nombreArchivo, FileMode.Open))
+            using (FileStream abrir = new(nombreArchivo, FileMode.Open))
             {
                 using (StreamReader leer = new(abrir))
                 {
@@ -42,22 +42,23 @@ namespace EspacioPersonajesJS
 
             var listaPersonajesLeidos = JsonSerializer.Deserialize<List<Personaje>>(archivoExtraido, opciones);
             if (listaPersonajesLeidos != null)
-                        {
-                            foreach (var personaje in listaPersonajesLeidos)
-                            {
-                                personaje.Caracteristica ??= new Caracteristica();
-                            }
-                        }
-            return listaPersonajesLeidos; 
+            {
+                foreach (var personaje in listaPersonajesLeidos)
+                {
+                    personaje.Caracteristica ??= new Caracteristica();
+                }
+            }
+            return listaPersonajesLeidos;
         }
 
         public bool ExisteArchivo(string nombreArchivo)
         {
-            if(File.Exists(nombreArchivo))
+            if (File.Exists(nombreArchivo))
             {
                 FileInfo fileInfo = new(nombreArchivo);
                 return fileInfo.Length > 0;
-            }else
+            }
+            else
             {
                 return false;
             }
