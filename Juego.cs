@@ -58,7 +58,7 @@ namespace EspacioJuego
                 Console.WriteLine("Seleccione el personaje para jugar");
                 Inicializar();
 
-                fabricaDePersonajes.MostrarListaDePersonajes(jugadores, cantJugadores);
+                fabricaDePersonajes.MostrarListaDePersonajes(jugadores, cantJugadores, "PERSONAJE");
 
                 input = Console.ReadLine();
                 validez = int.TryParse(input, out seleccionJugador);
@@ -87,7 +87,7 @@ namespace EspacioJuego
             Console.WriteLine(jugador.Dato.Nombre);
             Console.WriteLine("------------------------");
 
-            fabricaDePersonajes.MostrarListaDePersonajes(enemigos, 10);
+            fabricaDePersonajes.MostrarListaDePersonajes(enemigos, 10, "ENEMIGO");
 
 
 

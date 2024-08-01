@@ -120,11 +120,11 @@ namespace EspacioFabricaDePersonajes
             return personajes[eleccion - 1];
         }
 
-        public void MostrarListaDePersonajes(List<Personaje> listaPersonajes, int cantPersonajes)
+        public void MostrarListaDePersonajes(List<Personaje> listaPersonajes, int cantPersonajes, string tipoLista)
         {
             for (int i = 0; i < cantPersonajes; i++)
             {
-                Console.WriteLine($"--PERSONAJE NÚMERO {i+1}--");
+                Console.WriteLine($"--{tipoLista} NÚMERO {i+1}--");
 
                 Console.WriteLine($"Nombre: {listaPersonajes[i].Dato.Nombre}");
                 Console.WriteLine($"Apodo: {listaPersonajes[i].Dato.Apodo}");
