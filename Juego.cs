@@ -15,7 +15,6 @@ namespace EspacioJuego
         private const string archivoMovimientos = "json/Movimientos.json";
         private const int cantJugadores = 3;
         private const int cantEnemigos = 10;
-        private Personaje clasePersonaje;
         private Duelo claseDuelo;
         private PersonajesJson personajesJson;
         private MovimientosJson movimientosJson;
@@ -35,7 +34,6 @@ namespace EspacioJuego
 
         public Juego()
         {
-            clasePersonaje = new Personaje();
             claseDuelo = new Duelo();
             personajesJson = new PersonajesJson();
             movimientosJson = new MovimientosJson();
@@ -106,12 +104,6 @@ namespace EspacioJuego
         }
             
 
-
-            Console.WriteLine("Elige tu posición");
-            Console.WriteLine("1: AGRESIVO");
-            Console.WriteLine("2: DEFENSIVO");
-            Console.WriteLine("3: FURTIVO");
-
             input = Console.ReadLine();
             if (int.TryParse(input, out int estadoNumero))
             {
@@ -130,17 +122,6 @@ namespace EspacioJuego
                 }else{
                     Console.WriteLine($"{enemigos[0].Dato.Nombre} tiene la jugada");
                 }
-
-
-
-
-
-
-
-
-
-
-
             }
 
         }
