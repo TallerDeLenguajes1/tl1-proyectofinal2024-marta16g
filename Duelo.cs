@@ -2,6 +2,7 @@ using System;
 using EspacioAtaque;
 using EspacioPersonaje;
 using EspacioPosiciones;
+using EspacioRondas;
 
 
 namespace EspacioDuelo
@@ -9,14 +10,28 @@ namespace EspacioDuelo
     public class Duelo
     {
 
-        public bool compararPosiciones(Posiciones posicion1, Posiciones posicion2)
+        public void InicioDeRondas(Personaje jugador, Personaje enemigo, int i)
         {
-            if(posicion1 == Posiciones.Defensivo && posicion2 == Posiciones.Agresivo
+            if (Enum.IsDefined(typeof(Rondas), i))
+            {
+                Rondas cuenta = (Rondas)i;
+                Console.WriteLine($"{cuenta} RONDA");
+                Console.WriteLine($"{jugador.Dato.Nombre} vs {enemigo.Dato.Nombre}");
+            }else{
+                throw new ArgumentOutOfRangeException(nameof(i), i, "El valor de i no pertenece al rango de enum Rondas");
+            }
+
+        }
+        public bool CompararPosiciones(Posiciones posicion1, Posiciones posicion2)
+        {
+            if (posicion1 == Posiciones.Defensivo && posicion2 == Posiciones.Agresivo
             || posicion1 == Posiciones.Agresivo && posicion2 == Posiciones.Furtivo
             || posicion1 == Posiciones.Furtivo && posicion2 == Posiciones.Defensivo)
             {
                 return true;
-            }else{
+            }
+            else
+            {
                 return false;
             }
         }

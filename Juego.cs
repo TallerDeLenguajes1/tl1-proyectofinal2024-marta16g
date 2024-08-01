@@ -14,7 +14,7 @@ namespace EspacioJuego
         private const string archivoPersonajes = "json/Personajes.json";
         private const string archivoMovimientos = "json/Movimientos.json";
         private const int cantJugadores = 3;
-        private const int cantPersonajes = 10;
+        private const int cantEnemigos = 10;
         private Personaje clasePersonaje;
         private Duelo claseDuelo;
         private PersonajesJson personajesJson;
@@ -91,14 +91,20 @@ namespace EspacioJuego
             Console.WriteLine(jugador.Dato.Nombre);
             Console.WriteLine("------------------------");
             Console.WriteLine("Estos son tus enemigos");
-            fabricaDePersonajes.MostrarListaDePersonajes(enemigos, 10, "ENEMIGO");
+            fabricaDePersonajes.MostrarListaDePersonajes(enemigos, cantEnemigos, "ENEMIGO");
             Console.WriteLine("------------------------");
             Console.WriteLine("------------------------");
             Console.WriteLine("QUE EMPIECE LA BATALLA");
             Console.WriteLine("------------------------");
             Console.WriteLine("------------------------");
+        
 
-            Console.WriteLine($"PRIMERA RONDA: {jugador.Dato.Nombre} vs {enemigos[0].Dato.Nombre}");
+        for (int i = 0; i < cantEnemigos; i++)
+        {
+            enemigo = enemigos[i];
+            claseDuelo.InicioDeRondas(jugador, enemigo, i);
+        }
+            
 
 
             Console.WriteLine("Elige tu posición");
@@ -117,7 +123,7 @@ namespace EspacioJuego
             }
                 posicion2 = Posiciones.Defensivo;
 
-                bool quienGana = claseDuelo.compararPosiciones(posicion1, posicion2);
+                bool quienGana = claseDuelo.CompararPosiciones(posicion1, posicion2);
                 if(quienGana)
                 {
                     Console.WriteLine($"{jugador.Dato.Nombre} tiene la jugada");

@@ -1,8 +1,8 @@
 using System;
 
-namespace EspacioRonda
+namespace EspacioRondas
 {
-    public enum Ronda
+    public enum Rondas
     {
         PRIMERA = 1,
         SEGUNDA = 2,
