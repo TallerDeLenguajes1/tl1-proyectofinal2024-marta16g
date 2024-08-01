@@ -15,8 +15,8 @@ namespace EspacioJuego
         private const string archivoMovimientos = "json/Movimientos.json";
         private const int cantJugadores = 3;
         private const int cantPersonajes = 10;
-        private Personaje personaje;
-        private Duelo duelo;
+        private Personaje clasePersonaje;
+        private Duelo claseDuelo;
         private PersonajesJson personajesJson;
         private MovimientosJson movimientosJson;
         private Posiciones posiciones;
@@ -34,8 +34,8 @@ namespace EspacioJuego
 
         public Juego()
         {
-            personaje = new Personaje();
-            duelo = new Duelo();
+            clasePersonaje = new Personaje();
+            claseDuelo = new Duelo();
             personajesJson = new PersonajesJson();
             movimientosJson = new MovimientosJson();
             posiciones = new Posiciones();
