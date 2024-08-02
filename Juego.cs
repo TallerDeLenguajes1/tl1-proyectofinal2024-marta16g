@@ -95,34 +95,43 @@ namespace EspacioJuego
             Console.WriteLine("QUE EMPIECE LA BATALLA");
             Console.WriteLine("------------------------");
             Console.WriteLine("------------------------");
-        
 
-        for (int i = 0; i < cantEnemigos; i++)
-        {
-            enemigo = enemigos[i];
-            claseDuelo.InicioDeRondas(jugador, enemigo, i);
-        }
-            
 
-            input = Console.ReadLine();
-            if (int.TryParse(input, out int estadoNumero))
+            for (int i = 0; i < cantEnemigos; i++)
             {
-                if (Enum.IsDefined(typeof(Posiciones), estadoNumero))
+                enemigo = enemigos[i];
+                claseDuelo.InicioDeRondas(jugador, enemigo, i);
+
+                input = Console.ReadLine();
+                if (int.TryParse(input, out int estadoNumero))
                 {
-                    posicion1 = (Posiciones)estadoNumero;
-                    Console.WriteLine($"La posición del personaje es: {posicion1}");
+                    if (Enum.IsDefined(typeof(Posiciones), estadoNumero))
+                    {
+                        posicion1 = (Posiciones)estadoNumero;
+                        Console.WriteLine($"{jugador.Dato.Apodo} decidió elegir una posición de tipo {posicion1}");
+                    }
                 }
-            }
-                posicion2 = Posiciones.Defensivo;
+                posicion2 = (Posiciones)rand.Next(1,4);
+
+                Console.WriteLine($"{enemigo.Dato.Apodo} ha elegido una posición de {posicion2}");
 
                 bool quienGana = claseDuelo.CompararPosiciones(posicion1, posicion2);
-                if(quienGana)
+                if (quienGana)
                 {
-                    Console.WriteLine($"{jugador.Dato.Nombre} tiene la jugada");
-                }else{
-                    Console.WriteLine($"{enemigos[0].Dato.Nombre} tiene la jugada");
+                    Console.ForegroundColor = ConsoleColor.Green;   
+                    Console.WriteLine($"Superaste a {enemigo.Dato.Nombre} ¡Rápido! elige un conjuro ");
                 }
-            }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;   
+                    Console.WriteLine($"{enemigo.Dato.Nombre} te ha superado. Prepárate para recibir un ataque");
+                }
 
+                Console.ResetColor();
+            }
         }
+
+
+
     }
+}
