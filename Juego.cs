@@ -26,8 +26,10 @@ namespace EspacioJuego
         private List<Personaje> jugadores;
         private List<Personaje> enemigos;
         private List <Movimiento> movimientos;
+        private List<Movimiento> filtrados;
         private Personaje jugador;
         private Personaje enemigo;
+        private Movimiento movimientoSeleccionado;
         private Ataque ataque;
         private string? input;
         private bool validez;
@@ -47,8 +49,10 @@ namespace EspacioJuego
             jugadores = new List<Personaje>();
             enemigos = new List<Personaje>();
             movimientos = new List<Movimiento>();
+            filtrados = new();
             jugador = new();
             enemigo = new();
+            movimientoSeleccionado = new();
             ataque = new();
             rand = new();
         }
@@ -129,7 +133,7 @@ namespace EspacioJuego
                     Console.ForegroundColor = ConsoleColor.Green;   
                     Console.WriteLine($"Superaste a {enemigo.Dato.Nombre} ¡Rápido! elige un conjuro ");
                     Console.ResetColor();
-                    List<Movimiento> filtrados = claseMovimiento.FiltrarMovimientos(movimientos, posicion1);
+                    filtrados = claseMovimiento.FiltrarMovimientos(movimientos, posicion1);
                     
                     for (int j = 0; j < cantMovimientos; j++)
                     {
@@ -141,8 +145,8 @@ namespace EspacioJuego
                     if(int.TryParse(input, out int index))
                     {
                        Console.WriteLine($"Seleccionaste {filtrados[index-1].Hechizo}");
-                       enemigo.Caracteristica.Salud = (int)- filtrados[index-1].Danio;
-                       Console.WriteLine($"Salud del enemigo: {enemigo.Caracteristica.Salud}");
+                    //    enemigo.Caracteristica.Salud -= filtrados[index-1].Danio;
+                    //    Console.WriteLine($"Salud del enemigo: {enemigo.Caracteristica.Salud}");
                     }
                     
                 }
@@ -150,6 +154,8 @@ namespace EspacioJuego
                 {
                     Console.ForegroundColor = ConsoleColor.Red;   
                     Console.WriteLine($"{enemigo.Dato.Nombre} te ha superado. Prepárate para recibir un ataque");
+                    filtrados = claseMovimiento.FiltrarMovimientos(movimientos, posicion2);
+
                 }
 
                 Console.ResetColor();
