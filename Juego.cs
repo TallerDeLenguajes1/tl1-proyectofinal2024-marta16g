@@ -6,6 +6,7 @@ using EspacioMovimiento;
 using EspacioPersonaje;
 using EspacioPersonajesJS;
 using EspacioPosiciones;
+using EspacioAtaque;
 
 namespace EspacioJuego
 {
@@ -16,17 +17,18 @@ namespace EspacioJuego
         private const string archivoMovimientos = "json/Movimientos.json";
         private const int cantJugadores = 3;
         private const int cantEnemigos = 10;
+        private const int cantMovimientos = 4;
         private Duelo claseDuelo;
         private Movimiento claseMovimiento;
         private PersonajesJson personajesJson;
         private MovimientosJson movimientosJson;
-        private Posiciones enumPosiciones;
         private FabricaDePersonajes fabricaDePersonajes;
         private List<Personaje> jugadores;
         private List<Personaje> enemigos;
         private List <Movimiento> movimientos;
         private Personaje jugador;
         private Personaje enemigo;
+        private Ataque ataque;
         private string? input;
         private bool validez;
         private int seleccionJugador;
@@ -41,13 +43,13 @@ namespace EspacioJuego
             claseMovimiento = new Movimiento();
             personajesJson = new PersonajesJson();
             movimientosJson = new MovimientosJson();
-            enumPosiciones = new Posiciones();
             fabricaDePersonajes = new FabricaDePersonajes();
             jugadores = new List<Personaje>();
             enemigos = new List<Personaje>();
             movimientos = new List<Movimiento>();
             jugador = new();
             enemigo = new();
+            ataque = new();
             rand = new();
         }
 
@@ -126,11 +128,22 @@ namespace EspacioJuego
                 {
                     Console.ForegroundColor = ConsoleColor.Green;   
                     Console.WriteLine($"Superaste a {enemigo.Dato.Nombre} ¡Rápido! elige un conjuro ");
+                    Console.ResetColor();
                     List<Movimiento> filtrados = claseMovimiento.FiltrarMovimientos(movimientos, posicion1);
-                    foreach (var movimiento in filtrados)
+                    
+                    for (int j = 0; j < cantMovimientos; j++)
                     {
-                        Console.WriteLine(movimiento);
+                        Console.WriteLine($"{j+1}");
+                        Console.WriteLine(filtrados[j]);
                     }
+                    Console.WriteLine("Presiona el número del conjuro");    
+                    input = Console.ReadLine();
+                    if(int.TryParse(input, out int index))
+                    {
+                       Console.WriteLine($"Seleccionaste {filtrados[index-1].Hechizo}");
+
+                    }
+                    
                 }
                 else
                 {
