@@ -1,5 +1,6 @@
 using System;
 using EspacioAtaque;
+using EspacioMovimiento;
 using EspacioPersonaje;
 using EspacioPosiciones;
 using EspacioRondas;
@@ -51,17 +52,20 @@ namespace EspacioDuelo
 
             }
         }
-        public void CalcularDanio(Ataque ataque, Personaje jugador)
+        public int CalcularDanio(Posiciones posicion, Movimiento movimiento, Personaje jugador)
         {
             string propiedadDestacada;
             int nivelPropiedadDestacada;
+            int incremento;
+            int danioFinal;
+            
 
-            if (!Enum.IsDefined(typeof(Posiciones), ataque.Posicion))
+            if (!Enum.IsDefined(typeof(Posiciones), posicion))
             {
-                throw new ArgumentOutOfRangeException(nameof(ataque.Posicion), ataque.Posicion, "El valor no pertenece al rango del enum Posiciones");
+                throw new ArgumentOutOfRangeException(nameof(posicion), posicion, "El valor no pertenece al rango del enum Posiciones");
             }
 
-            switch (ataque.Posicion)
+            switch (posicion)
             {
                 case Posiciones.Agresivo:
                     propiedadDestacada = "violencia";
@@ -76,12 +80,17 @@ namespace EspacioDuelo
                     nivelPropiedadDestacada = jugador.Caracteristica.Discrecion;
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(ataque.Posicion), ataque.Posicion, "El valor no pertenece al rango del enum Posiciones");
+                    throw new ArgumentOutOfRangeException(nameof(posicion), posicion, "El valor no pertenece al rango del enum Posiciones");
             }
 
             if (nivelPropiedadDestacada > 3)
             {
                 Console.WriteLine($"¡{jugador.Dato.Nombre} tiene niveles de {propiedadDestacada} altos!");
+                incremento = 2 * nivelPropiedadDestacada;
+                danioFinal = movimiento.Danio + incremento;
+                return danioFinal;
+            }else{
+                return movimiento.Danio;
             }
         }
     }
