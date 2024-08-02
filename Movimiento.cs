@@ -2,21 +2,22 @@ using System;
 using EspacioPosiciones;
 namespace EspacioMovimiento
 {
-    public class Movimiento{
-        private Posiciones posicion; 
+    public class Movimiento
+    {
+        private Posiciones posicion;
         private string? hechizo;
         private string? descripcion;
         private int persona;
         private uint danio;
 
-        public Posiciones Posicion {get;set;}
-        public string? Hechizo {get;set;}
-        public string? Descripcion{get;set;}
-        public int Persona{get;set;}
+        public Posiciones Posicion { get; set; }
+        public string? Hechizo { get; set; }
+        public string? Descripcion { get; set; }
+        public int Persona { get; set; }
 
-        public uint Danio{get;set;}
+        public uint Danio { get; set; }
 
-        public Movimiento(){}
+        public Movimiento() { }
         public Movimiento(Posiciones posicion, string hechizo, string descripcion, int persona, uint danio)
         {
             this.posicion = posicion;
@@ -24,6 +25,12 @@ namespace EspacioMovimiento
             this.descripcion = descripcion;
             this.persona = persona;
             this.danio = danio;
+        }
+
+        public override string ToString()
+        {
+            return $"---{this.hechizo}---" +
+                    $"{this.descripcion}";
         }
 
     }
