@@ -30,17 +30,25 @@ namespace EspacioDuelo
             }
 
         }
-        public bool CompararPosiciones(Posiciones posicion1, Posiciones posicion2)
+        public static int CompararPosiciones(Posiciones posicion1, Posiciones posicion2)
         {
-            if (posicion1 == Posiciones.Defensivo && posicion2 == Posiciones.Agresivo
-            || posicion1 == Posiciones.Agresivo && posicion2 == Posiciones.Furtivo
-            || posicion1 == Posiciones.Furtivo && posicion2 == Posiciones.Defensivo)
+            if (posicion1 == posicion2)
             {
-                return true;
+                return 0;
             }
             else
             {
-                return false;
+                if (posicion1 == Posiciones.Defensivo && posicion2 == Posiciones.Agresivo
+                || posicion1 == Posiciones.Agresivo && posicion2 == Posiciones.Furtivo
+                || posicion1 == Posiciones.Furtivo && posicion2 == Posiciones.Defensivo)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+
             }
         }
         public void CalcularDanio(Ataque ataque, Personaje jugador)

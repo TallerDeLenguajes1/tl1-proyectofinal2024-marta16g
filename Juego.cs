@@ -25,7 +25,7 @@ namespace EspacioJuego
         private FabricaDePersonajes fabricaDePersonajes;
         private List<Personaje> jugadores;
         private List<Personaje> enemigos;
-        private List <Movimiento> movimientos;
+        private List<Movimiento> movimientos;
         private List<Movimiento> filtrados;
         private Personaje jugador;
         private Personaje enemigo;
@@ -123,38 +123,42 @@ namespace EspacioJuego
                         Console.WriteLine($"{jugador.Dato.Apodo} decidió elegir una posición de tipo {posicion1}");
                     }
                 }
-                posicion2 = (Posiciones)rand.Next(1,4);
+                posicion2 = (Posiciones)rand.Next(1, 4);
 
                 Console.WriteLine($"{enemigo.Dato.Apodo} ha elegido una posición de {posicion2}");
 
-                bool quienGana = claseDuelo.CompararPosiciones(posicion1, posicion2);
-                if (quienGana)
+                int quienGana = Duelo.CompararPosiciones(posicion1, posicion2);
+                if (quienGana != 0)
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;   
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"Superaste a {enemigo.Dato.Nombre} ¡Rápido! elige un conjuro ");
                     Console.ResetColor();
                     filtrados = claseMovimiento.FiltrarMovimientos(movimientos, posicion1);
-                    
+
                     for (int j = 0; j < cantMovimientos; j++)
                     {
-                        Console.WriteLine($"{j+1}");
+                        Console.WriteLine($"{j + 1}");
                         Console.WriteLine(filtrados[j]);
                     }
-                    Console.WriteLine("Presiona el número del conjuro");    
+                    Console.WriteLine("Presiona el número del conjuro");
                     input = Console.ReadLine();
-                    if(int.TryParse(input, out int index))
+                    if (int.TryParse(input, out int index))
                     {
-                       Console.WriteLine($"Seleccionaste {filtrados[index-1].Hechizo}");
-                    //    enemigo.Caracteristica.Salud -= filtrados[index-1].Danio;
-                    //    Console.WriteLine($"Salud del enemigo: {enemigo.Caracteristica.Salud}");
+                        movimientoSeleccionado = filtrados[index - 1];
+                        Console.WriteLine($"Seleccionaste {movimientoSeleccionado.Hechizo}");
+                        //    enemigo.Caracteristica.Salud -= filtrados[index-1].Danio;
+                        //    Console.WriteLine($"Salud del enemigo: {enemigo.Caracteristica.Salud}");
                     }
-                    
+
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;   
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"{enemigo.Dato.Nombre} te ha superado. Prepárate para recibir un ataque");
                     filtrados = claseMovimiento.FiltrarMovimientos(movimientos, posicion2);
+                    int randIndex = rand.Next(0,4);
+                    movimientoSeleccionado = filtrados[randIndex];
+                    Console.WriteLine($"{enemigo.Dato.Nombre} ha utilizado {movimientoSeleccionado.Hechizo}");
 
                 }
 
