@@ -2,6 +2,7 @@ using System;
 using EspacioDuelo;
 using EspacioFabricaDePersonajes;
 using EspacioMovimientoJson;
+using EspacioMovimiento;
 using EspacioPersonaje;
 using EspacioPersonajesJS;
 using EspacioPosiciones;
@@ -16,12 +17,14 @@ namespace EspacioJuego
         private const int cantJugadores = 3;
         private const int cantEnemigos = 10;
         private Duelo claseDuelo;
+        private Movimiento claseMovimiento;
         private PersonajesJson personajesJson;
         private MovimientosJson movimientosJson;
         private Posiciones enumPosiciones;
         private FabricaDePersonajes fabricaDePersonajes;
         private List<Personaje> jugadores;
         private List<Personaje> enemigos;
+        private List <Movimiento> movimientos;
         private Personaje jugador;
         private Personaje enemigo;
         private string? input;
@@ -35,12 +38,14 @@ namespace EspacioJuego
         public Juego()
         {
             claseDuelo = new Duelo();
+            claseMovimiento = new Movimiento();
             personajesJson = new PersonajesJson();
             movimientosJson = new MovimientosJson();
             enumPosiciones = new Posiciones();
             fabricaDePersonajes = new FabricaDePersonajes();
             jugadores = new List<Personaje>();
             enemigos = new List<Personaje>();
+            movimientos = new List<Movimiento>();
             jugador = new();
             enemigo = new();
             rand = new();
@@ -50,6 +55,7 @@ namespace EspacioJuego
         {
             jugadores = personajesJson.LeerPersonajes(archivoJugadores);
             enemigos = fabricaDePersonajes.GenerarPersonajesAleatorios();
+            movimientos = movimientosJson.LeerMovimientos(archivoMovimientos);
             validez = false;
         }
         public void Jugar()
@@ -120,6 +126,11 @@ namespace EspacioJuego
                 {
                     Console.ForegroundColor = ConsoleColor.Green;   
                     Console.WriteLine($"Superaste a {enemigo.Dato.Nombre} ¡Rápido! elige un conjuro ");
+                    List<Movimiento> filtrados = claseMovimiento.FiltrarMovimientos(movimientos, posicion1);
+                    foreach (var movimiento in filtrados)
+                    {
+                        Console.WriteLine(movimiento);
+                    }
                 }
                 else
                 {

@@ -29,8 +29,12 @@ namespace EspacioMovimiento
 
         public override string ToString()
         {
-            return $"---{this.hechizo}---" +
-                    $"{this.descripcion}";
+            return $"{this.Hechizo}: {this.Descripcion}";
+        }
+
+        public List<Movimiento> FiltrarMovimientos(List<Movimiento> movimientos, Posiciones posicion)
+        {
+            return movimientos.Where(m=> m.Posicion == posicion).ToList();
         }
 
     }
