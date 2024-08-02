@@ -1,5 +1,4 @@
 using System;
-using EspacioAtaque;
 using EspacioMovimiento;
 using EspacioPersonaje;
 using EspacioPosiciones;

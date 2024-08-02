@@ -6,7 +6,6 @@ using EspacioMovimiento;
 using EspacioPersonaje;
 using EspacioPersonajesJS;
 using EspacioPosiciones;
-using EspacioAtaque;
 
 namespace EspacioJuego
 {
@@ -31,7 +30,6 @@ namespace EspacioJuego
         private Personaje jugador;
         private Personaje enemigo;
         private Movimiento movimientoSeleccionado;
-        private Ataque ataque;
         private int seleccionJugador;
         private Posiciones posicion1;
         private Posiciones posicion2;
@@ -59,7 +57,6 @@ namespace EspacioJuego
             jugador = new();
             enemigo = new();
             movimientoSeleccionado = new();
-            ataque = new();
             rand = new();
         }
 
@@ -172,7 +169,6 @@ namespace EspacioJuego
                             {
                                 movimientoSeleccionado = filtrados[index - 1];
                                 Console.WriteLine($"Seleccionaste {movimientoSeleccionado.Hechizo}");
-                                ataque = new(posicion1, movimientoSeleccionado);
                                 danioCalculado = claseDuelo.CalcularDanio(posicion1, movimientoSeleccionado, jugador);
 
                                 Console.WriteLine($"Daño que se provoca: {danioCalculado}");
