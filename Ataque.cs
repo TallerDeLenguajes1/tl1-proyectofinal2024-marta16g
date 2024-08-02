@@ -19,6 +19,11 @@ namespace EspacioAtaque
             }
         }
 
+        public Ataque(){
+            this.posicion = Posiciones.Agresivo;
+            this.movimiento = new Movimiento();
+        }
+
         public Ataque (Posiciones posicion, Movimiento movimiento)
         {
             this.posicion = posicion;
