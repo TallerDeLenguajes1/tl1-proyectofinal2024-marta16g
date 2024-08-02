@@ -19,10 +19,10 @@ namespace EspacioPersonaje
             this.Dato = new Dato(nombre, apodo, casa, varita);
             this.Caracteristica = new Caracteristica();
         }
-        public Personaje(string nombre, string apodo, string casa, string varita, int violencia, int resistencia, int discrecion)
+        public Personaje(string nombre, string apodo, string casa, string varita, int violencia, int resistencia, int discrecion, int salud, int vidas)
         {
             this.Dato = new Dato(nombre, apodo, casa, varita);
-            this.Caracteristica = new Caracteristica(violencia, resistencia, discrecion);
+            this.Caracteristica = new Caracteristica(violencia, resistencia, discrecion, salud, vidas);
         }
 
         public override string ToString()
