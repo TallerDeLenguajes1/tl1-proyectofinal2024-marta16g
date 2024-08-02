@@ -17,16 +17,11 @@ namespace EspacioDuelo
             {
                 Rondas cuenta = (Rondas)i;
                 Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine("-------------------");
                 Console.WriteLine($"{cuenta} RONDA");
                 Console.WriteLine($"{jugador.Dato.Nombre} vs {enemigo.Dato.Nombre}");
                 Console.WriteLine("-------------------");
-                Console.WriteLine("Elige tu posición");
-                Console.WriteLine("1: AGRESIVO");
-                Console.WriteLine("2: DEFENSIVO");
-                Console.WriteLine("3: FURTIVO");
-            }
-            else
-            {
+            }else{
                 throw new ArgumentOutOfRangeException(nameof(i), i, "El valor de i no pertenece al rango de enum Rondas");
             }
 
