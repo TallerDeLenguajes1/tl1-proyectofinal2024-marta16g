@@ -18,6 +18,7 @@ namespace EspacioJuego
         private const int cantJugadores = 3;
         private const int cantEnemigos = 10;
         private const int cantMovimientos = 4;
+        private const int maxSalud = 100;
         private Duelo claseDuelo;
         private Movimiento claseMovimiento;
         private PersonajesJson personajesJson;
@@ -40,6 +41,7 @@ namespace EspacioJuego
         private string? input;
         private bool validez;
         private bool bandera;
+        private bool otraBandera;
         private Random rand;
 
 
@@ -69,6 +71,7 @@ namespace EspacioJuego
             saludJugador = jugador.Caracteristica.Salud;
             saludEnemigo = enemigo.Caracteristica.Salud;
             bandera = true;
+            otraBandera = false;
             validez = false;
         }
         public void Jugar()
@@ -121,59 +124,123 @@ namespace EspacioJuego
                 enemigo = enemigos[i];
                 claseDuelo.InicioDeRondas(jugador, enemigo, i);
 
-                input = Console.ReadLine();
-                if (int.TryParse(input, out int estadoNumero))
+                do
                 {
-                    if (Enum.IsDefined(typeof(Posiciones), estadoNumero))
-                    {
-                        posicion1 = (Posiciones)estadoNumero;
-                        Console.WriteLine($"{jugador.Dato.Apodo} decidió elegir una posición de tipo {posicion1}");
-                    }
-                }
-                posicion2 = (Posiciones)rand.Next(1, 4);
+                    jugador.Caracteristica.Salud = saludJugador;
+                    enemigo.Caracteristica.Salud = saludEnemigo;
+                    Console.WriteLine($"Vidas: {jugador.Caracteristica.Vidas}");
+                    Console.WriteLine($"Salud: {jugador.Caracteristica.Salud}");
 
-                Console.WriteLine($"{enemigo.Dato.Apodo} ha elegido una posición de {posicion2}");
-
-                int quienGana = Duelo.CompararPosiciones(posicion1, posicion2);
-                if (quienGana != 0)
-                {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"Superaste a {enemigo.Dato.Nombre} ¡Rápido! elige un conjuro ");
-                    Console.ResetColor();
-                    filtrados = claseMovimiento.FiltrarMovimientos(movimientos, posicion1);
-
-                    for (int j = 0; j < cantMovimientos; j++)
-                    {
-                        Console.WriteLine($"{j + 1}");
-                        Console.WriteLine(filtrados[j]);
-                    }
-                    Console.WriteLine("Presiona el número del conjuro");
+                    
+                    Console.WriteLine("Elige tu posición");
+                    Console.WriteLine("1: AGRESIVO");
+                    Console.WriteLine("2: DEFENSIVO");
+                    Console.WriteLine("3: FURTIVO");
                     input = Console.ReadLine();
-                    if (int.TryParse(input, out int index))
+                    if (int.TryParse(input, out int estadoNumero))
                     {
-                        movimientoSeleccionado = filtrados[index - 1];
-                        Console.WriteLine($"Seleccionaste {movimientoSeleccionado.Hechizo}");
-                        ataque = new(posicion1, movimientoSeleccionado);
-                        danioCalculado = claseDuelo.CalcularDanio(posicion1, movimientoSeleccionado, jugador);
-
-                        Console.WriteLine($"Daño que se provoca: {danioCalculado}");
-
-                        Console.WriteLine($"SALUD PRIMERO: {saludEnemigo}");
-                        saludEnemigo-= danioCalculado;
-                        Console.WriteLine($"Salud ahora: {saludEnemigo}");
+                        if (Enum.IsDefined(typeof(Posiciones), estadoNumero))
+                        {
+                            posicion1 = (Posiciones)estadoNumero;
+                            Console.WriteLine($"{jugador.Dato.Apodo} decidió elegir una posición de tipo {posicion1}");
+                        }
                     }
 
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"{enemigo.Dato.Nombre} te ha superado. Prepárate para recibir un ataque");
-                    filtrados = claseMovimiento.FiltrarMovimientos(movimientos, posicion2);
-                    int randIndex = rand.Next(0,4);
-                    movimientoSeleccionado = filtrados[randIndex];
-                    Console.WriteLine($"{enemigo.Dato.Nombre} ha utilizado {movimientoSeleccionado.Hechizo}");
+                    posicion2 = (Posiciones)rand.Next(1, 4);
+                    Console.WriteLine($"{enemigo.Dato.Apodo} ha elegido una posición de {posicion2}");
 
-                }
+                    int quienGana = Duelo.CompararPosiciones(posicion1, posicion2);
+                    if (quienGana != 0)
+                    {
+                        if (quienGana == 1)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine($"{posicion1} vence a {posicion2}");
+                            Console.WriteLine($"Tienes el movimiento ¡Rápido! elige un conjuro ");
+                            Console.ResetColor();
+                            filtrados = claseMovimiento.FiltrarMovimientos(movimientos, posicion1);
+
+                            for (int j = 0; j < cantMovimientos; j++)
+                            {
+                                Console.WriteLine($"{j + 1}");
+                                Console.WriteLine(filtrados[j]);
+                            }
+                            
+                                Console.WriteLine("Presiona el número del conjuro");
+                                input = Console.ReadLine();
+                            if (int.TryParse(input, out int index))
+                            {
+                                movimientoSeleccionado = filtrados[index - 1];
+                                Console.WriteLine($"Seleccionaste {movimientoSeleccionado.Hechizo}");
+                                ataque = new(posicion1, movimientoSeleccionado);
+                                danioCalculado = claseDuelo.CalcularDanio(posicion1, movimientoSeleccionado, jugador);
+
+                                Console.WriteLine($"Daño que se provoca: {danioCalculado}");
+
+                                Console.WriteLine($"SALUD PRIMERO: {saludEnemigo}");
+
+                                saludEnemigo -= danioCalculado;
+                                if(saludEnemigo < 0 )
+                                {
+                                    saludEnemigo = 0;
+                                }
+                                Console.WriteLine($"Salud ahora: {saludEnemigo}");
+                            }
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine($"{posicion2} vence a {posicion1}");
+                            Console.WriteLine($"{enemigo.Dato.Nombre} tiene el movimiento. Prepárate para recibir un ataque");
+                            filtrados = claseMovimiento.FiltrarMovimientos(movimientos, posicion2);
+                            int randIndex = rand.Next(0, 4);
+                            movimientoSeleccionado = filtrados[randIndex];
+                            Console.WriteLine($"{enemigo.Dato.Nombre} ha utilizado {movimientoSeleccionado.Hechizo}");
+                        }
+
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Ambos magos optaron por la misma posición ¡Elige nuevamente!");
+                        bandera = true;
+                    }
+                    if (saludEnemigo <= 0)
+                    {
+                        bandera = false;
+                        saludJugador = maxSalud;
+                        saludEnemigo = maxSalud;
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
+                        Console.WriteLine($"¡Derrotaste a {enemigo.Dato.Nombre}! ¡Sigue así!");
+                        Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine($"Te queda/n {jugador.Caracteristica.Vidas} vida/s");
+                        Console.ResetColor();
+                    }else
+                    {
+                        if(saludJugador <= 0)
+                        {
+                            Console.WriteLine($"¡Oh no! {jugador.Dato.Nombre} fue derrotado por {enemigo.Dato.Nombre}");
+                            Console.WriteLine($"Pierdes una vida");
+                            jugador.Caracteristica.Vidas--;
+                            Console.WriteLine($"Vidas: {jugador.Caracteristica.Vidas}");
+                            if(jugador.Caracteristica.Vidas == 0)
+                            {
+                                bandera = false;
+                                Console.WriteLine($"Parece que el poder de {jugador.Dato.Nombre} ha llegado a su fin. No queda más magia en él");
+                                Console.WriteLine("¿Deseas jugar de nuevo?[y/n]");
+                                Console.WriteLine();
+                                input = Console.ReadLine();
+                                if(int.TryParse(input, out int nuevo))
+                                {
+
+                                }
+                            }else{
+                                bandera = true;
+                                i--;
+                            }
+                        }
+                    }
+                } while (bandera);
 
                 Console.ResetColor();
             }
