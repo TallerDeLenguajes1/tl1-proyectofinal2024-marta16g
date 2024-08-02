@@ -35,9 +35,11 @@ namespace EspacioJuego
         private Posiciones posicion1;
         private Posiciones posicion2;
         private int danioCalculado;
-        private int salud;
+        private int saludJugador;
+        private int saludEnemigo;
         private string? input;
         private bool validez;
+        private bool bandera;
         private Random rand;
 
 
@@ -64,7 +66,9 @@ namespace EspacioJuego
             jugadores = personajesJson.LeerPersonajes(archivoJugadores);
             enemigos = fabricaDePersonajes.GenerarPersonajesAleatorios();
             movimientos = movimientosJson.LeerMovimientos(archivoMovimientos);
-            salud = jugador.Caracteristica.Salud;
+            saludJugador = jugador.Caracteristica.Salud;
+            saludEnemigo = enemigo.Caracteristica.Salud;
+            bandera = true;
             validez = false;
         }
         public void Jugar()
@@ -150,15 +154,13 @@ namespace EspacioJuego
                         movimientoSeleccionado = filtrados[index - 1];
                         Console.WriteLine($"Seleccionaste {movimientoSeleccionado.Hechizo}");
                         ataque = new(posicion1, movimientoSeleccionado);
-                        danioCalculado = claseDuelo.CalcularDanio(ataque, jugador);
+                        danioCalculado = claseDuelo.CalcularDanio(posicion1, movimientoSeleccionado, jugador);
 
                         Console.WriteLine($"Daño que se provoca: {danioCalculado}");
 
-                        Console.WriteLine($"SALUD PRIMERO: {salud}");
-                        salud-= danioCalculado;
-                        Console.WriteLine($"Salud ahora: {salud}");
-                        //    enemigo.Caracteristica.Salud -= filtrados[index-1].Danio;
-                        //    Console.WriteLine($"Salud del enemigo: {enemigo.Caracteristica.Salud}");
+                        Console.WriteLine($"SALUD PRIMERO: {saludEnemigo}");
+                        saludEnemigo-= danioCalculado;
+                        Console.WriteLine($"Salud ahora: {saludEnemigo}");
                     }
 
                 }
