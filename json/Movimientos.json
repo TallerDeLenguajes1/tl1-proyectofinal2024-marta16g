@@ -32,7 +32,7 @@
         "Hechizo": "Episkey",
         "Descripcion": "Sana pequeñas heridas y arregla huesos rotos",
         "Persona": 1,
-        "Danio": 15
+        "Danio": 10
     },
     {
         "Posicion": 2,
