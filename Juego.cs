@@ -141,7 +141,6 @@ namespace EspacioJuego
                     if(int.TryParse(input, out int index))
                     {
                        Console.WriteLine($"Seleccionaste {filtrados[index-1].Hechizo}");
-
                     }
                     
                 }
