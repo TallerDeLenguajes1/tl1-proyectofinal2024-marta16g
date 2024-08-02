@@ -8,17 +8,17 @@ namespace EspacioMovimiento
         private string? hechizo;
         private string? descripcion;
         private int persona;
-        private uint danio;
+        private int danio;
 
         public Posiciones Posicion { get; set; }
         public string? Hechizo { get; set; }
         public string? Descripcion { get; set; }
         public int Persona { get; set; }
 
-        public uint Danio { get; set; }
+        public int Danio { get; set; }
 
         public Movimiento() { }
-        public Movimiento(Posiciones posicion, string hechizo, string descripcion, int persona, uint danio)
+        public Movimiento(Posiciones posicion, string hechizo, string descripcion, int persona, int danio)
         {
             this.posicion = posicion;
             this.hechizo = hechizo;

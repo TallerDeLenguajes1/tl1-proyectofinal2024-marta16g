@@ -141,6 +141,8 @@ namespace EspacioJuego
                     if(int.TryParse(input, out int index))
                     {
                        Console.WriteLine($"Seleccionaste {filtrados[index-1].Hechizo}");
+                       enemigo.Caracteristica.Salud = (int)- filtrados[index-1].Danio;
+                       Console.WriteLine($"Salud del enemigo: {enemigo.Caracteristica.Salud}");
                     }
                     
                 }
