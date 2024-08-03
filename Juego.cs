@@ -139,7 +139,6 @@ namespace EspacioJuego
                             claseDuelo.MostrarMovimientos(filtrados, cantMovimientos);
 
                             Console.WriteLine("Presiona el número del conjuro (1, 2, 3 o 4)");
-                            input = Console.ReadLine();
                             do
                             {
                                 input = Console.ReadLine();
@@ -180,17 +179,30 @@ namespace EspacioJuego
                             movimientoSeleccionado = filtrados[randIndex];
                             Console.WriteLine($"{enemigo.Dato.Nombre} ha utilizado {movimientoSeleccionado.Hechizo}");
                             danioCalculado = claseDuelo.CalcularDanio(posicion2, movimientoSeleccionado, enemigo);
-                            saludJugador -= danioCalculado;
-                            if (saludJugador < 0)
+                            if (movimientoSeleccionado.Persona == 1)
                             {
-                                jugador.Caracteristica.Salud = 0;
+                                saludEnemigo += danioCalculado;
+                                Console.WriteLine($"{enemigo.Dato.Nombre} sana {danioCalculado} de vida");
+                                enemigo.Caracteristica.Salud = saludEnemigo;
+                            }
+                            else
+                            {
+                                saludJugador -= danioCalculado;
+                                if (saludJugador < 0)
+                                {
+                                    saludJugador = 0;
+                                }
+                                Console.WriteLine($"{jugador.Dato.Nombre} recibe {danioCalculado} de daño");
+                                jugador.Caracteristica.Salud = saludEnemigo;
                             }
                         }
 
                     }
                     else
                     {
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine($"Ambos magos optaron por la misma posición ¡Elige nuevamente!");
+                        Console.ResetColor();
                         bandera = true;
                     }
                     if (saludEnemigo <= 0)
