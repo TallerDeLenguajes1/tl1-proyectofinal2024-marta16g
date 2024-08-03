@@ -92,7 +92,7 @@ namespace EspacioDuelo
             }
         }
 
-        public int ValidarEntrada(string input, int min, int max)
+        public int ValidarEntrada(string? input, int min, int max)
         {
             if (int.TryParse(input, out int numero) && numero <= max && numero >= min)
             {
