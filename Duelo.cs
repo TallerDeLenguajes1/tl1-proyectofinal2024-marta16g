@@ -20,7 +20,9 @@ namespace EspacioDuelo
                 Console.WriteLine($"{cuenta} RONDA");
                 Console.WriteLine($"{jugador.Dato.Nombre} vs {enemigo.Dato.Nombre}");
                 Console.WriteLine("-------------------");
-            }else{
+            }
+            else
+            {
                 throw new ArgumentOutOfRangeException(nameof(i), i, "El valor de i no pertenece al rango de enum Rondas");
             }
 
@@ -52,7 +54,7 @@ namespace EspacioDuelo
             int nivelPropiedadDestacada;
             int incremento;
             int danioFinal;
-            
+
 
             if (!Enum.IsDefined(typeof(Posiciones), posicion))
             {
@@ -83,8 +85,22 @@ namespace EspacioDuelo
                 incremento = 2 * nivelPropiedadDestacada;
                 danioFinal = movimiento.Danio + incremento;
                 return danioFinal;
-            }else{
+            }
+            else
+            {
                 return movimiento.Danio;
+            }
+        }
+
+        public bool ValidarEntrada(string input, int min, int max)
+        {
+            if (int.TryParse(input, out int numero) && numero < max && numero > min)
+            {
+                return true;
+            }
+            else
+            {
+                return true;
             }
         }
     }
