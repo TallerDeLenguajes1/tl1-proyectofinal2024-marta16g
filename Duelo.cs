@@ -92,21 +92,21 @@ namespace EspacioDuelo
             }
         }
 
-        public bool ValidarEntrada(string input, int min, int max)
+        public int ValidarEntrada(string input, int min, int max)
         {
-            if (int.TryParse(input, out int numero) && numero < max && numero > min)
+            if (int.TryParse(input, out int numero) && numero <= max && numero >= min)
             {
-                return true;
+                return numero;
             }
             else
             {
                 if (string.IsNullOrWhiteSpace(input))
                 {
                     Console.WriteLine("Por favor no intente romper el juego e ingrese algo.");
-                    return false;
+                    return 0;
                 }else{
                     Console.WriteLine("Por favor ingrese un número válido");
-                    return false;
+                    return 0;
                 }
             }
         }

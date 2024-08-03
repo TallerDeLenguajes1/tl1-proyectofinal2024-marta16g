@@ -37,7 +37,7 @@ namespace EspacioJuego
         private int saludJugador;
         private int saludEnemigo;
         private string? input;
-        private bool validez;
+        private int validez;
         private bool bandera;
         private bool otraBandera;
         private Random rand;
@@ -69,26 +69,20 @@ namespace EspacioJuego
             saludEnemigo = enemigo.Caracteristica.Salud;
             bandera = true;
             otraBandera = false;
-            validez = false;
+            validez = 0;
         }
         public void Jugar()
         {
             Inicializar();
             Console.WriteLine("Bienvenido al Juego de Harry Potter: Duelo de varitas");
+            Console.WriteLine("Seleccione el personaje para jugar");
+            fabricaDePersonajes.MostrarListaDePersonajes(jugadores, cantJugadores, "PERSONAJE");
             do
             {
-                Console.WriteLine("Seleccione el personaje para jugar");
-
-                fabricaDePersonajes.MostrarListaDePersonajes(jugadores, cantJugadores, "PERSONAJE");
-
                 input = Console.ReadLine();
-                validez = claseDuelo.ValidarEntrada(input, 1, 3);
-                if (!validez)
-                {
-                    Console.WriteLine("Parece que lo ingresado no es válido. Intenta de nuevo.");
-                }
+                seleccionJugador = claseDuelo.ValidarEntrada(input, 1, 3);
+            } while (seleccionJugador == 0);
 
-            } while (!validez);
 
             jugador = jugadores[seleccionJugador - 1];
 
