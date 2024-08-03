@@ -20,6 +20,7 @@ namespace EspacioDuelo
                 Console.WriteLine($"{cuenta} RONDA");
                 Console.WriteLine($"{jugador.Dato.Nombre} vs {enemigo.Dato.Nombre}");
                 Console.WriteLine("-------------------");
+                Console.ResetColor();
             }
             else
             {
@@ -120,6 +121,15 @@ namespace EspacioDuelo
             Console.WriteLine("2: DEFENSIVO");
             Console.WriteLine("3: FURTIVO");
             Console.WriteLine("Ingrese número (1, 2 o 3): ");
+        }
+
+        public void MostrarMovimientos(List<Movimiento> lista, int cantMovimientos)
+        {
+            for (int i = 0; i < cantMovimientos; i++)
+            {
+                Console.WriteLine($"{i + 1}");
+                Console.WriteLine(lista[i]);
+            }
         }
     }
 }
