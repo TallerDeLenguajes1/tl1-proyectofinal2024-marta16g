@@ -1,4 +1,3 @@
-using System;
 using EspacioDuelo;
 using EspacioFabricaDePersonajes;
 using EspacioMovimientoJson;
@@ -103,19 +102,14 @@ namespace EspacioJuego
                 bandera = true;
                 enemigo = enemigos[i];
                 claseDuelo.InicioDeRondas(jugador, enemigo, i);
+                Console.WriteLine($"Vidas: {jugador.Caracteristica.Vidas}");
 
                 do
                 {
                     jugador.Caracteristica.Salud = saludJugador;
                     enemigo.Caracteristica.Salud = saludEnemigo;
-                    Console.WriteLine($"Vidas: {jugador.Caracteristica.Vidas}");
                     Console.WriteLine($"Salud: {jugador.Caracteristica.Salud}");
 
-
-                    Console.WriteLine("Elige tu posición");
-                    Console.WriteLine("1: AGRESIVO");
-                    Console.WriteLine("2: DEFENSIVO");
-                    Console.WriteLine("3: FURTIVO");
                     input = Console.ReadLine();
                     if (int.TryParse(input, out int estadoNumero))
                     {
