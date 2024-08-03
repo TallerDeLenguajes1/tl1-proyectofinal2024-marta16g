@@ -118,6 +118,7 @@ namespace EspacioJuego
 
             for (int i = 0; i < cantEnemigos; i++)
             {
+                bandera = true;
                 enemigo = enemigos[i];
                 claseDuelo.InicioDeRondas(jugador, enemigo, i);
 
@@ -128,7 +129,7 @@ namespace EspacioJuego
                     Console.WriteLine($"Vidas: {jugador.Caracteristica.Vidas}");
                     Console.WriteLine($"Salud: {jugador.Caracteristica.Salud}");
 
-                    
+
                     Console.WriteLine("Elige tu posición");
                     Console.WriteLine("1: AGRESIVO");
                     Console.WriteLine("2: DEFENSIVO");
@@ -162,9 +163,9 @@ namespace EspacioJuego
                                 Console.WriteLine($"{j + 1}");
                                 Console.WriteLine(filtrados[j]);
                             }
-                            
-                                Console.WriteLine("Presiona el número del conjuro");
-                                input = Console.ReadLine();
+
+                            Console.WriteLine("Presiona el número del conjuro");
+                            input = Console.ReadLine();
                             if (int.TryParse(input, out int index))
                             {
                                 movimientoSeleccionado = filtrados[index - 1];
@@ -176,7 +177,7 @@ namespace EspacioJuego
                                 Console.WriteLine($"SALUD PRIMERO: {saludEnemigo}");
 
                                 saludEnemigo -= danioCalculado;
-                                if(saludEnemigo < 0 )
+                                if (saludEnemigo < 0)
                                 {
                                     saludEnemigo = 0;
                                 }
@@ -192,6 +193,12 @@ namespace EspacioJuego
                             int randIndex = rand.Next(0, 4);
                             movimientoSeleccionado = filtrados[randIndex];
                             Console.WriteLine($"{enemigo.Dato.Nombre} ha utilizado {movimientoSeleccionado.Hechizo}");
+                            danioCalculado = claseDuelo.CalcularDanio(posicion2, movimientoSeleccionado, enemigo);
+                            saludJugador -= danioCalculado;
+                            if (saludJugador < 0)
+                            {
+                                jugador.Caracteristica.Salud = 0;
+                            }
                         }
 
                     }
@@ -211,28 +218,28 @@ namespace EspacioJuego
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine($"Te queda/n {jugador.Caracteristica.Vidas} vida/s");
                         Console.ResetColor();
-                    }else
+                    }
+                    else
                     {
-                        if(saludJugador <= 0)
+                        if (saludJugador <= 0)
                         {
+                            bandera = false;
+                            saludJugador = maxSalud;
+                            saludEnemigo = maxSalud;
                             Console.WriteLine($"¡Oh no! {jugador.Dato.Nombre} fue derrotado por {enemigo.Dato.Nombre}");
                             Console.WriteLine($"Pierdes una vida");
                             jugador.Caracteristica.Vidas--;
                             Console.WriteLine($"Vidas: {jugador.Caracteristica.Vidas}");
-                            if(jugador.Caracteristica.Vidas == 0)
+                            if (jugador.Caracteristica.Vidas == 0)
                             {
-                                bandera = false;
                                 Console.WriteLine($"Parece que el poder de {jugador.Dato.Nombre} ha llegado a su fin. No queda más magia en él");
                                 Console.WriteLine("¿Deseas jugar de nuevo?[y/n]");
-                                Console.WriteLine();
-                                input = Console.ReadLine();
-                                if(int.TryParse(input, out int nuevo))
-                                {
-
-                                }
-                            }else{
+                            }
+                            else
+                            {
                                 bandera = true;
                                 i--;
+                                Console.WriteLine($"Deberás enfrentarte a {enemigo.Dato.Nombre} nuevamente");
                             }
                         }
                     }
