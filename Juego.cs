@@ -82,24 +82,12 @@ namespace EspacioJuego
                 fabricaDePersonajes.MostrarListaDePersonajes(jugadores, cantJugadores, "PERSONAJE");
 
                 input = Console.ReadLine();
-                validez = int.TryParse(input, out seleccionJugador);
+                validez = claseDuelo.ValidarEntrada(input, 1, 3);
                 if (!validez)
                 {
-                    Console.WriteLine("Lo ingresado no es un número. Intenta de nuevo.");
-                    validez = false;
+                    Console.WriteLine("Parece que lo ingresado no es válido. Intenta de nuevo.");
                 }
-                else
-                {
-                    if (3 < seleccionJugador || seleccionJugador < 1)
-                    {
-                        Console.WriteLine("Lo ingresado no es un número válido. Intenta de nuevo.");
-                        validez = false;
-                    }
-                    else
-                    {
-                        validez = true;
-                    }
-                }
+
             } while (!validez);
 
             jugador = jugadores[seleccionJugador - 1];

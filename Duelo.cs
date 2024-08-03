@@ -100,7 +100,14 @@ namespace EspacioDuelo
             }
             else
             {
-                return true;
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    Console.WriteLine("Por favor no intente romper el juego e ingrese algo.");
+                    return false;
+                }else{
+                    Console.WriteLine("Por favor ingrese un número válido");
+                    return false;
+                }
             }
         }
     }
