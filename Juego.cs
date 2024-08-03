@@ -145,27 +145,35 @@ namespace EspacioJuego
                                 input = Console.ReadLine();
                                 validez = claseDuelo.ValidarEntrada(input, 1, cantMovimientos);
                             } while (validez == 0);
+
                             movimientoSeleccionado = filtrados[validez - 1];
                             Console.WriteLine($"Seleccionaste {movimientoSeleccionado.Hechizo}");
                             danioCalculado = claseDuelo.CalcularDanio(posicion1, movimientoSeleccionado, jugador);
 
-                            Console.WriteLine($"Daño que se provoca: {danioCalculado}");
 
-                            Console.WriteLine($"SALUD PRIMERO: {saludEnemigo}");
-
-                            saludEnemigo -= danioCalculado;
-                            if (saludEnemigo < 0)
+                            if (movimientoSeleccionado.Persona == 1)
                             {
-                                saludEnemigo = 0;
+                                saludJugador += danioCalculado;
+                                Console.WriteLine($"{jugador.Dato.Nombre} sana {danioCalculado} de vida");
+                                jugador.Caracteristica.Salud = saludJugador;
                             }
-                            Console.WriteLine($"Salud ahora: {saludEnemigo}");
-
+                            else
+                            {
+                                saludEnemigo -= danioCalculado;
+                                if (saludEnemigo < 0)
+                                {
+                                    saludEnemigo = 0;
+                                }
+                                Console.WriteLine($"{enemigo.Dato.Nombre} recibe {danioCalculado} de daño");
+                                enemigo.Caracteristica.Salud = saludEnemigo;
+                                Console.WriteLine($"Salud del enemigo: {enemigo.Caracteristica.Salud}");
+                            }
                         }
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine($"{posicion2} vence a {posicion1}");
-                            Console.WriteLine($"{enemigo.Dato.Nombre} tiene el movimiento. Prepárate para recibir un ataque");
+                            Console.WriteLine($"{enemigo.Dato.Nombre} tiene el movimiento ¡Prepárate para recibir un ataque!");
                             Console.ResetColor();
                             filtrados = claseMovimiento.FiltrarMovimientos(movimientos, posicion2);
                             int randIndex = rand.Next(0, 4);
