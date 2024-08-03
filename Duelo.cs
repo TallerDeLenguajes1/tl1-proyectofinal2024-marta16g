@@ -104,11 +104,22 @@ namespace EspacioDuelo
                 {
                     Console.WriteLine("Por favor no intente romper el juego e ingrese algo.");
                     return 0;
-                }else{
+                }
+                else
+                {
                     Console.WriteLine("Por favor ingrese un número válido");
                     return 0;
                 }
             }
+        }
+
+        public void MostrarPosiciones()
+        {
+            Console.WriteLine("Elige tu posición");
+            Console.WriteLine("1: AGRESIVO");
+            Console.WriteLine("2: DEFENSIVO");
+            Console.WriteLine("3: FURTIVO");
+            Console.WriteLine("Ingrese número (1, 2 o 3): ");
         }
     }
 }
