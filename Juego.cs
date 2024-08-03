@@ -73,6 +73,7 @@ namespace EspacioJuego
         public void Jugar()
         {
             Inicializar();
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Bienvenido al Juego de Harry Potter: Duelo de varitas");
             Console.WriteLine("Seleccione el personaje para jugar");
             fabricaDePersonajes.MostrarListaDePersonajes(jugadores, cantJugadores, "PERSONAJE");
@@ -118,13 +119,13 @@ namespace EspacioJuego
                         validez = claseDuelo.ValidarEntrada(input, 1, 3);
                     } while (validez == 0);
                     posicion1 = (Posiciones)validez;
+                    posicion2 = (Posiciones)rand.Next(1, 4);
 
                     Console.WriteLine($"{jugador.Dato.Apodo} decidió elegir una posición de tipo {posicion1}");
-
-                    posicion2 = (Posiciones)rand.Next(1, 4);
                     Console.WriteLine($"{enemigo.Dato.Apodo} ha elegido una posición de {posicion2}");
 
                     int quienGana = Duelo.CompararPosiciones(posicion1, posicion2);
+
                     if (quienGana != 0)
                     {
                         if (quienGana == 1)
@@ -133,39 +134,39 @@ namespace EspacioJuego
                             Console.WriteLine($"{posicion1} vence a {posicion2}");
                             Console.WriteLine($"Tienes el movimiento ¡Rápido! elige un conjuro ");
                             Console.ResetColor();
+
                             filtrados = claseMovimiento.FiltrarMovimientos(movimientos, posicion1);
+                            claseDuelo.MostrarMovimientos(filtrados, cantMovimientos);
 
-                            for (int j = 0; j < cantMovimientos; j++)
-                            {
-                                Console.WriteLine($"{j + 1}");
-                                Console.WriteLine(filtrados[j]);
-                            }
-
-                            Console.WriteLine("Presiona el número del conjuro");
+                            Console.WriteLine("Presiona el número del conjuro (1, 2, 3 o 4)");
                             input = Console.ReadLine();
-                            if (int.TryParse(input, out int index))
+                            do
                             {
-                                movimientoSeleccionado = filtrados[index - 1];
-                                Console.WriteLine($"Seleccionaste {movimientoSeleccionado.Hechizo}");
-                                danioCalculado = claseDuelo.CalcularDanio(posicion1, movimientoSeleccionado, jugador);
+                                input = Console.ReadLine();
+                                validez = claseDuelo.ValidarEntrada(input, 1, cantMovimientos);
+                            } while (validez == 0);
+                            movimientoSeleccionado = filtrados[validez - 1];
+                            Console.WriteLine($"Seleccionaste {movimientoSeleccionado.Hechizo}");
+                            danioCalculado = claseDuelo.CalcularDanio(posicion1, movimientoSeleccionado, jugador);
 
-                                Console.WriteLine($"Daño que se provoca: {danioCalculado}");
+                            Console.WriteLine($"Daño que se provoca: {danioCalculado}");
 
-                                Console.WriteLine($"SALUD PRIMERO: {saludEnemigo}");
+                            Console.WriteLine($"SALUD PRIMERO: {saludEnemigo}");
 
-                                saludEnemigo -= danioCalculado;
-                                if (saludEnemigo < 0)
-                                {
-                                    saludEnemigo = 0;
-                                }
-                                Console.WriteLine($"Salud ahora: {saludEnemigo}");
+                            saludEnemigo -= danioCalculado;
+                            if (saludEnemigo < 0)
+                            {
+                                saludEnemigo = 0;
                             }
+                            Console.WriteLine($"Salud ahora: {saludEnemigo}");
+
                         }
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine($"{posicion2} vence a {posicion1}");
                             Console.WriteLine($"{enemigo.Dato.Nombre} tiene el movimiento. Prepárate para recibir un ataque");
+                            Console.ResetColor();
                             filtrados = claseMovimiento.FiltrarMovimientos(movimientos, posicion2);
                             int randIndex = rand.Next(0, 4);
                             movimientoSeleccionado = filtrados[randIndex];
