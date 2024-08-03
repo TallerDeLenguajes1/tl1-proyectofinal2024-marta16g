@@ -38,7 +38,7 @@ namespace EspacioJuego
         private string? input;
         private int validez;
         private bool bandera;
-        private bool otraBandera;
+        private bool pregunta;
         private Random rand;
 
 
@@ -67,7 +67,7 @@ namespace EspacioJuego
             saludJugador = jugador.Caracteristica.Salud;
             saludEnemigo = enemigo.Caracteristica.Salud;
             bandera = true;
-            otraBandera = false;
+            pregunta = true;
             validez = 0;
         }
         public void Jugar()
@@ -119,7 +119,7 @@ namespace EspacioJuego
                         validez = claseDuelo.ValidarEntrada(input, 1, 3);
                     } while (validez == 0);
                     posicion1 = (Posiciones)validez;
-                    posicion2 = (Posiciones)rand.Next(1, 4);
+                    posicion2 = Posiciones.Agresivo;
 
                     Console.WriteLine($"{jugador.Dato.Apodo} decidió elegir una posición de tipo {posicion1}");
                     Console.WriteLine($"{enemigo.Dato.Apodo} ha elegido una posición de {posicion2}");
@@ -143,6 +143,13 @@ namespace EspacioJuego
                             {
                                 input = Console.ReadLine();
                                 validez = claseDuelo.ValidarEntrada(input, 1, cantMovimientos);
+                                if(posicion1 == Posiciones.Defensivo && validez == 1 && saludJugador == 100 && pregunta)
+                                {
+                                    Console.WriteLine("¿Estás seguro de utilizar este hechizo? Tienes 100 de salud, no hay daño que curar");
+                                    Console.WriteLine("Ingresa nuevamente la opción de conjuro que quieras");
+                                    pregunta = false;
+                                    validez = 0;
+                                }
                             } while (validez == 0);
 
                             movimientoSeleccionado = filtrados[validez - 1];
