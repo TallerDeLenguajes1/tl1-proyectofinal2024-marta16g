@@ -110,15 +110,16 @@ namespace EspacioJuego
                     enemigo.Caracteristica.Salud = saludEnemigo;
                     Console.WriteLine($"Salud: {jugador.Caracteristica.Salud}");
 
-                    input = Console.ReadLine();
-                    if (int.TryParse(input, out int estadoNumero))
+                    claseDuelo.MostrarPosiciones();
+
+                    do
                     {
-                        if (Enum.IsDefined(typeof(Posiciones), estadoNumero))
-                        {
-                            posicion1 = (Posiciones)estadoNumero;
-                            Console.WriteLine($"{jugador.Dato.Apodo} decidió elegir una posición de tipo {posicion1}");
-                        }
-                    }
+                        input = Console.ReadLine();
+                        validez = claseDuelo.ValidarEntrada(input, 1, 3);
+                    } while (validez == 0);
+                    posicion1 = (Posiciones)validez;
+
+                    Console.WriteLine($"{jugador.Dato.Apodo} decidió elegir una posición de tipo {posicion1}");
 
                     posicion2 = (Posiciones)rand.Next(1, 4);
                     Console.WriteLine($"{enemigo.Dato.Apodo} ha elegido una posición de {posicion2}");
