@@ -7,11 +7,10 @@ namespace EspacioApi
     {
         private static readonly HttpClient client = new();
 
-        public async void obtenerApi()
+        public async void ObtenerApi()
         {
             try
             {
-
                 var url = "https://api.generadordni.es/v2/text/paragraphs?results=2&sentences=1&language=es";
                 HttpResponseMessage  response = await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();
@@ -20,7 +19,6 @@ namespace EspacioApi
             }
             catch (System.Exception)
             {
-
                 throw;
             }
 
