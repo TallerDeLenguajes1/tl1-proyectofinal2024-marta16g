@@ -1,4 +1,5 @@
 using System.Text.Json;
+using EspacioClima;
 using Microsoft.VisualBasic;
 
 namespace EspacioApi
@@ -7,7 +8,7 @@ namespace EspacioApi
     {
         private static readonly HttpClient client = new();
 
-        public async void ObtenerApi()
+        public async Task<Clima> ObtenerApi()
         {
             try
             {
@@ -15,7 +16,8 @@ namespace EspacioApi
                 HttpResponseMessage  response = await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
-
+                Clima clima = JsonSerializer.Deserialize<Clima>(responseBody);
+                return clima;
             }
             catch (System.Exception)
             {
