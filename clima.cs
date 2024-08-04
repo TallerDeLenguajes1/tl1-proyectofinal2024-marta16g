@@ -2,8 +2,8 @@ using System;
 
 namespace EspacioClima
 {
-    public class Clima
-    {
+    
+    
         public class Forecast
         {
             public string day { get; set; }
@@ -11,12 +11,12 @@ namespace EspacioClima
             public string wind { get; set; }
         }
 
-        public class Root
+        public class Clima
         {
             public string temperature { get; set; }
             public string wind { get; set; }
             public string description { get; set; }
             public List<Forecast> forecast { get; set; }
         }
-    }
+    
 }
