@@ -9,8 +9,7 @@ namespace EspacioDuelo
 {
     public class Duelo
     {
-
-        public void InicioDeRondas(Personaje jugador, Personaje enemigo, int i)
+        public static void InicioDeRondas(Personaje jugador, Personaje enemigo, int i)
         {
             if (Enum.IsDefined(typeof(Rondas), i))
             {
@@ -49,7 +48,7 @@ namespace EspacioDuelo
 
             }
         }
-        public int CalcularDanio(Posiciones posicion, Movimiento movimiento, Personaje jugador)
+        public static int CalcularDanio(Posiciones posicion, Movimiento movimiento, Personaje jugador)
         {
             string propiedadDestacada;
             int nivelPropiedadDestacada;
@@ -93,7 +92,7 @@ namespace EspacioDuelo
             }
         }
 
-        public int ValidarEntrada(string? input, int min, int max)
+        public static int ValidarEntrada(string? input, int min, int max)
         {
             if (int.TryParse(input, out int numero) && numero <= max && numero >= min)
             {
@@ -114,7 +113,7 @@ namespace EspacioDuelo
             }
         }
 
-        public void MostrarPosiciones()
+        public static void MostrarPosiciones()
         {
             Console.WriteLine("Elige tu posición");
             Console.WriteLine("1: AGRESIVO");
@@ -123,7 +122,7 @@ namespace EspacioDuelo
             Console.WriteLine("Ingrese número (1, 2 o 3): ");
         }
 
-        public void MostrarMovimientos(List<Movimiento> lista, int cantMovimientos)
+        public static void MostrarMovimientos(List<Movimiento> lista, int cantMovimientos)
         {
             for (int i = 0; i < cantMovimientos; i++)
             {
