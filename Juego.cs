@@ -77,7 +77,7 @@ namespace EspacioJuego
             pregunta = true;
             validez = 0;
         }
-        public void Jugar()
+        public async Task Jugar()
         {
             do
             {
@@ -108,7 +108,8 @@ namespace EspacioJuego
                 Console.WriteLine("------------------------");
 
 
-                claseApi.ObtenerApi();
+                await claseApi.ObtenerApi();
+                
                 for (int i = 0; i < cantEnemigos; i++)
                 {
                     bandera = true;

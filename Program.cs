@@ -11,11 +11,11 @@ using EspacioJuego;
 
 class Program
 {
-    private static void Main(string[] args)
+    private async static Task Main(string[] args)
     {
         Juego nuevoJuego = new();
 
-        nuevoJuego.Jugar();
+        await nuevoJuego.Jugar();
         
     }
 }

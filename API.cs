@@ -7,7 +7,7 @@ namespace EspacioApi
     {
         private static readonly HttpClient client = new();
 
-        public async void ObtenerApi()
+        public async Task ObtenerApi()
         {
             try
             {
