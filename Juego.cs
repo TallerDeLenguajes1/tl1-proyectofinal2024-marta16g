@@ -18,8 +18,6 @@ namespace EspacioJuego
         private const int cantEnemigos = 10;
         private const int cantMovimientos = 4;
         private const int maxSalud = 100;
-        private Api claseApi;
-        private Duelo claseDuelo;
         private Movimiento claseMovimiento;
         private PersonajesJson personajesJson;
         private MovimientosJson movimientosJson;
@@ -49,8 +47,6 @@ namespace EspacioJuego
 
         public Juego()
         {
-            claseApi = new();
-            claseDuelo = new Duelo();
             claseMovimiento = new Movimiento();
             personajesJson = new PersonajesJson();
             movimientosJson = new MovimientosJson();
@@ -90,7 +86,7 @@ namespace EspacioJuego
                 do
                 {
                     input = Console.ReadLine();
-                    seleccionJugador = claseDuelo.ValidarEntrada(input, 1, 3);
+                    seleccionJugador = Duelo.ValidarEntrada(input, 1, 3);
                 } while (seleccionJugador == 0);
 
 
@@ -108,13 +104,13 @@ namespace EspacioJuego
                 Console.WriteLine("------------------------");
 
 
-                await claseApi.ObtenerApi();
-                
+                await Api.ObtenerApi();
+
                 for (int i = 0; i < cantEnemigos; i++)
                 {
                     bandera = true;
                     enemigo = enemigos[i];
-                    claseDuelo.InicioDeRondas(jugador, enemigo, i);
+                    Duelo.InicioDeRondas(jugador, enemigo, i);
                     Console.WriteLine($"Vidas: {jugador.Caracteristica.Vidas}");
 
                     do
@@ -123,12 +119,12 @@ namespace EspacioJuego
                         enemigo.Caracteristica.Salud = saludEnemigo;
                         Console.WriteLine($"Salud: {jugador.Caracteristica.Salud}");
 
-                        claseDuelo.MostrarPosiciones();
+                        Duelo.MostrarPosiciones();
 
                         do
                         {
                             input = Console.ReadLine();
-                            validez = claseDuelo.ValidarEntrada(input, 1, 3);
+                            validez = Duelo.ValidarEntrada(input, 1, 3);
                         } while (validez == 0);
                         posicion1 = (Posiciones)validez;
                         posicion2 = Posiciones.Agresivo;
@@ -148,13 +144,13 @@ namespace EspacioJuego
                                 Console.ResetColor();
 
                                 filtrados = claseMovimiento.FiltrarMovimientos(movimientos, posicion1);
-                                claseDuelo.MostrarMovimientos(filtrados, cantMovimientos);
+                                Duelo.MostrarMovimientos(filtrados, cantMovimientos);
 
                                 Console.WriteLine("Presiona el número del conjuro (1, 2, 3 o 4)");
                                 do
                                 {
                                     input = Console.ReadLine();
-                                    validez = claseDuelo.ValidarEntrada(input, 1, cantMovimientos);
+                                    validez = Duelo.ValidarEntrada(input, 1, cantMovimientos);
                                     if (posicion1 == Posiciones.Defensivo && validez == 1 && saludJugador == maxSalud && pregunta)
                                     {
                                         Console.WriteLine("¿Estás seguro de utilizar este hechizo? Tienes 100 de salud, no hay daño que curar");
@@ -166,7 +162,7 @@ namespace EspacioJuego
 
                                 movimientoSeleccionado = filtrados[validez - 1];
                                 Console.WriteLine($"Seleccionaste {movimientoSeleccionado.Hechizo}");
-                                danioCalculado = claseDuelo.CalcularDanio(posicion1, movimientoSeleccionado, jugador);
+                                danioCalculado = Duelo.CalcularDanio(posicion1, movimientoSeleccionado, jugador);
 
 
                                 if (movimientoSeleccionado.Persona == 1)
@@ -209,7 +205,7 @@ namespace EspacioJuego
                                 int randIndex = rand.Next(0, 4);
                                 movimientoSeleccionado = filtrados[randIndex];
                                 Console.WriteLine($"{enemigo.Dato.Nombre} ha utilizado {movimientoSeleccionado.Hechizo}");
-                                danioCalculado = claseDuelo.CalcularDanio(posicion2, movimientoSeleccionado, enemigo);
+                                danioCalculado = Duelo.CalcularDanio(posicion2, movimientoSeleccionado, enemigo);
                                 if (movimientoSeleccionado.Persona == 1)
                                 {
                                     saludEnemigo += danioCalculado;
