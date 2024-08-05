@@ -12,7 +12,7 @@ namespace EspacioClima
         public double temperature_2m { get; set; }
         public double apparent_temperature { get; set; }
         public int is_day { get; set; }
-        public int rain { get; set; }
+        public double rain { get; set; }
     }
 
     public class CurrentUnits
@@ -33,9 +33,11 @@ namespace EspacioClima
         public int utc_offset_seconds { get; set; }
         public string timezone { get; set; }
         public string timezone_abbreviation { get; set; }
-        public int elevation { get; set; }
+        public double elevation { get; set; }
         public CurrentUnits current_units { get; set; }
         public Current current { get; set; }
+
+       
     }
 
 
