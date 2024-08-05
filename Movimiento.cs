@@ -45,15 +45,7 @@ namespace EspacioMovimiento
 
         public int Danio { get; set; }
 
-        public Movimiento()
-        {
-            Posicion = Posiciones.Agresivo;
-            Hechizo = string.Empty;
-            Descripcion = string.Empty;
-            Persona = 2;
-            Danio = 10;
-
-        }
+        public Movimiento(){}
         public Movimiento(Posiciones posicion, string hechizo, string descripcion, int persona, int danio)
         {
             this.posicion = posicion;
