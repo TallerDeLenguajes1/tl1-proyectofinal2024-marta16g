@@ -12,7 +12,7 @@ namespace EspacioApi
         {
             try
             {
-                var url = "https://api.generadordni.es/v2/text/paragraphs?results=2&sentences=1&language=es";
+                var url = "https://goweather.herokuapp.com/weather/london";
                 HttpResponseMessage  response = await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
