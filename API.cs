@@ -6,8 +6,7 @@ namespace EspacioApi
     public class Api
     {
         private static readonly HttpClient client = new();
-
-        public async Task ObtenerApi()
+        public static async Task ObtenerApi()
         {
             try
             {
@@ -15,7 +14,7 @@ namespace EspacioApi
                 HttpResponseMessage response = await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
-                Clima clima = JsonSerializer.Deserialize<Clima>(responseBody);
+                Clima? clima = JsonSerializer.Deserialize<Clima>(responseBody);
 
                 if (clima != null)
                 {
