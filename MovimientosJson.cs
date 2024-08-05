@@ -19,9 +19,9 @@ namespace EspacioMovimientoJson
 
             var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
-            var listaMovimientosLeidos = JsonSerializer.Deserialize<List<Movimiento>>(archivoExtraido, opciones);
+            var listaMovimientosLeidos = JsonSerializer.Deserialize<List<Movimiento>>(archivoExtraido, opciones) ?? new List<Movimiento>();
 
-            return listaMovimientosLeidos;
+            return listaMovimientosLeidos!;
         }
     }
 }

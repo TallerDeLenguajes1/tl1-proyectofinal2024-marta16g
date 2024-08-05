@@ -40,7 +40,7 @@ namespace EspacioPersonajesJS
 
             var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
-            var listaPersonajesLeidos = JsonSerializer.Deserialize<List<Personaje>>(archivoExtraido, opciones);
+            var listaPersonajesLeidos = JsonSerializer.Deserialize<List<Personaje>>(archivoExtraido, opciones)?? new List<Personaje>();
             if (listaPersonajesLeidos != null)
             {
                 foreach (var personaje in listaPersonajesLeidos)
@@ -48,7 +48,7 @@ namespace EspacioPersonajesJS
                     personaje.Caracteristica ??= new Caracteristica();
                 }
             }
-            return listaPersonajesLeidos;
+            return listaPersonajesLeidos!;
         }
 
         public bool ExisteArchivo(string nombreArchivo)
