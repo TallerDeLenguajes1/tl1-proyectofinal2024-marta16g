@@ -2,9 +2,6 @@ using System;
 
 namespace EspacioClima
 {
-
-
-    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
     public class Current
     {
         public string? time { get; set; }
