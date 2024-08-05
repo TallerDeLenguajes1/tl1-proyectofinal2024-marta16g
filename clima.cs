@@ -13,6 +13,8 @@ namespace EspacioClima
         public double apparent_temperature { get; set; }
         public int is_day { get; set; }
         public double rain { get; set; }
+        public int weather_code { get; set; }
+
     }
 
     public class CurrentUnits
@@ -23,6 +25,7 @@ namespace EspacioClima
         public string apparent_temperature { get; set; }
         public string is_day { get; set; }
         public string rain { get; set; }
+        public string weather_code { get; set; }
     }
 
     public class Clima
