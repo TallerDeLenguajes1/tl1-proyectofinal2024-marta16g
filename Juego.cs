@@ -5,6 +5,7 @@ using EspacioMovimiento;
 using EspacioPersonaje;
 using EspacioPersonajesJS;
 using EspacioPosiciones;
+using EspacioApi;
 
 namespace EspacioJuego
 {
@@ -17,6 +18,7 @@ namespace EspacioJuego
         private const int cantEnemigos = 10;
         private const int cantMovimientos = 4;
         private const int maxSalud = 100;
+        private Api claseApi;
         private Duelo claseDuelo;
         private Movimiento claseMovimiento;
         private PersonajesJson personajesJson;
@@ -47,6 +49,7 @@ namespace EspacioJuego
 
         public Juego()
         {
+            claseApi = new();
             claseDuelo = new Duelo();
             claseMovimiento = new Movimiento();
             personajesJson = new PersonajesJson();
@@ -105,6 +108,7 @@ namespace EspacioJuego
                 Console.WriteLine("------------------------");
 
 
+                claseApi.ObtenerApi();
                 for (int i = 0; i < cantEnemigos; i++)
                 {
                     bandera = true;
