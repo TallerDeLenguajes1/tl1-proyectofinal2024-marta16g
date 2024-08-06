@@ -103,7 +103,7 @@ namespace EspacioDuelo
             }
         }
 
-        public static int AtacarPersonaje(Personaje personaje, int saludPersonaje, int danioCalculado)
+        public static void AtacarPersonaje(Personaje personaje, int saludPersonaje, int danioCalculado)
         {
             saludPersonaje -= danioCalculado;
             if (saludPersonaje < 0)
@@ -112,11 +112,10 @@ namespace EspacioDuelo
             }
             Console.WriteLine($"{personaje.Dato.Nombre} recibe {danioCalculado} de daño");
             personaje.Caracteristica.Salud = saludPersonaje;
-            Console.WriteLine($"Salud del enemigo: {personaje.Caracteristica.Salud}");
-            return saludPersonaje;
+            Console.WriteLine($"Salud de {personaje.Dato.Nombre}: {personaje.Caracteristica.Salud}");
         }
 
-        public static int SanarPersonaje(Personaje personaje, int saludPersonaje, int danioCalculado, int maxSalud)
+        public static void SanarPersonaje(Personaje personaje, int saludPersonaje, int danioCalculado, int maxSalud)
         {
 
             saludPersonaje += danioCalculado;
@@ -130,7 +129,8 @@ namespace EspacioDuelo
             {
                 Console.WriteLine($"{personaje.Dato.Nombre} sana {danioCalculado} de vida");
             }
-            return saludPersonaje;
+            Console.WriteLine($"Salud de {personaje.Dato.Nombre}: {personaje.Caracteristica.Salud}");
+
         }
         public static int ValidarEntrada(string? input, int min, int max)
         {
