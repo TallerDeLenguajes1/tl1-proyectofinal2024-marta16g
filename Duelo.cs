@@ -103,6 +103,35 @@ namespace EspacioDuelo
             }
         }
 
+        public static int AtacarPersonaje(Personaje personaje, int saludPersonaje, int danioCalculado)
+        {
+            saludPersonaje -= danioCalculado;
+            if (saludPersonaje < 0)
+            {
+                saludPersonaje = 0;
+            }
+            Console.WriteLine($"{personaje.Dato.Nombre} recibe {danioCalculado} de daño");
+            personaje.Caracteristica.Salud = saludPersonaje;
+            Console.WriteLine($"Salud del enemigo: {personaje.Caracteristica.Salud}");
+            return saludPersonaje;
+        }
+
+        public static int SanarPersonaje(Personaje personaje, int saludPersonaje, int danioCalculado, int maxSalud)
+        {
+
+            saludPersonaje += danioCalculado;
+            if (saludPersonaje > maxSalud)
+            {
+                int auxDanio = maxSalud - personaje.Caracteristica.Salud;
+                saludPersonaje = maxSalud;
+                Console.WriteLine($"{personaje.Dato.Nombre} sana {auxDanio} de vida");
+            }
+            else
+            {
+                Console.WriteLine($"{personaje.Dato.Nombre} sana {danioCalculado} de vida");
+            }
+            return saludPersonaje;
+        }
         public static int ValidarEntrada(string? input, int min, int max)
         {
             if (int.TryParse(input, out int numero) && numero <= max && numero >= min)
