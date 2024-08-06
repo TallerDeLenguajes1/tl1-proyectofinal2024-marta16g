@@ -28,7 +28,7 @@ namespace EspacioDuelo
             }
 
         }
-        public static int CompararPosiciones(Posiciones posicion1, Posiciones posicion2)
+        public static int CompararPosiciones(Posiciones posicion1, Posiciones posicion2, Personaje mago)
         {
             if (posicion1 == posicion2)
             {
@@ -40,10 +40,20 @@ namespace EspacioDuelo
                 || posicion1 == Posiciones.Agresivo && posicion2 == Posiciones.Furtivo
                 || posicion1 == Posiciones.Furtivo && posicion2 == Posiciones.Defensivo)
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"{posicion1} vence a {posicion2}");
+                    Console.WriteLine($"Tienes el movimiento ¡Rápido! elige un conjuro ");
+                    Console.ResetColor();
+                    Console.WriteLine("Presiona el número del conjuro (1, 2, 3 o 4)");
+
                     return 1;
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"{posicion2} vence a {posicion1}");
+                    Console.WriteLine($"{mago.Dato.Nombre} tiene el movimiento ¡Prepárate para recibir un ataque!");
+                    Console.ResetColor();
                     return 2;
                 }
 
