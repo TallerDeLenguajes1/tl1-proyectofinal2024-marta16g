@@ -21,6 +21,7 @@ namespace EspacioJuego
         private Movimiento claseMovimiento;
         private PersonajesJson personajesJson;
         private MovimientosJson movimientosJson;
+        private FabricaDePersonajes fabricaDePersonajes;
         private List<Personaje> jugadores;
         private List<Personaje> enemigos;
         private List<Movimiento> movimientos;
@@ -49,6 +50,7 @@ namespace EspacioJuego
             claseMovimiento = new Movimiento();
             personajesJson = new PersonajesJson();
             movimientosJson = new MovimientosJson();
+            fabricaDePersonajes = new();
             jugadores = new List<Personaje>();
             enemigos = new List<Personaje>();
             movimientos = new List<Movimiento>();
@@ -62,6 +64,7 @@ namespace EspacioJuego
         public void Inicializar()
         {
             movimientos = movimientosJson.LeerMovimientos(archivoMovimientos);
+            jugadores = personajesJson.LeerPersonajes(archivoJugadores);
             saludJugador = jugador.Caracteristica.Salud;
             saludEnemigo = enemigo.Caracteristica.Salud;
             jugar = false;
@@ -73,8 +76,14 @@ namespace EspacioJuego
         {
             do
             {
-
                 Inicializar();
+                if(personajesJson.ExisteArchivo(archivoPersonajes))
+                {
+                    enemigos = personajesJson.LeerPersonajes(archivoPersonajes);
+                }else{
+                    enemigos = fabricaDePersonajes.GenerarPersonajesAleatorios(cantEnemigos);
+                    personajesJson.GuardarPersonajes(enemigos, archivoPersonajes);
+                }
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Bienvenido al Juego de Harry Potter: Duelo de varitas");
                 Console.WriteLine("Seleccione el personaje para jugar");
