@@ -21,7 +21,6 @@ namespace EspacioJuego
         private Movimiento claseMovimiento;
         private PersonajesJson personajesJson;
         private MovimientosJson movimientosJson;
-        private FabricaDePersonajes fabricaDePersonajes;
         private List<Personaje> jugadores;
         private List<Personaje> enemigos;
         private List<Movimiento> movimientos;
@@ -50,7 +49,6 @@ namespace EspacioJuego
             claseMovimiento = new Movimiento();
             personajesJson = new PersonajesJson();
             movimientosJson = new MovimientosJson();
-            fabricaDePersonajes = new FabricaDePersonajes();
             jugadores = new List<Personaje>();
             enemigos = new List<Personaje>();
             movimientos = new List<Movimiento>();
@@ -64,7 +62,6 @@ namespace EspacioJuego
         public void Inicializar()
         {
             jugadores = personajesJson.LeerPersonajes(archivoJugadores);
-            enemigos = fabricaDePersonajes.GenerarPersonajesAleatorios();
             movimientos = movimientosJson.LeerMovimientos(archivoMovimientos);
             saludJugador = jugador.Caracteristica.Salud;
             saludEnemigo = enemigo.Caracteristica.Salud;
@@ -82,7 +79,7 @@ namespace EspacioJuego
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Bienvenido al Juego de Harry Potter: Duelo de varitas");
                 Console.WriteLine("Seleccione el personaje para jugar");
-                fabricaDePersonajes.MostrarListaDePersonajes(jugadores, cantJugadores, "PERSONAJE");
+                FabricaDePersonajes.MostrarListaDePersonajes(jugadores, cantJugadores, "PERSONAJE");
                 do
                 {
                     input = Console.ReadLine();
@@ -95,8 +92,8 @@ namespace EspacioJuego
                 Console.WriteLine("Elegiste el personaje: ");
                 Console.WriteLine(jugador.Dato.Nombre);
                 Console.WriteLine("------------------------");
-                Console.WriteLine("Estos son tus enemigos");
-                fabricaDePersonajes.MostrarListaDePersonajes(enemigos, cantEnemigos, "ENEMIGO");
+                Console.WriteLine("Tus enemigos son:");
+                FabricaDePersonajes.MostrarListaDePersonajes(enemigos, cantEnemigos, "ENEMIGO");
                 Console.WriteLine("------------------------");
                 Console.WriteLine("------------------------");
                 Console.WriteLine("QUE EMPIECE LA BATALLA");
