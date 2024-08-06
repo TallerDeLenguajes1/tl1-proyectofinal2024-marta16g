@@ -6,8 +6,10 @@ namespace EspacioPersonaje
 {
     public class Personaje
     {
-        public Dato Dato{get;set;}
-        public Caracteristica Caracteristica{get;set;}
+        private Dato? dato;
+        private Caracteristica? caracteristica;
+        public Dato? Dato{ get => dato; set => dato = value; }
+        public Caracteristica? Caracteristica{ get => caracteristica; set => caracteristica = value; }
         
         public Personaje()
         {
