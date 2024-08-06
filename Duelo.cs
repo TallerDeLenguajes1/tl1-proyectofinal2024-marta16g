@@ -58,7 +58,7 @@ namespace EspacioDuelo
 
             if (!Enum.IsDefined(typeof(Posiciones), posicion))
             {
-                throw new ArgumentOutOfRangeException(nameof(posicion), posicion, "El valor no pertenece al rango del enum Posiciones");
+                Console.WriteLine("ERROR: La posición no es válida para el enum Posiciones");
             }
 
             switch (posicion)

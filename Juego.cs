@@ -61,7 +61,6 @@ namespace EspacioJuego
 
         public void Inicializar()
         {
-            jugadores = personajesJson.LeerPersonajes(archivoJugadores);
             movimientos = movimientosJson.LeerMovimientos(archivoMovimientos);
             saludJugador = jugador.Caracteristica.Salud;
             saludEnemigo = enemigo.Caracteristica.Salud;
