@@ -10,40 +10,11 @@ namespace EspacioMovimiento
         private int persona;
         private int danio;
 
-        public Posiciones Posicion
-        {
-            get => posicion;
-            set
-            {
-                if (!Enum.IsDefined(typeof(Posiciones), value))
-                {
-                    throw new ArgumentException("Valor no válido para el enum Posiciones.", nameof(value));
-                }
-                else
-                {
-                    posicion = value;
-                }
-            }
-        }
-        public string? Hechizo
-        {
-            get => hechizo;
-            set
-            {
-                hechizo = value ?? throw new ArgumentNullException(nameof(value), "El hechizo no puede ser nulo");
-            }
-        }
-        public string? Descripcion
-        {
-            get => descripcion;
-            set
-            {
-                hechizo = value ?? throw new ArgumentNullException(nameof(value), "El hechizo no puede ser nulo");
-            }
-        }
-        public int Persona{ get; set; }
-
-        public int Danio { get; set; }
+        public Posiciones Posicion{ get => posicion; set => posicion = value; }
+        public string? Hechizo { get => hechizo; set => hechizo = value; }
+        public string? Descripcion { get => descripcion; set => descripcion = value; }
+        public int Persona { get => persona; set => persona = value; }
+        public int Danio { get => danio; set => danio = value; }
 
         public Movimiento(){}
         public Movimiento(Posiciones posicion, string hechizo, string descripcion, int persona, int danio)
