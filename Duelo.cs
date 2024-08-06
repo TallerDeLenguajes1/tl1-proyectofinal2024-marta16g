@@ -23,7 +23,7 @@ namespace EspacioDuelo
             }
             else
             {
-                throw new ArgumentOutOfRangeException(nameof(i), i, "El valor de i no pertenece al rango de enum Rondas");
+                Console.WriteLine("El valor de i no pertenece al rango de enum Rondas");
             }
 
         }
