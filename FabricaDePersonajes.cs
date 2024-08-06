@@ -120,7 +120,7 @@ namespace EspacioFabricaDePersonajes
             return personajes[eleccion - 1];
         }
 
-        public void MostrarListaDePersonajes(List<Personaje> listaPersonajes, int cantPersonajes, string tipoLista)
+        public static void MostrarListaDePersonajes(List<Personaje> listaPersonajes, int cantPersonajes, string tipoLista)
         {
             for (int i = 0; i < cantPersonajes; i++)
             {
