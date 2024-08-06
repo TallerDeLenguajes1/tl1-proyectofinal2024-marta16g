@@ -20,6 +20,7 @@ namespace EspacioDuelo
                 Console.WriteLine($"{jugador.Dato.Nombre} vs {enemigo.Dato.Nombre}");
                 Console.WriteLine("-------------------");
                 Console.ResetColor();
+                Console.WriteLine($"Vidas: {jugador.Caracteristica.Vidas}");
             }
             else
             {

@@ -116,7 +116,6 @@ namespace EspacioJuego
                     bandera = true;
                     enemigo = enemigos[i];
                     Duelo.InicioDeRondas(jugador, enemigo, i);
-                    Console.WriteLine($"Vidas: {jugador.Caracteristica.Vidas}");
 
                     do
                     {
