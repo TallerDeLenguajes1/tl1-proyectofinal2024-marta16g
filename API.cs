@@ -18,10 +18,8 @@ namespace EspacioApi
 
                 if (clima != null)
                 {
-
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
                     string? hora = clima.current.time.Substring(11);
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
+                    
                     Console.WriteLine("Londres, Inglaterra");
                     Console.WriteLine($"Hora: {hora}");
                     switch (clima.current.weather_code)
