@@ -77,10 +77,12 @@ namespace EspacioJuego
             do
             {
                 Inicializar();
-                if(personajesJson.ExisteArchivo(archivoPersonajes))
+                if (personajesJson.ExisteArchivo(archivoPersonajes))
                 {
                     enemigos = personajesJson.LeerPersonajes(archivoPersonajes);
-                }else{
+                }
+                else
+                {
                     enemigos = fabricaDePersonajes.GenerarPersonajesAleatorios(cantEnemigos);
                     personajesJson.GuardarPersonajes(enemigos, archivoPersonajes);
                 }
@@ -136,25 +138,20 @@ namespace EspacioJuego
                         Console.WriteLine($"{jugador.Dato.Apodo} decidió elegir una posición de tipo {posicion1}");
                         Console.WriteLine($"{enemigo.Dato.Apodo} ha elegido una posición de {posicion2}");
 
-                        int quienGana = Duelo.CompararPosiciones(posicion1, posicion2);
+                        int quienGana = Duelo.CompararPosiciones(posicion1, posicion2, enemigo);
 
                         if (quienGana != 0)
                         {
                             if (quienGana == 1)
                             {
-                                Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine($"{posicion1} vence a {posicion2}");
-                                Console.WriteLine($"Tienes el movimiento ¡Rápido! elige un conjuro ");
-                                Console.ResetColor();
-
                                 filtrados = claseMovimiento.FiltrarMovimientos(movimientos, posicion1);
                                 Duelo.MostrarMovimientos(filtrados, cantMovimientos);
 
-                                Console.WriteLine("Presiona el número del conjuro (1, 2, 3 o 4)");
                                 do
                                 {
                                     input = Console.ReadLine();
                                     validez = Duelo.ValidarEntrada(input, 1, cantMovimientos);
+
                                     if (posicion1 == Posiciones.Defensivo && validez == 1 && saludJugador == maxSalud && pregunta)
                                     {
                                         Console.WriteLine("¿Estás seguro de utilizar este hechizo? Tienes 100 de salud, no hay daño que curar");
@@ -168,43 +165,20 @@ namespace EspacioJuego
                                 Console.WriteLine($"Seleccionaste {movimientoSeleccionado.Hechizo}");
                                 danioCalculado = Duelo.CalcularDanio(posicion1, movimientoSeleccionado, jugador);
 
-
                                 if (movimientoSeleccionado.Persona == 1)
                                 {
-                                    saludJugador += danioCalculado;
-                                    if (saludJugador > maxSalud)
-                                    {
-                                        int auxDanio = maxSalud - jugador.Caracteristica.Salud;
-                                        saludJugador = maxSalud;
-                                        Console.WriteLine($"{jugador.Dato.Nombre} sana {auxDanio} de vida");
+                                    Duelo.SanarPersonaje(jugador, saludJugador, danioCalculado, maxSalud);
+                                    saludJugador = jugador.Caracteristica.Salud;
 
-                                    }
-                                    else
-                                    {
-
-                                        Console.WriteLine($"{jugador.Dato.Nombre} sana {danioCalculado} de vida");
-                                    }
-
-                                    jugador.Caracteristica.Salud = saludJugador;
                                 }
                                 else
                                 {
-                                    saludEnemigo -= danioCalculado;
-                                    if (saludEnemigo < 0)
-                                    {
-                                        saludEnemigo = 0;
-                                    }
-                                    Console.WriteLine($"{enemigo.Dato.Nombre} recibe {danioCalculado} de daño");
-                                    enemigo.Caracteristica.Salud = saludEnemigo;
-                                    Console.WriteLine($"Salud del enemigo: {enemigo.Caracteristica.Salud}");
+                                    Duelo.AtacarPersonaje(enemigo, saludEnemigo, danioCalculado);
+                                    saludEnemigo = enemigo.Caracteristica.Salud;
                                 }
                             }
                             else
                             {
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine($"{posicion2} vence a {posicion1}");
-                                Console.WriteLine($"{enemigo.Dato.Nombre} tiene el movimiento ¡Prepárate para recibir un ataque!");
-                                Console.ResetColor();
                                 filtrados = claseMovimiento.FiltrarMovimientos(movimientos, posicion2);
                                 int randIndex = rand.Next(0, 4);
                                 movimientoSeleccionado = filtrados[randIndex];
@@ -212,19 +186,13 @@ namespace EspacioJuego
                                 danioCalculado = Duelo.CalcularDanio(posicion2, movimientoSeleccionado, enemigo);
                                 if (movimientoSeleccionado.Persona == 1)
                                 {
-                                    saludEnemigo += danioCalculado;
-                                    Console.WriteLine($"{enemigo.Dato.Nombre} sana {danioCalculado} de vida");
-                                    enemigo.Caracteristica.Salud = saludEnemigo;
+                                    Duelo.SanarPersonaje(enemigo, saludEnemigo, danioCalculado, maxSalud);
+                                    saludEnemigo = enemigo.Caracteristica.Salud;
                                 }
                                 else
                                 {
-                                    saludJugador -= danioCalculado;
-                                    if (saludJugador < 0)
-                                    {
-                                        saludJugador = 0;
-                                    }
-                                    Console.WriteLine($"{jugador.Dato.Nombre} recibe {danioCalculado} de daño");
-                                    jugador.Caracteristica.Salud = saludEnemigo;
+                                    Duelo.AtacarPersonaje(jugador, saludJugador, danioCalculado);
+                                    saludJugador = jugador.Caracteristica.Salud;
                                 }
                             }
 
@@ -289,7 +257,6 @@ namespace EspacioJuego
                                 }
                                 else
                                 {
-                                    bandera = true;
                                     i--;
                                     Console.WriteLine($"Deberás enfrentarte a {enemigo.Dato.Nombre} nuevamente");
                                 }
