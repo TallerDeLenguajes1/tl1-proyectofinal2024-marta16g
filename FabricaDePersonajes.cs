@@ -86,7 +86,7 @@ namespace EspacioFabricaDePersonajes
             this.personajes = [];
         }
 
-        public List<Personaje> GenerarPersonajesAleatorios()
+        public List<Personaje> GenerarPersonajesAleatorios(int numPersonajes)
         {
             personajes.Clear();
 
@@ -95,7 +95,6 @@ namespace EspacioFabricaDePersonajes
             List<string> casasDisponibles = new List<string>(casas);
             List<string> varitasDisponibles = new List<string>(varitas);
 
-            int numPersonajes = 10;
             for (int i = 0; i < numPersonajes; i++)
             {
                 int iNombre = Rand.Next(nombresDisponibles.Count);
