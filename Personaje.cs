@@ -13,31 +13,31 @@ namespace EspacioPersonaje
         
         public Personaje()
         {
-            this.Dato = new Dato();
-            this.Caracteristica = new Caracteristica();
+            Dato = new Dato();
+            Caracteristica = new Caracteristica();
         }
         public Personaje(string nombre, string apodo, string casa, string varita)
         {
-            this.Dato = new Dato(nombre, apodo, casa, varita);
-            this.Caracteristica = new Caracteristica();
+            Dato = new Dato(nombre, apodo, casa, varita);
+            Caracteristica = new Caracteristica();
         }
         public Personaje(string nombre, string apodo, string casa, string varita, int violencia, int resistencia, int discrecion, int salud, int vidas)
         {
-            this.Dato = new Dato(nombre, apodo, casa, varita);
-            this.Caracteristica = new Caracteristica(violencia, resistencia, discrecion, salud, vidas);
+            Dato = new Dato(nombre, apodo, casa, varita);
+            Caracteristica = new Caracteristica(violencia, resistencia, discrecion, salud, vidas);
         }
 
         public override string ToString()
         {
-            return $"Nombre: {this.Dato.Nombre}\n" +
-            $"Apodo: {this.Dato.Apodo}\n" +
-            $"Casa: {this.Dato.Casa}\n" +
-            $"Varita: {this.Dato.Varita}\n" +
-            $"Violencia: {this.Caracteristica.Violencia}\n" +
-            $"Resistencia: {this.Caracteristica.Resistencia}\n" +
-            $"Discrecion: {this.Caracteristica.Discrecion}\n" +
-            $"Salud: {this.Caracteristica.Salud}\n" +
-            $"Vidas: {this.Caracteristica.Vidas}";
+            return $"Nombre: {dato.Nombre}\n" +
+            $"Apodo: {dato.Apodo}\n" +
+            $"Casa: {dato.Casa}\n" +
+            $"Varita: {dato.Varita}\n" +
+            $"Violencia: {caracteristica.Violencia}\n" +
+            $"Resistencia: {caracteristica.Resistencia}\n" +
+            $"Discrecion: {caracteristica.Discrecion}\n" +
+            $"Salud: {caracteristica.Salud}\n" +
+            $"Vidas: {caracteristica.Vidas}";
         }
     }
    
