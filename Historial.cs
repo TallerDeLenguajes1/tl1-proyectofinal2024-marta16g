@@ -17,7 +17,7 @@ namespace EspacioHistorial
         }
         public override string ToString()
         {
-            return $"{this.participante} - {this.Daniototal}";
+            return $"{this.participante} - {this.Daniototal} puntos";
         }
     }
 }
