@@ -47,7 +47,7 @@ namespace EspacioPersonajesJS
             return listaPersonajesLeidos!;
         }
 
-        public bool ExisteArchivo(string nombreArchivo)
+        public static bool ExisteArchivo(string nombreArchivo)
         {
             if (File.Exists(nombreArchivo))
             {
