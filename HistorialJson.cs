@@ -26,5 +26,22 @@ namespace EspacioHistorialJson
                 }
             };
         }
+
+        public List<Historial> LeerGanadores(string nombreArchivo)
+        {
+            string archivoExtraido;
+            using (FileStream abrir = new(nombreArchivo, FileMode.Open))
+            {
+                using (StreamReader leer = new(abrir))
+                {
+                    archivoExtraido = leer.ReadToEnd();
+                }
+            }
+
+            var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+
+            var listaGanadoresLeidos = JsonSerializer.Deserialize<List<Historial>>(archivoExtraido, opciones)?? new List<Historial>();
+            return listaGanadoresLeidos;
+        }
     }
 }
