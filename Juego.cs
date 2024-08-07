@@ -14,6 +14,7 @@ namespace EspacioJuego
         private const string archivoJugadores = "json/Jugadores.json";
         private const string archivoPersonajes = "json/Personajes.json";
         private const string archivoMovimientos = "json/Movimientos.json";
+        private const string archivoHistorial = "json/Historial.json";
         private const int cantJugadores = 3;
         private const int cantEnemigos = 2;
         private const int cantMovimientos = 4;
