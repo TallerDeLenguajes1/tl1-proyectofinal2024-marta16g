@@ -6,6 +6,8 @@ using EspacioPersonaje;
 using EspacioPersonajesJS;
 using EspacioPosiciones;
 using EspacioApi;
+using EspacioHistorial;
+using EspacioHistorialJson;
 
 namespace EspacioJuego
 {
@@ -23,6 +25,7 @@ namespace EspacioJuego
         private Movimiento claseMovimiento;
         private PersonajesJson personajesJson;
         private MovimientosJson movimientosJson;
+        private HistorialJson historialJson;
         private FabricaDePersonajes fabricaDePersonajes;
         private List<Personaje> jugadores;
         private List<Personaje> enemigos;
@@ -52,6 +55,7 @@ namespace EspacioJuego
             claseMovimiento = new Movimiento();
             personajesJson = new PersonajesJson();
             movimientosJson = new MovimientosJson();
+            historialJson = new();
             fabricaDePersonajes = new();
             jugadores = new List<Personaje>();
             enemigos = new List<Personaje>();
@@ -79,7 +83,7 @@ namespace EspacioJuego
             do
             {
                 Inicializar();
-                if (personajesJson.ExisteArchivo(archivoPersonajes))
+                if (PersonajesJson.ExisteArchivo(archivoPersonajes))
                 {
                     enemigos = personajesJson.LeerPersonajes(archivoPersonajes);
                 }
