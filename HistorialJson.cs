@@ -11,13 +11,13 @@ namespace EspacioHistorialJson
         public void GuardarGanador(Historial ganador, string nombreArchivo)
         {
             listaGanadores.Add(ganador);
-            listaGanadores.OrderBy(p => p.Daniototal);
+            var listaOrdenada = listaGanadores.OrderBy(p => p.Daniototal);
 
             var opciones = new JsonSerializerOptions
             {
                 WriteIndented = true
             };
-            string personajesJson = JsonSerializer.Serialize(listaGanadores, opciones);
+            string personajesJson = JsonSerializer.Serialize(listaOrdenada, opciones);
             using (FileStream abrir = new(nombreArchivo, FileMode.Create, FileAccess.Write))
             {
                 using (StreamWriter escribir = new(abrir, Encoding.UTF8))
