@@ -2,14 +2,20 @@ using System;
 using System.Text;
 using System.Text.Json;
 using EspacioHistorial;
+using EspacioPersonajesJS;
 
 namespace EspacioHistorialJson
 {
     public class HistorialJson
     {
-        private List<Historial>? listaGanadores;
         public void GuardarGanador(Historial ganador, string nombreArchivo)
         {
+            List<Historial> listaGanadores = new();
+
+            if (PersonajesJson.ExisteArchivo(nombreArchivo))
+            {
+                listaGanadores = LeerGanadores(nombreArchivo);
+            }
             listaGanadores.Add(ganador);
             var listaOrdenada = listaGanadores.OrderBy(p => p.Daniototal);
 
@@ -40,7 +46,7 @@ namespace EspacioHistorialJson
 
             var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
-            var listaGanadoresLeidos = JsonSerializer.Deserialize<List<Historial>>(archivoExtraido, opciones)?? new List<Historial>();
+            var listaGanadoresLeidos = JsonSerializer.Deserialize<List<Historial>>(archivoExtraido, opciones) ?? new List<Historial>();
             return listaGanadoresLeidos;
         }
     }
