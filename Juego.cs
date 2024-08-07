@@ -33,6 +33,7 @@ namespace EspacioJuego
         private List<Movimiento> filtrados;
         private Personaje jugador;
         private Personaje enemigo;
+        private Historial ganador;
         private Movimiento movimientoSeleccionado;
         private int seleccionJugador;
         private Posiciones posicion1;
@@ -40,6 +41,7 @@ namespace EspacioJuego
         private int danioCalculado;
         private int saludJugador;
         private int saludEnemigo;
+        private int contador;
         private string? input;
         private int validez;
         private bool jugar;
@@ -63,6 +65,7 @@ namespace EspacioJuego
             filtrados = new();
             jugador = new();
             enemigo = new();
+            ganador = new();
             movimientoSeleccionado = new();
             rand = new();
         }
@@ -73,6 +76,7 @@ namespace EspacioJuego
             jugadores = personajesJson.LeerPersonajes(archivoJugadores);
             saludJugador = maxSalud;
             saludEnemigo = maxSalud;
+            contador = 0;
             jugar = false;
             bandera = true;
             pregunta = true;
@@ -276,6 +280,34 @@ namespace EspacioJuego
                     } while (bandera);
 
                     Console.ResetColor();
+                    contador = i;
+                }
+                if (contador == cantEnemigos - 1 && jugador.Caracteristica.Vidas > 0)
+                {
+                    Console.BackgroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("Ganaste capo");
+                    Console.ResetColor();
+                    jugar = false;
+                    do
+                    {
+                        Console.WriteLine("Ingrese su nombre o apodo (menos de 10 caracteres)");
+                        input = Console.ReadLine();
+                        if (input.Length > 10)
+                        {
+                            Console.WriteLine("El nombre no debe ser mayor a 10 caracteres");
+                            validez = 0;
+                        }
+                        else
+                        {
+                            if (string.IsNullOrWhiteSpace(input))
+                            {
+                                validez = 0;
+                            }
+                        }
+                    } while (validez == 0);
+
+                    ganador.Participante = input;
+
                 }
             } while (jugar);
         }
