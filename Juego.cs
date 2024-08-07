@@ -42,6 +42,7 @@ namespace EspacioJuego
         private int saludJugador;
         private int saludEnemigo;
         private int contador;
+        private int puntos;
         private string? input;
         private int validez;
         private bool jugar;
@@ -77,6 +78,7 @@ namespace EspacioJuego
             saludJugador = maxSalud;
             saludEnemigo = maxSalud;
             contador = 0;
+            puntos = 0;
             jugar = false;
             bandera = true;
             pregunta = true;
@@ -185,6 +187,7 @@ namespace EspacioJuego
                                 {
                                     Duelo.AtacarPersonaje(enemigo, saludEnemigo, danioCalculado);
                                     saludEnemigo = enemigo.Caracteristica.Salud;
+                                    puntos += danioCalculado;
                                 }
                             }
                             else
@@ -203,6 +206,7 @@ namespace EspacioJuego
                                 {
                                     Duelo.AtacarPersonaje(jugador, saludJugador, danioCalculado);
                                     saludJugador = jugador.Caracteristica.Salud;
+                                    puntos -= 10;
                                 }
                             }
 
@@ -307,9 +311,21 @@ namespace EspacioJuego
                     } while (validez == 0);
 
                     ganador.Participante = input;
+                    ganador.Daniototal = puntos;
 
+                    historialJson.GuardarGanador(ganador, archivoHistorial);
                 }
             } while (jugar);
+
+            if (PersonajesJson.ExisteArchivo(archivoHistorial))
+            {
+                Console.WriteLine("LISTA DE GANADORES");
+                var listaGanadores = historialJson.LeerGanadores(archivoHistorial);
+                foreach (var item in listaGanadores)
+                {
+                    Console.WriteLine($"1: {item}");
+                }
+            }
         }
 
 
