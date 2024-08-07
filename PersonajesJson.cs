@@ -9,11 +9,8 @@ namespace EspacioPersonajesJS
     {
         public void GuardarPersonajes(List<Personaje> listaPersonajes, string nombreArchivo)
         {
-           
-
             var opciones = new JsonSerializerOptions
             {
-                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
                 WriteIndented = true
             };
             string personajesJson = JsonSerializer.Serialize(listaPersonajes, opciones);
@@ -24,7 +21,6 @@ namespace EspacioPersonajesJS
                     escribir.WriteLine(personajesJson);
                 }
             };
-
         }
 
         public List<Personaje> LeerPersonajes(string nombreArchivo)
