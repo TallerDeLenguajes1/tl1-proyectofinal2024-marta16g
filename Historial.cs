@@ -2,14 +2,15 @@ using System;
 
 namespace EspacioHistorial
 {
-    public class EspacioHistorial
+    public class Historial
     {
-        private string participante;
+        private string? participante;
         private int puntos;
-        public string Participante { get => participante; set => participante = value; }
+        public string? Participante { get => participante; set => participante = value; }
         public int Daniototal { get => puntos; set => puntos = value; }
 
-        public EspacioHistorial(string participante, int danioTotal)
+        public Historial(){}
+        public Historial(string participante, int danioTotal)
         {
             this.puntos = danioTotal;
             this.participante = participante;
