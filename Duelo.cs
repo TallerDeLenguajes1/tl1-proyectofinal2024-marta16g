@@ -171,7 +171,7 @@ namespace EspacioDuelo
                 Console.WriteLine(lista[i]);
             }
         }
-        public static void PierdeJugador(Personaje jugador, Personaje enemigo, int quien)
+        public static void PierdePersonaje(Personaje jugador, Personaje enemigo, int quien)
         {
             if (quien == 1)
             {
@@ -190,6 +190,30 @@ namespace EspacioDuelo
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine($"Te queda/n {jugador.Caracteristica.Vidas} vida/s");
                 Console.ResetColor();
+            }
+        }
+
+        public static bool PierdeTodasLasVidas(Personaje jugador)
+        {
+            ConsoleKeyInfo keyInfo = new();
+            Console.WriteLine($"Parece que el poder de {jugador.Dato.Nombre} ha llegado a su fin. No queda más magia en él");
+            while(true)
+            {
+                Console.WriteLine("¿Deseas jugar de nuevo?[y/n]");
+                keyInfo = Console.ReadKey();
+                Console.WriteLine();
+                var caracter = keyInfo.KeyChar;
+                if (caracter == 'Y' || caracter == 'y')
+                {
+ 
+                    return true;
+                }
+
+                if (caracter == 'N' || caracter == 'n')
+                {
+                    Console.WriteLine("Nos vemos pronto gran mago...");
+                    return false;
+                }
             }
         }
 

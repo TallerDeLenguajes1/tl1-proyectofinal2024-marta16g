@@ -21,23 +21,23 @@ namespace EspacioJuego
         private const int cantEnemigos = 2;
         private const int cantMovimientos = 4;
         private const int maxSalud = 100;
-        private const int maxvidas = 3;
-        private Movimiento claseMovimiento;
-        private PersonajesJson personajesJson;
-        private MovimientosJson movimientosJson;
-        private HistorialJson historialJson;
-        private FabricaDePersonajes fabricaDePersonajes;
-        private List<Personaje> jugadores;
-        private List<Personaje> enemigos;
-        private List<Movimiento> movimientos;
-        private List<Movimiento> filtrados;
-        private Personaje jugador;
-        private Personaje enemigo;
-        private Historial ganador;
-        private Movimiento movimientoSeleccionado;
-        private int seleccionJugador;
+        private Movimiento claseMovimiento = new();
+        private PersonajesJson personajesJson = new();
+        private MovimientosJson movimientosJson = new();
+        private HistorialJson historialJson = new();
+        private FabricaDePersonajes fabricaDePersonajes = new();
+        private List<Personaje> jugadores = new();
+        private List<Personaje> enemigos = new();
+        private List<Movimiento> movimientos = new();
+        private List<Movimiento> filtrados = new();
+        private Personaje jugador = new();
+        private Personaje enemigo = new();
+        private Historial ganador = new();
+        private Movimiento movimientoSeleccionado = new();
         private Posiciones posicion1;
         private Posiciones posicion2;
+        private Random rand = new();
+        private int seleccionJugador;
         private int danioCalculado;
         private int contador;
         private int puntos;
@@ -46,28 +46,6 @@ namespace EspacioJuego
         private bool jugar;
         private bool bandera;
         private bool pregunta;
-        private Random rand;
-        private ConsoleKeyInfo keyInfo;
-        private char caracter;
-
-
-        public Juego()
-        {
-            claseMovimiento = new Movimiento();
-            personajesJson = new PersonajesJson();
-            movimientosJson = new MovimientosJson();
-            historialJson = new();
-            fabricaDePersonajes = new();
-            jugadores = new List<Personaje>();
-            enemigos = new List<Personaje>();
-            movimientos = new List<Movimiento>();
-            filtrados = new();
-            jugador = new();
-            enemigo = new();
-            ganador = new();
-            movimientoSeleccionado = new();
-            rand = new();
-        }
 
         public void Inicializar()
         {
@@ -208,49 +186,22 @@ namespace EspacioJuego
                             Console.ForegroundColor = ConsoleColor.DarkYellow;
                             Console.WriteLine($"Ambos magos optaron por la misma posición ¡Elige nuevamente!");
                             Console.ResetColor();
-                            bandera = true;
                         }
                         if (enemigo.Caracteristica.Salud <= 0)
                         {
                             bandera = false;
-                            Duelo.PierdeJugador(jugador, enemigo, 2);
+                            Duelo.PierdePersonaje(jugador, enemigo, 2);
                         }
 
                         if (jugador.Caracteristica.Salud <= 0)
                         {
                             bandera = false;
-                            Duelo.PierdeJugador(jugador, enemigo, 1);
+                            Duelo.PierdePersonaje(jugador, enemigo, 1);
 
                             if (jugador.Caracteristica.Vidas == 0)
                             {
                                 i = cantEnemigos;
-                                Console.WriteLine($"Parece que el poder de {jugador.Dato.Nombre} ha llegado a su fin. No queda más magia en él");
-                                do
-                                {
-                                    Console.WriteLine("¿Deseas jugar de nuevo?[y/n]");
-                                    keyInfo = Console.ReadKey();
-                                    Console.WriteLine();
-                                    caracter = keyInfo.KeyChar;
-                                    if (caracter == 'Y' || caracter == 'y')
-                                    {
-                                        jugar = true;
-                                        validez = 1;
-                                    }
-                                    else
-                                    {
-                                        if (caracter == 'N' || caracter == 'n')
-                                        {
-                                            jugar = false;
-                                            Console.WriteLine("Nos vemos pronto gran mago...");
-                                            validez = 1;
-                                        }
-                                        else
-                                        {
-                                            validez = 0;
-                                        }
-                                    }
-
-                                } while (validez == 0);
+                               jugar = Duelo.PierdeTodasLasVidas(jugador);
                             }
                             else
                             {
@@ -266,7 +217,7 @@ namespace EspacioJuego
                 if (contador == cantEnemigos - 1 && jugador.Caracteristica.Vidas > 0)
                 {
                     Console.BackgroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine("Ganaste capo");
+                    Console.WriteLine("¡¡¡FELICIDADES, HAS GANADO EL DUELO!!!");
                     Console.ResetColor();
                     jugar = false;
                     do
