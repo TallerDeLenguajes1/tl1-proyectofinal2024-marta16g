@@ -8,6 +8,7 @@ using EspacioPosiciones;
 using EspacioApi;
 using EspacioHistorialJson;
 using Spectre.Console;
+using Espaciomensaje;
 
 namespace EspacioJuego
 {
@@ -96,7 +97,7 @@ namespace EspacioJuego
                 {
                     bandera = true;
                     enemigo = enemigos[i];
-                    Duelo.InicioDeRondas(jugador, enemigo, i);
+                    Mensaje.InicioDeRondas(jugador, enemigo, i);
                     jugador.Caracteristica.Salud = maxSalud;
                     enemigo.Caracteristica.Salud = maxSalud;
 
@@ -104,7 +105,7 @@ namespace EspacioJuego
                     {
                         Console.WriteLine($"Salud: {jugador.Caracteristica.Salud}");
 
-                        Duelo.MostrarPosiciones();
+                        Mensaje.MostrarPosiciones();
                         numero = Duelo.ValidarEntrada(1, 3);
 
                         posicion1 = (Posiciones)numero;
@@ -120,7 +121,7 @@ namespace EspacioJuego
                             if (quienGana == 1)
                             {
                                 filtrados = claseMovimiento.FiltrarMovimientos(movimientos, posicion1);
-                                Duelo.MostrarMovimientos(filtrados, cantMovimientos);
+                                Mensaje.MostrarMovimientos(filtrados, cantMovimientos);
                                 int index = Duelo.TurnoJugador(jugador, cantMovimientos, posicion1, maxSalud);
 
                                 movimientoSeleccionado = filtrados[index - 1];
