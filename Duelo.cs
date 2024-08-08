@@ -129,6 +129,7 @@ namespace EspacioDuelo
             {
                 Console.WriteLine($"{personaje.Dato.Nombre} sana {danioCalculado} de vida");
             }
+            personaje.Caracteristica.Salud = saludPersonaje;
             Console.WriteLine($"Salud de {personaje.Dato.Nombre}: {personaje.Caracteristica.Salud}");
 
         }
