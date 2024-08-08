@@ -19,7 +19,7 @@ namespace EspacioJuego
         private const string archivoMovimientos = "json/Movimientos.json";
         private const string archivoHistorial = "json/Historial.json";
         private const int cantJugadores = 3;
-        private const int cantEnemigos = 1;
+        private const int cantEnemigos = 10;
         private const int cantMovimientos = 4;
         private const int maxSalud = 100;
         private Movimiento claseMovimiento = new();
@@ -59,6 +59,7 @@ namespace EspacioJuego
         {
             AnsiConsole.Write(
            new FigletText("Duelo Mágico")
+           .Centered()
         .Color(Color.Red));
             do
             {
@@ -73,9 +74,10 @@ namespace EspacioJuego
                     personajesJson.GuardarPersonajes(enemigos, archivoPersonajes);
                 }
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Seleccione el personaje para jugar");
+                Console.WriteLine("SELECCIONE UN PERSONAJE PARA JUGAR:");
+                Console.WriteLine();
                 FabricaDePersonajes.MostrarListaDePersonajes(jugadores, cantJugadores, "PERSONAJE");
-                Console.WriteLine("Apriete 1, 2 o 3");
+                Mensaje.ImprimirMensajeDerecha("Apriete 1, 2 o 3");
 
                 seleccionJugador = Duelo.ValidarEntrada(1, 3);
                 jugador = jugadores[seleccionJugador - 1];
@@ -83,13 +85,13 @@ namespace EspacioJuego
                 Console.WriteLine("Elegiste el personaje: ");
                 Console.WriteLine(jugador.Dato.Nombre);
                 Console.WriteLine("------------------------");
-                Console.WriteLine("Tus enemigos son:");
+                Console.WriteLine("TTUS ENEMIGOS:");
+                Console.WriteLine();
                 FabricaDePersonajes.MostrarListaDePersonajes(enemigos, cantEnemigos, "ENEMIGO");
-                Console.WriteLine("------------------------");
-                Console.WriteLine("------------------------");
-                Console.WriteLine("QUE EMPIECE LA BATALLA");
-                Console.WriteLine("------------------------");
-                Console.WriteLine("------------------------");
+                AnsiConsole.Write(
+           new FigletText("Que empiece la batalla")
+           .Centered()
+        .Color(Color.Cyan1));
 
                 await Api.ObtenerApi();
 
@@ -103,15 +105,14 @@ namespace EspacioJuego
 
                     do
                     {
-                        Console.WriteLine($"Salud: {jugador.Caracteristica.Salud}");
-
+                        Mensaje.MostrarSalud(jugador, enemigo);
                         Mensaje.MostrarPosiciones();
                         numero = Duelo.ValidarEntrada(1, 3);
 
                         posicion1 = (Posiciones)numero;
                         posicion2 = (Posiciones)rand.Next(1, 4);
 
-                        Console.WriteLine($"{jugador.Dato.Apodo} decidió elegir una posición de tipo {posicion1}");
+                        Mensaje.ImprimirMensajeDerecha($"{jugador.Dato.Apodo} decidió elegir una posición de tipo {posicion1}");
                         Console.WriteLine($"{enemigo.Dato.Apodo} ha elegido una posición de tipo {posicion2}");
 
                         int quienGana = Duelo.CompararPosiciones(posicion1, posicion2, enemigo);
@@ -125,7 +126,7 @@ namespace EspacioJuego
                                 int index = Duelo.TurnoJugador(jugador, cantMovimientos, posicion1, maxSalud);
 
                                 movimientoSeleccionado = filtrados[index - 1];
-                                Console.WriteLine($"Seleccionaste {movimientoSeleccionado.Hechizo}");
+                                Mensaje.ImprimirMensajeDerecha($"Seleccionaste {movimientoSeleccionado.Hechizo}");
                                 danioCalculado = Duelo.CalcularDanio(posicion1, movimientoSeleccionado, jugador);
 
                                 if (movimientoSeleccionado.Persona == 1)
@@ -160,7 +161,7 @@ namespace EspacioJuego
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.DarkYellow;
-                            Console.WriteLine($"Ambos magos optaron por la misma posición ¡Elige nuevamente!");
+                            Mensaje.ImprimirMensajeCentro($"Ambos magos optaron por la misma posición ¡Elige nuevamente!");
                             Console.ResetColor();
                         }
                         if (enemigo.Caracteristica.Salud <= 0)

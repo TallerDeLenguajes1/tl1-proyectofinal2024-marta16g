@@ -1,6 +1,7 @@
 using System;
 using EspacioHistorial;
 using EspacioHistorialJson;
+using Espaciomensaje;
 using EspacioMovimiento;
 using EspacioPersonaje;
 using EspacioPosiciones;
@@ -25,11 +26,11 @@ namespace EspacioDuelo
                 {
                     if (string.IsNullOrWhiteSpace(input))
                     {
-                        Console.WriteLine("Por favor no intente romper el juego e ingrese algo.");
+                        Mensaje.ImprimirMensajeDerecha("Por favor no intente romper el juego e ingrese algo.");
                     }
                     else
                     {
-                        Console.WriteLine("Por favor ingrese un número válido");
+                        Mensaje.ImprimirMensajeDerecha("Por favor ingrese un número válido");
                     }
                 }
             }
@@ -47,18 +48,21 @@ namespace EspacioDuelo
                 || posicion1 == Posiciones.Furtivo && posicion2 == Posiciones.Defensivo)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"{posicion1} vence a {posicion2}");
-                    Console.WriteLine($"Tienes el movimiento ¡Rápido! elige un conjuro ");
+                    Console.WriteLine();
+                    Mensaje.ImprimirMensajeCentro($"{posicion1} vence a {posicion2}");
+                    Mensaje.ImprimirMensajeCentro($"Tienes el movimiento ¡Rápido! elige un conjuro ");
+                    Console.WriteLine();
                     Console.ResetColor();
-                    Console.WriteLine("Presiona el número del conjuro (1, 2, 3 o 4)");
 
                     return 1;
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"{posicion2} vence a {posicion1}");
-                    Console.WriteLine($"{mago.Dato.Nombre} tiene el movimiento ¡Prepárate para recibir un ataque!");
+                    Console.WriteLine();
+                    Mensaje.ImprimirMensajeCentro($"{posicion2} vence a {posicion1}");
+                    Mensaje.ImprimirMensajeCentro($"{mago.Dato.Nombre} tiene el movimiento ¡Prepárate para recibir un ataque!");
+                    Console.WriteLine();
                     Console.ResetColor();
                     return 2;
                 }
@@ -75,8 +79,8 @@ namespace EspacioDuelo
                 {
                     if (posicion == Posiciones.Defensivo && numero == 1 && jugador.Caracteristica.Salud == maxSalud && pregunta)
                     {
-                        Console.WriteLine("¿Estás seguro de utilizar este hechizo? Tienes 100 de salud, no hay daño que curar");
-                        Console.WriteLine("Ingresa nuevamente la opción de conjuro que quieras");
+                        Mensaje.ImprimirMensajeDerecha("¿Estás seguro de utilizar este hechizo? Tienes 100 de salud, no hay daño que curar");
+                        Mensaje.ImprimirMensajeDerecha("Ingresa nuevamente la opción de conjuro que quieras");
                         pregunta = false;
                     }
                     else
@@ -120,7 +124,7 @@ namespace EspacioDuelo
 
             if (nivelPropiedadDestacada > 3)
             {
-                Console.WriteLine($"¡{jugador.Dato.Nombre} tiene niveles de {propiedadDestacada} altos!");
+                Mensaje.ImprimirMensajeCentro($"¡{jugador.Dato.Nombre} tiene niveles de {propiedadDestacada} altos!");
                 incremento = 2 * nivelPropiedadDestacada;
                 danioFinal = movimiento.Danio + incremento;
                 return danioFinal;
@@ -138,9 +142,10 @@ namespace EspacioDuelo
             {
                 saludPersonaje = 0;
             }
-            Console.WriteLine($"{personaje.Dato.Nombre} recibe {danioCalculado} de daño");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Mensaje.ImprimirMensajeCentro($"{personaje.Dato.Nombre} recibe {danioCalculado} de daño");
             personaje.Caracteristica.Salud = saludPersonaje;
-            Console.WriteLine($"Salud de {personaje.Dato.Nombre}: {personaje.Caracteristica.Salud}");
+            Console.ResetColor();
             Console.WriteLine();
 
         }
@@ -153,11 +158,13 @@ namespace EspacioDuelo
             {
                 int auxDanio = maxSalud - personaje.Caracteristica.Salud;
                 saludPersonaje = maxSalud;
-                Console.WriteLine($"{personaje.Dato.Nombre} sana {auxDanio} de vida");
+                Mensaje.ImprimirMensajeCentro($"{personaje.Dato.Nombre} sana {auxDanio} de vida");
+                Console.WriteLine();
             }
             else
             {
-                Console.WriteLine($"{personaje.Dato.Nombre} sana {danioCalculado} de vida");
+                Mensaje.ImprimirMensajeCentro($"{personaje.Dato.Nombre} sana {danioCalculado} de vida");
+                Console.WriteLine();
             }
             personaje.Caracteristica.Salud = saludPersonaje;
             Console.WriteLine($"Salud de {personaje.Dato.Nombre}: {personaje.Caracteristica.Salud}");
@@ -170,16 +177,18 @@ namespace EspacioDuelo
             if (quien == 1)
             {
                 Console.BackgroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine($"¡Oh no! {jugador.Dato.Nombre} fue derrotado por {enemigo.Dato.Nombre}");
+                Mensaje.ImprimirMensajeCentro($"¡Oh no! {jugador.Dato.Nombre} fue derrotado por {enemigo.Dato.Nombre}");
+                Console.WriteLine();
                 Console.ResetColor();
-                Console.WriteLine($"Pierdes una vida");
+                Mensaje.ImprimirMensajeDerecha($"Pierdes una vida");
                 jugador.Caracteristica.Vidas--;
-                Console.WriteLine($"Te queda/n {jugador.Caracteristica.Vidas}");
+                Mensaje.ImprimirMensajeDerecha($"Te queda/n {jugador.Caracteristica.Vidas} vidas");
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
-                Console.WriteLine($"¡Derrotaste a {enemigo.Dato.Nombre}! ¡Sigue así!");
+                Mensaje.ImprimirMensajeCentro($"¡Derrotaste a {enemigo.Dato.Nombre}! ¡Sigue así!");
+                Console.WriteLine();
                 Console.BackgroundColor = ConsoleColor.DarkMagenta;
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ResetColor();
@@ -189,7 +198,13 @@ namespace EspacioDuelo
         public static bool PierdeTodasLasVidas(Personaje jugador)
         {
             ConsoleKeyInfo keyInfo = new();
-            Console.WriteLine($"Parece que el poder de {jugador.Dato.Nombre} ha llegado a su fin. No queda más magia en él");
+            Console.BackgroundColor = ConsoleColor.DarkRed;
+            Mensaje.ImprimirMensajeCentro($"El último hechizo ha sido lanzado. {jugador.Dato.Nombre} ha caído.");
+            Console.ResetColor();
+            AnsiConsole.Write(
+          new FigletText("Perdiste :(")
+          .Centered()
+       .Color(Color.Red));
             while (true)
             {
                 Console.WriteLine("¿Deseas jugar de nuevo?[y/n]");
@@ -217,6 +232,7 @@ namespace EspacioDuelo
 
             AnsiConsole.Write(
            new FigletText("¡Ganaste!")
+           .Centered()
         .Color(Color.Yellow1));
             Console.ResetColor();
 

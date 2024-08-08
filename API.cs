@@ -1,5 +1,6 @@
 using System.Text.Json;
 using EspacioClima;
+using Spectre.Console;
 
 namespace EspacioApi
 {
@@ -20,24 +21,34 @@ namespace EspacioApi
                 {
                     string? hora = clima.current.time.Substring(11);
 
-                    Console.WriteLine("Londres, Inglaterra");
-                    Console.WriteLine($"Hora: {hora}");
+                    var panel = new Panel($"Londres, Inglaterra\n Hora: {hora}\n Temperatura: {clima.current.temperature_2m} °C")
+                    {
+                        Border = BoxBorder.Rounded,
+                        Padding = new Padding(1, 1, 1, 1),
+                        BorderStyle = new Style(Color.Blue)
+                    };
+
+                    AnsiConsole.Write(panel);
                     switch (clima.current.weather_code)
                     {
-                        case 0: Console.WriteLine("El sol irradia sobre el cielo azul. Buen día para un duelo.");
-                        break;
+                        case 0:
+                            Console.WriteLine("El sol irradia sobre el cielo azul. Buen día para un duelo.");
+                            break;
                         case 1:
                         case 2:
-                        case 3: Console.WriteLine("Las nubes se hacen presentes ante el duelo."); 
-                        break;
+                        case 3:
+                            Console.WriteLine("Las nubes se hacen presentes ante el duelo.");
+                            break;
                         case 45:
-                        case 48: Console.WriteLine("El ambiente del duelo es invadido por una neblina temerosa."); 
-                        break;
+                        case 48:
+                            Console.WriteLine("El ambiente del duelo es invadido por una neblina temerosa.");
+                            break;
                         case 71:
                         case 73:
                         case 75:
-                        case 77: Console.WriteLine("Copos de nieve empiezan a caer sobre los magos.");
-                        break;
+                        case 77:
+                            Console.WriteLine("Copos de nieve empiezan a caer sobre los magos.");
+                            break;
                         case 61:
                         case 63:
                         case 65:
@@ -45,26 +56,26 @@ namespace EspacioApi
                         case 67:
                         case 80:
                         case 81:
-                        case 82: Console.WriteLine("El temible inicio de un nuevo duelo desata una lluvia estripitosa");
-                        break; 
+                        case 82:
+                            Console.WriteLine("El temible inicio de un nuevo duelo desata una lluvia estripitosa");
+                            break;
                         case 95:
                         case 96:
-                        case 99: Console.WriteLine("Los magos deberán tener cuidado. Una tormenta se acerca"); 
-                        break;
+                        case 99:
+                            Console.WriteLine("Los magos deberán tener cuidado. Una tormenta se acerca");
+                            break;
 
-                        default: Console.WriteLine("Una llovizna cae sobre los cabellos de los magos. Mejor apurar el duelo si no quieren agarrar un resfriado");
-                        break;
+                        default:
+                            Console.WriteLine("Una llovizna cae sobre los cabellos de los magos. Mejor apurar el duelo si no quieren agarrar un resfriado");
+                            break;
                     }
-                    Console.WriteLine($"Temperatura: {clima.current.temperature_2m} °C");
 
-
-                   
                 }
-                
+
             }
             catch (HttpRequestException e)
             {
-                Console.WriteLine($"Error al acceder a la API: {e.Message}"); 
+                Console.WriteLine($"Error al acceder a la API: {e.Message}");
             }
             catch (JsonException e)
             {

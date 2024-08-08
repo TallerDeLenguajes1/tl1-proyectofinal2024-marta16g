@@ -7,20 +7,20 @@ namespace Espaciomensaje
 {
     public class Mensaje
     {
-         static void ImprimirMensajeCentro(string mensaje)
-    {
-        int windowWidth = Console.WindowWidth;
-        int padding = (windowWidth - mensaje.Length) / 2;
-        if (padding > 0)
+        public static void ImprimirMensajeCentro(string mensaje)
         {
-            Console.WriteLine(new string(' ', padding) + mensaje);
+            int windowWidth = Console.WindowWidth;
+            int padding = (windowWidth - mensaje.Length) / 2;
+            if (padding > 0)
+            {
+                Console.WriteLine(new string(' ', padding) + mensaje);
+            }
+            else
+            {
+                Console.WriteLine(mensaje);
+            }
         }
-        else
-        {
-            Console.WriteLine(mensaje);
-        }
-    }
-        static void ImprimirMensajeDerecha(string mensaje)
+        public static void ImprimirMensajeDerecha(string mensaje)
         {
             int windowWidth = Console.WindowWidth;
             string nuevoMensaje = $"{mensaje}";
@@ -40,12 +40,14 @@ namespace Espaciomensaje
             {
                 Rondas cuenta = (Rondas)i;
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine("-------------------");
-                Console.WriteLine($"{cuenta} RONDA");
-                Console.WriteLine($"{jugador.Dato.Nombre} vs {enemigo.Dato.Nombre}");
-                Console.WriteLine("-------------------");
+                Console.WriteLine();
+                ImprimirMensajeCentro("-------------------------------");
+                ImprimirMensajeCentro($"{cuenta} RONDA");
+                ImprimirMensajeCentro($"{jugador.Dato.Nombre} vs {enemigo.Dato.Nombre}");
+                ImprimirMensajeCentro("-------------------------------");
+                Console.WriteLine();
                 Console.ResetColor();
-                Console.WriteLine($"Vidas: {jugador.Caracteristica.Vidas}");
+                ImprimirMensajeDerecha($"Vidas: {jugador.Caracteristica.Vidas}");
             }
             else
             {
@@ -54,13 +56,25 @@ namespace Espaciomensaje
 
         }
 
+        public static void MostrarSalud(Personaje jugador, Personaje enemigo)
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine($"{enemigo.Dato.Nombre}");
+            Console.WriteLine($"{enemigo.Caracteristica.Salud}%");
+            Console.WriteLine("----------");
+            ImprimirMensajeDerecha("----------");
+            ImprimirMensajeDerecha($"{jugador.Dato.Nombre}");
+            ImprimirMensajeDerecha($"{jugador.Caracteristica.Salud}%");
+            ImprimirMensajeDerecha("----------");
+        }
         public static void MostrarPosiciones()
         {
             Console.WriteLine("Elige tu posición");
             Console.WriteLine("1: AGRESIVO");
             Console.WriteLine("2: DEFENSIVO");
             Console.WriteLine("3: FURTIVO");
-            Console.WriteLine("Ingrese número (1, 2 o 3): ");
+            ImprimirMensajeDerecha("Ingrese número (1, 2 o 3): ");
+            Console.ResetColor();
         }
         public static void MostrarMovimientos(List<Movimiento> lista, int cantMovimientos)
         {
@@ -69,6 +83,8 @@ namespace Espaciomensaje
                 Console.WriteLine($"||{i + 1}||");
                 Console.WriteLine(lista[i]);
             }
+            ImprimirMensajeDerecha("Presiona el número del conjuro (1, 2, 3 o 4)");
+            Console.ResetColor();
         }
     }
 }
