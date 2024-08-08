@@ -209,7 +209,7 @@ namespace EspacioJuego
             if (PersonajesJson.ExisteArchivo(archivoHistorial))
             {
                 Console.WriteLine("LISTA DE GANADORES");
-                var listaGanadores = historialJson.LeerGanadores(archivoHistorial);
+                var listaGanadores = historialJson.LeerGanadores(archivoHistorial).OrderByDescending(p => p.Daniototal);
                 var j = 1;
                 foreach (var item in listaGanadores)
                 {
