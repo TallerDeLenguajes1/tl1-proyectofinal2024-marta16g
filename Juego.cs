@@ -39,8 +39,6 @@ namespace EspacioJuego
         private Posiciones posicion1;
         private Posiciones posicion2;
         private int danioCalculado;
-        private int saludJugador;
-        private int saludEnemigo;
         private int contador;
         private int puntos;
         private string? input;
@@ -75,8 +73,6 @@ namespace EspacioJuego
         {
             movimientos = movimientosJson.LeerMovimientos(archivoMovimientos);
             jugadores = personajesJson.LeerPersonajes(archivoJugadores);
-            saludJugador = maxSalud;
-            saludEnemigo = maxSalud;
             contador = 0;
             puntos = 0;
             jugar = false;
@@ -102,6 +98,7 @@ namespace EspacioJuego
                 Console.WriteLine("Bienvenido al Juego de Harry Potter: Duelo de varitas");
                 Console.WriteLine("Seleccione el personaje para jugar");
                 FabricaDePersonajes.MostrarListaDePersonajes(jugadores, cantJugadores, "PERSONAJE");
+                Console.WriteLine("Apriete 1, 2 o 3");
                 do
                 {
                     input = Console.ReadLine();
@@ -130,11 +127,11 @@ namespace EspacioJuego
                     bandera = true;
                     enemigo = enemigos[i];
                     Duelo.InicioDeRondas(jugador, enemigo, i);
+                    jugador.Caracteristica.Salud = maxSalud;
+                    enemigo.Caracteristica.Salud = maxSalud;
 
                     do
                     {
-                        jugador.Caracteristica.Salud = saludJugador;
-                        enemigo.Caracteristica.Salud = saludEnemigo;
                         Console.WriteLine($"Salud: {jugador.Caracteristica.Salud}");
 
                         Duelo.MostrarPosiciones();
@@ -145,7 +142,7 @@ namespace EspacioJuego
                             validez = Duelo.ValidarEntrada(input, 1, 3);
                         } while (validez == 0);
                         posicion1 = (Posiciones)validez;
-                        posicion2 = Posiciones.Agresivo;
+                        posicion2 = (Posiciones)1;
 
                         Console.WriteLine($"{jugador.Dato.Apodo} decidió elegir una posición de tipo {posicion1}");
                         Console.WriteLine($"{enemigo.Dato.Apodo} ha elegido una posición de {posicion2}");
@@ -164,7 +161,7 @@ namespace EspacioJuego
                                     input = Console.ReadLine();
                                     validez = Duelo.ValidarEntrada(input, 1, cantMovimientos);
 
-                                    if (posicion1 == Posiciones.Defensivo && validez == 1 && saludJugador == maxSalud && pregunta)
+                                    if (posicion1 == Posiciones.Defensivo && validez == 1 && jugador.Caracteristica.Salud == maxSalud && pregunta)
                                     {
                                         Console.WriteLine("¿Estás seguro de utilizar este hechizo? Tienes 100 de salud, no hay daño que curar");
                                         Console.WriteLine("Ingresa nuevamente la opción de conjuro que quieras");
@@ -179,14 +176,11 @@ namespace EspacioJuego
 
                                 if (movimientoSeleccionado.Persona == 1)
                                 {
-                                    Duelo.SanarPersonaje(jugador, saludJugador, danioCalculado, maxSalud);
-                                    saludJugador = jugador.Caracteristica.Salud;
-
+                                    Duelo.SanarPersonaje(jugador, jugador.Caracteristica.Salud, danioCalculado, maxSalud);
                                 }
                                 else
                                 {
-                                    Duelo.AtacarPersonaje(enemigo, saludEnemigo, danioCalculado);
-                                    saludEnemigo = enemigo.Caracteristica.Salud;
+                                    Duelo.AtacarPersonaje(enemigo, enemigo.Caracteristica.Salud, danioCalculado);
                                     puntos += danioCalculado;
                                 }
                             }
@@ -199,13 +193,11 @@ namespace EspacioJuego
                                 danioCalculado = Duelo.CalcularDanio(posicion2, movimientoSeleccionado, enemigo);
                                 if (movimientoSeleccionado.Persona == 1)
                                 {
-                                    Duelo.SanarPersonaje(enemigo, saludEnemigo, danioCalculado, maxSalud);
-                                    saludEnemigo = enemigo.Caracteristica.Salud;
+                                    Duelo.SanarPersonaje(enemigo, enemigo.Caracteristica.Salud, danioCalculado, maxSalud);
                                 }
                                 else
                                 {
-                                    Duelo.AtacarPersonaje(jugador, saludJugador, danioCalculado);
-                                    saludJugador = jugador.Caracteristica.Salud;
+                                    Duelo.AtacarPersonaje(jugador, jugador.Caracteristica.Salud, danioCalculado);
                                     puntos -= 10;
                                 }
                             }
@@ -218,11 +210,9 @@ namespace EspacioJuego
                             Console.ResetColor();
                             bandera = true;
                         }
-                        if (saludEnemigo <= 0)
+                        if (enemigo.Caracteristica.Salud <= 0)
                         {
                             bandera = false;
-                            saludJugador = maxSalud;
-                            saludEnemigo = maxSalud;
                             Console.ForegroundColor = ConsoleColor.DarkCyan;
                             Console.WriteLine($"¡Derrotaste a {enemigo.Dato.Nombre}! ¡Sigue así!");
                             Console.BackgroundColor = ConsoleColor.DarkMagenta;
@@ -232,11 +222,9 @@ namespace EspacioJuego
                         }
                         else
                         {
-                            if (saludJugador <= 0)
+                            if (jugador.Caracteristica.Salud <= 0)
                             {
                                 bandera = false;
-                                saludJugador = maxSalud;
-                                saludEnemigo = maxSalud;
                                 Console.BackgroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine($"¡Oh no! {jugador.Dato.Nombre} fue derrotado por {enemigo.Dato.Nombre}");
                                 Console.ResetColor();
