@@ -17,18 +17,17 @@ namespace EspacioHistorialJson
                 listaGanadores = LeerGanadores(nombreArchivo);
             }
             listaGanadores.Add(ganador);
-            var listaOrdenada = listaGanadores.OrderBy(p => p.Daniototal);
 
             var opciones = new JsonSerializerOptions
             {
                 WriteIndented = true
             };
-            string personajesJson = JsonSerializer.Serialize(listaOrdenada, opciones);
+            string ganadoresJson = JsonSerializer.Serialize(listaGanadores, opciones);
             using (FileStream abrir = new(nombreArchivo, FileMode.Create, FileAccess.Write))
             {
                 using (StreamWriter escribir = new(abrir, Encoding.UTF8))
                 {
-                    escribir.WriteLine(personajesJson);
+                    escribir.WriteLine(ganadoresJson);
                 }
             };
         }
