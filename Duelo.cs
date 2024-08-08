@@ -28,6 +28,26 @@ namespace EspacioDuelo
             }
 
         }
+        public static int ValidarEntrada(string? input, int min, int max)
+        {
+            if (int.TryParse(input, out int numero) && numero <= max && numero >= min)
+            {
+                return numero;
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    Console.WriteLine("Por favor no intente romper el juego e ingrese algo.");
+                    return 0;
+                }
+                else
+                {
+                    Console.WriteLine("Por favor ingrese un número válido");
+                    return 0;
+                }
+            }
+        }
         public static int CompararPosiciones(Posiciones posicion1, Posiciones posicion2, Personaje mago)
         {
             if (posicion1 == posicion2)
@@ -133,26 +153,6 @@ namespace EspacioDuelo
             Console.WriteLine($"Salud de {personaje.Dato.Nombre}: {personaje.Caracteristica.Salud}");
 
         }
-        public static int ValidarEntrada(string? input, int min, int max)
-        {
-            if (int.TryParse(input, out int numero) && numero <= max && numero >= min)
-            {
-                return numero;
-            }
-            else
-            {
-                if (string.IsNullOrWhiteSpace(input))
-                {
-                    Console.WriteLine("Por favor no intente romper el juego e ingrese algo.");
-                    return 0;
-                }
-                else
-                {
-                    Console.WriteLine("Por favor ingrese un número válido");
-                    return 0;
-                }
-            }
-        }
 
         public static void MostrarPosiciones()
         {
@@ -171,5 +171,27 @@ namespace EspacioDuelo
                 Console.WriteLine(lista[i]);
             }
         }
+        public static void PierdeJugador(Personaje jugador, Personaje enemigo, int quien)
+        {
+            if (quien == 1)
+            {
+                Console.BackgroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine($"¡Oh no! {jugador.Dato.Nombre} fue derrotado por {enemigo.Dato.Nombre}");
+                Console.ResetColor();
+                Console.WriteLine($"Pierdes una vida");
+                jugador.Caracteristica.Vidas--;
+                Console.WriteLine($"Vidas: {jugador.Caracteristica.Vidas}");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                Console.WriteLine($"¡Derrotaste a {enemigo.Dato.Nombre}! ¡Sigue así!");
+                Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine($"Te queda/n {jugador.Caracteristica.Vidas} vida/s");
+                Console.ResetColor();
+            }
+        }
+
     }
 }

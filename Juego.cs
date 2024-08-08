@@ -213,24 +213,16 @@ namespace EspacioJuego
                         if (enemigo.Caracteristica.Salud <= 0)
                         {
                             bandera = false;
-                            Console.ForegroundColor = ConsoleColor.DarkCyan;
-                            Console.WriteLine($"¡Derrotaste a {enemigo.Dato.Nombre}! ¡Sigue así!");
-                            Console.BackgroundColor = ConsoleColor.DarkMagenta;
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.WriteLine($"Te queda/n {jugador.Caracteristica.Vidas} vida/s");
-                            Console.ResetColor();
+                            Duelo.PierdeJugador(jugador, enemigo, 2);
                         }
                         else
                         {
                             if (jugador.Caracteristica.Salud <= 0)
                             {
                                 bandera = false;
-                                Console.BackgroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine($"¡Oh no! {jugador.Dato.Nombre} fue derrotado por {enemigo.Dato.Nombre}");
-                                Console.ResetColor();
-                                Console.WriteLine($"Pierdes una vida");
-                                jugador.Caracteristica.Vidas--;
-                                Console.WriteLine($"Vidas: {jugador.Caracteristica.Vidas}");
+                                Duelo.PierdeJugador(jugador, enemigo, 1);
+
+
                                 if (jugador.Caracteristica.Vidas == 0)
                                 {
                                     i = cantEnemigos;
@@ -315,8 +307,5 @@ namespace EspacioJuego
                 }
             }
         }
-
-
-
     }
 }
