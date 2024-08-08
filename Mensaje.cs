@@ -7,6 +7,19 @@ namespace Espaciomensaje
 {
     public class Mensaje
     {
+         static void ImprimirMensajeCentro(string mensaje)
+    {
+        int windowWidth = Console.WindowWidth;
+        int padding = (windowWidth - mensaje.Length) / 2;
+        if (padding > 0)
+        {
+            Console.WriteLine(new string(' ', padding) + mensaje);
+        }
+        else
+        {
+            Console.WriteLine(mensaje);
+        }
+    }
         static void ImprimirMensajeDerecha(string mensaje)
         {
             int windowWidth = Console.WindowWidth;
