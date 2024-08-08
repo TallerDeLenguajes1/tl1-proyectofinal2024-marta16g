@@ -18,7 +18,7 @@ namespace EspacioJuego
         private const string archivoMovimientos = "json/Movimientos.json";
         private const string archivoHistorial = "json/Historial.json";
         private const int cantJugadores = 3;
-        private const int cantEnemigos = 2;
+        private const int cantEnemigos = 10;
         private const int cantMovimientos = 4;
         private const int maxSalud = 100;
         private Movimiento claseMovimiento = new();
@@ -40,7 +40,6 @@ namespace EspacioJuego
         private int danioCalculado;
         private int contador;
         private int puntos;
-        private string? input;
         private int numero;
         private bool jugar;
         private bool bandera;
@@ -70,7 +69,7 @@ namespace EspacioJuego
                     personajesJson.GuardarPersonajes(enemigos, archivoPersonajes);
                 }
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Bienvenido al Juego de Harry Potter: Duelo de varitas");
+                Console.WriteLine("DUELO MÁGICO");
                 Console.WriteLine("Seleccione el personaje para jugar");
                 FabricaDePersonajes.MostrarListaDePersonajes(jugadores, cantJugadores, "PERSONAJE");
                 Console.WriteLine("Apriete 1, 2 o 3");
@@ -107,7 +106,7 @@ namespace EspacioJuego
                         numero = Duelo.ValidarEntrada(1, 3);
 
                         posicion1 = (Posiciones)numero;
-                        posicion2 = (Posiciones)1;
+                        posicion2 = (Posiciones)rand.Next(1, 4);
 
                         Console.WriteLine($"{jugador.Dato.Apodo} decidió elegir una posición de tipo {posicion1}");
                         Console.WriteLine($"{enemigo.Dato.Apodo} ha elegido una posición de tipo {posicion2}");
