@@ -27,7 +27,7 @@ Si tienes un nivel alto de alguno de estos rasgos (se considera alto 4 y 5) ést
 
 
 ## Recursos utilizados
-API del clima: (https://api.open-meteo.com)
+API del clima: (https://open-meteo.com/)
 
 
 
