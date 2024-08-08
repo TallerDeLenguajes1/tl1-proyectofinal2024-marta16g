@@ -10,8 +10,8 @@ El juego consiste en 10 rondas contra 10 diferentes enemigos donde se atacarán 
  3) Las posiciones elegidas por cada mago se comparan para saber quién tiene la delantera. 
  4) Si tuviste la suerte de vencer la posición de tu contricante, elegirás un conjuro a utilizar.
 
-#### Información importante
- **Cada mago tiene 3 rasgos importantes:** 
+### Información importante
+**Cada mago tiene 3 rasgos importantes:** 
 Violencia, Resistencia y Discreción. 
 Si tienes un nivel alto de alguno de estos rasgos (se considera alto 4 y 5) éstos serán de ayuda a la hora de atacar. 
 El daño de un conjuro agresivo se incrementará si tu nivel de violencia es alto
