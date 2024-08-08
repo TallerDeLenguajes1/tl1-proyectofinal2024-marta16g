@@ -32,7 +32,6 @@ namespace EspacioJuego
         private List<Movimiento> filtrados = new();
         private Personaje jugador = new();
         private Personaje enemigo = new();
-        private Historial ganador = new();
         private Movimiento movimientoSeleccionado = new();
         private Posiciones posicion1;
         private Posiciones posicion2;
