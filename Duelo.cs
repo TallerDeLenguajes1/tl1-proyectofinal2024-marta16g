@@ -1,4 +1,6 @@
 using System;
+using EspacioHistorial;
+using EspacioHistorialJson;
 using EspacioMovimiento;
 using EspacioPersonaje;
 using EspacioPosiciones;
@@ -93,12 +95,14 @@ namespace EspacioDuelo
                         Console.WriteLine("¿Estás seguro de utilizar este hechizo? Tienes 100 de salud, no hay daño que curar");
                         Console.WriteLine("Ingresa nuevamente la opción de conjuro que quieras");
                         pregunta = false;
-                    }else{
+                    }
+                    else
+                    {
                         return numero;
                     }
                 }
-                    
-            }while(true);
+
+            } while (true);
         }
         public static int CalcularDanio(Posiciones posicion, Movimiento movimiento, Personaje jugador)
         {
@@ -237,6 +241,45 @@ namespace EspacioDuelo
                     return false;
                 }
             }
+        }
+
+        public static void GanaJugador(int puntos, string archivoHistorial)
+        {
+            Historial ganador = new();
+            HistorialJson historialjson = new();
+            var validez = false;
+            Console.BackgroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("¡¡¡FELICIDADES, HAS GANADO EL DUELO!!!");
+            Console.ResetColor();
+          
+            do
+            {
+                Console.WriteLine("Ingrese su nombre o apodo (menos de 10 caracteres)");
+                var input = Console.ReadLine();
+                if (input.Length > 10)
+                {
+                    Console.WriteLine("El nombre no debe ser mayor a 10 caracteres");
+                    validez = false;
+                }
+                else
+                {
+                    if (string.IsNullOrWhiteSpace(input))
+                    {
+                        Console.WriteLine("El nombre no debe ser vacío");
+                        validez = false;
+                    }
+                    else
+                    {
+                        ganador.Participante = input;
+                        ganador.Daniototal = puntos;
+                        historialjson.GuardarGanador(ganador, archivoHistorial);
+                        validez = true;
+                    }
+                }
+            }while (!validez);
+
+
+
         }
 
     }

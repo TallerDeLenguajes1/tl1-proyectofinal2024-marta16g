@@ -133,7 +133,6 @@ namespace EspacioJuego
                                 Duelo.MostrarMovimientos(filtrados, cantMovimientos);
                                 int index = Duelo.TurnoJugador(jugador, cantMovimientos, posicion1, maxSalud);
 
-
                                 movimientoSeleccionado = filtrados[index - 1];
                                 Console.WriteLine($"Seleccionaste {movimientoSeleccionado.Hechizo}");
                                 danioCalculado = Duelo.CalcularDanio(posicion1, movimientoSeleccionado, jugador);
@@ -187,7 +186,7 @@ namespace EspacioJuego
                             if (jugador.Caracteristica.Vidas == 0)
                             {
                                 i = cantEnemigos;
-                               jugar = Duelo.PierdeTodasLasVidas(jugador);
+                                jugar = Duelo.PierdeTodasLasVidas(jugador);
                             }
                             else
                             {
@@ -202,32 +201,8 @@ namespace EspacioJuego
                 }
                 if (contador == cantEnemigos - 1 && jugador.Caracteristica.Vidas > 0)
                 {
-                    Console.BackgroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine("¡¡¡FELICIDADES, HAS GANADO EL DUELO!!!");
-                    Console.ResetColor();
+                    Duelo.GanaJugador(puntos, archivoHistorial);
                     jugar = false;
-                    do
-                    {
-                        Console.WriteLine("Ingrese su nombre o apodo (menos de 10 caracteres)");
-                        input = Console.ReadLine();
-                        if (input.Length > 10)
-                        {
-                            Console.WriteLine("El nombre no debe ser mayor a 10 caracteres");
-                            validez = 0;
-                        }
-                        else
-                        {
-                            if (string.IsNullOrWhiteSpace(input))
-                            {
-                                validez = 0;
-                            }
-                        }
-                    } while (validez == 0);
-
-                    ganador.Participante = input;
-                    ganador.Daniototal = puntos;
-
-                    historialJson.GuardarGanador(ganador, archivoHistorial);
                 }
             } while (jugar);
 
@@ -235,9 +210,11 @@ namespace EspacioJuego
             {
                 Console.WriteLine("LISTA DE GANADORES");
                 var listaGanadores = historialJson.LeerGanadores(archivoHistorial);
+                var j = 1;
                 foreach (var item in listaGanadores)
                 {
-                    Console.WriteLine($"1: {item}");
+                    Console.WriteLine($"{j}: {item}");
+                    j++;
                 }
             }
         }
