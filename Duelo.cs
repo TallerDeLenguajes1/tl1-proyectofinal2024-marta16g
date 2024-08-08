@@ -5,6 +5,7 @@ using EspacioMovimiento;
 using EspacioPersonaje;
 using EspacioPosiciones;
 using EspacioRondas;
+using Spectre.Console;
 
 
 namespace EspacioDuelo
@@ -52,6 +53,14 @@ namespace EspacioDuelo
                 }
             }
         }
+        public static void MostrarPosiciones()
+        {
+            Console.WriteLine("Elige tu posición");
+            Console.WriteLine("1: AGRESIVO");
+            Console.WriteLine("2: DEFENSIVO");
+            Console.WriteLine("3: FURTIVO");
+            Console.WriteLine("Ingrese número (1, 2 o 3): ");
+        }
         public static int CompararPosiciones(Posiciones posicion1, Posiciones posicion2, Personaje mago)
         {
             if (posicion1 == posicion2)
@@ -81,6 +90,14 @@ namespace EspacioDuelo
                     return 2;
                 }
 
+            }
+        }
+        public static void MostrarMovimientos(List<Movimiento> lista, int cantMovimientos)
+        {
+            for (int i = 0; i < cantMovimientos; i++)
+            {
+                Console.WriteLine($"||{i + 1}||");
+                Console.WriteLine(lista[i]);
             }
         }
         public static int TurnoJugador(Personaje jugador, int cantMovimientos, Posiciones posicion, int maxSalud)
@@ -182,23 +199,7 @@ namespace EspacioDuelo
             Console.WriteLine();
         }
 
-        public static void MostrarPosiciones()
-        {
-            Console.WriteLine("Elige tu posición");
-            Console.WriteLine("1: AGRESIVO");
-            Console.WriteLine("2: DEFENSIVO");
-            Console.WriteLine("3: FURTIVO");
-            Console.WriteLine("Ingrese número (1, 2 o 3): ");
-        }
 
-        public static void MostrarMovimientos(List<Movimiento> lista, int cantMovimientos)
-        {
-            for (int i = 0; i < cantMovimientos; i++)
-            {
-                Console.WriteLine($"||{i + 1}||");
-                Console.WriteLine(lista[i]);
-            }
-        }
         public static void PierdePersonaje(Personaje jugador, Personaje enemigo, int quien)
         {
             if (quien == 1)
@@ -208,7 +209,7 @@ namespace EspacioDuelo
                 Console.ResetColor();
                 Console.WriteLine($"Pierdes una vida");
                 jugador.Caracteristica.Vidas--;
-                Console.WriteLine($"Vidas: {jugador.Caracteristica.Vidas}");
+                Console.WriteLine($"Te queda/n {jugador.Caracteristica.Vidas}");
             }
             else
             {
@@ -216,7 +217,6 @@ namespace EspacioDuelo
                 Console.WriteLine($"¡Derrotaste a {enemigo.Dato.Nombre}! ¡Sigue así!");
                 Console.BackgroundColor = ConsoleColor.DarkMagenta;
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine($"Te queda/n {jugador.Caracteristica.Vidas} vida/s");
                 Console.ResetColor();
             }
         }
@@ -249,11 +249,13 @@ namespace EspacioDuelo
         {
             Historial ganador = new();
             HistorialJson historialjson = new();
-            var validez = false;
-            Console.BackgroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("¡¡¡FELICIDADES, HAS GANADO EL DUELO!!!");
+
+            AnsiConsole.Write(
+           new FigletText("¡Ganaste!")
+        .Color(Color.Yellow1));
             Console.ResetColor();
 
+            bool validez;
             do
             {
                 Console.WriteLine("Ingrese su nombre o apodo (menos de 10 caracteres)");

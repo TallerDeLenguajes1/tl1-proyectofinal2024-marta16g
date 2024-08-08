@@ -6,8 +6,8 @@ using EspacioPersonaje;
 using EspacioPersonajesJS;
 using EspacioPosiciones;
 using EspacioApi;
-using EspacioHistorial;
 using EspacioHistorialJson;
+using Spectre.Console;
 
 namespace EspacioJuego
 {
@@ -18,7 +18,7 @@ namespace EspacioJuego
         private const string archivoMovimientos = "json/Movimientos.json";
         private const string archivoHistorial = "json/Historial.json";
         private const int cantJugadores = 3;
-        private const int cantEnemigos = 10;
+        private const int cantEnemigos = 1;
         private const int cantMovimientos = 4;
         private const int maxSalud = 100;
         private Movimiento claseMovimiento = new();
@@ -56,6 +56,9 @@ namespace EspacioJuego
         }
         public async Task Jugar()
         {
+            AnsiConsole.Write(
+           new FigletText("Duelo Mágico")
+        .Color(Color.Red));
             do
             {
                 Inicializar();
@@ -69,7 +72,6 @@ namespace EspacioJuego
                     personajesJson.GuardarPersonajes(enemigos, archivoPersonajes);
                 }
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("DUELO MÁGICO");
                 Console.WriteLine("Seleccione el personaje para jugar");
                 FabricaDePersonajes.MostrarListaDePersonajes(jugadores, cantJugadores, "PERSONAJE");
                 Console.WriteLine("Apriete 1, 2 o 3");

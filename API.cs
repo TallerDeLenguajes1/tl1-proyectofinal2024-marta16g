@@ -19,7 +19,7 @@ namespace EspacioApi
                 if (clima != null)
                 {
                     string? hora = clima.current.time.Substring(11);
-                    
+
                     Console.WriteLine("Londres, Inglaterra");
                     Console.WriteLine($"Hora: {hora}");
                     switch (clima.current.weather_code)
@@ -55,7 +55,7 @@ namespace EspacioApi
                         default: Console.WriteLine("Una llovizna cae sobre los cabellos de los magos. Mejor apurar el duelo si no quieren agarrar un resfriado");
                         break;
                     }
-                    Console.WriteLine($"Temperatura: {clima.current.temperature_2m}");
+                    Console.WriteLine($"Temperatura: {clima.current.temperature_2m} °C");
 
 
                    
