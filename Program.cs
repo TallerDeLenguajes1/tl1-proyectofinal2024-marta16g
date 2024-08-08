@@ -1,13 +1,4 @@
-﻿using System;
-using EspacioPersonaje;
-using EspacioCaracteristica;
-using EspacioPersonajesJS;
-using EspacioFabricaDePersonajes;
-using EspacioMovimiento;
-using EspacioMovimientoJson;
-using EspacioDuelo;
-using EspacioPosiciones;
-using EspacioJuego;
+﻿using EspacioJuego;
 
 class Program
 {
