@@ -215,50 +215,47 @@ namespace EspacioJuego
                             bandera = false;
                             Duelo.PierdeJugador(jugador, enemigo, 2);
                         }
-                        else
+
+                        if (jugador.Caracteristica.Salud <= 0)
                         {
-                            if (jugador.Caracteristica.Salud <= 0)
+                            bandera = false;
+                            Duelo.PierdeJugador(jugador, enemigo, 1);
+
+                            if (jugador.Caracteristica.Vidas == 0)
                             {
-                                bandera = false;
-                                Duelo.PierdeJugador(jugador, enemigo, 1);
-
-
-                                if (jugador.Caracteristica.Vidas == 0)
+                                i = cantEnemigos;
+                                Console.WriteLine($"Parece que el poder de {jugador.Dato.Nombre} ha llegado a su fin. No queda más magia en él");
+                                do
                                 {
-                                    i = cantEnemigos;
-                                    Console.WriteLine($"Parece que el poder de {jugador.Dato.Nombre} ha llegado a su fin. No queda más magia en él");
-                                    do
+                                    Console.WriteLine("¿Deseas jugar de nuevo?[y/n]");
+                                    keyInfo = Console.ReadKey();
+                                    Console.WriteLine();
+                                    caracter = keyInfo.KeyChar;
+                                    if (caracter == 'Y' || caracter == 'y')
                                     {
-                                        Console.WriteLine("¿Deseas jugar de nuevo?[y/n]");
-                                        keyInfo = Console.ReadKey();
-                                        Console.WriteLine();
-                                        caracter = keyInfo.KeyChar;
-                                        if (caracter == 'Y' || caracter == 'y')
+                                        jugar = true;
+                                        validez = 1;
+                                    }
+                                    else
+                                    {
+                                        if (caracter == 'N' || caracter == 'n')
                                         {
-                                            jugar = true;
+                                            jugar = false;
+                                            Console.WriteLine("Nos vemos pronto gran mago...");
                                             validez = 1;
                                         }
                                         else
                                         {
-                                            if (caracter == 'N' || caracter == 'n')
-                                            {
-                                                jugar = false;
-                                                Console.WriteLine("Nos vemos gran mago");
-                                                validez = 1;
-                                            }
-                                            else
-                                            {
-                                                validez = 0;
-                                            }
+                                            validez = 0;
                                         }
+                                    }
 
-                                    } while (validez == 0);
-                                }
-                                else
-                                {
-                                    i--;
-                                    Console.WriteLine($"Deberás enfrentarte a {enemigo.Dato.Nombre} nuevamente");
-                                }
+                                } while (validez == 0);
+                            }
+                            else
+                            {
+                                i--;
+                                Console.WriteLine($"Deberás enfrentarte a {enemigo.Dato.Nombre} nuevamente");
                             }
                         }
                     } while (bandera);
