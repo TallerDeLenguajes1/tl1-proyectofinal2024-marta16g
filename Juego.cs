@@ -133,22 +133,10 @@ namespace EspacioJuego
                             {
                                 filtrados = claseMovimiento.FiltrarMovimientos(movimientos, posicion1);
                                 Duelo.MostrarMovimientos(filtrados, cantMovimientos);
+                                int index = Duelo.TurnoJugador(jugador, cantMovimientos, posicion1, maxSalud);
 
-                                do
-                                {
-                                    input = Console.ReadLine();
-                                    validez = Duelo.ValidarEntrada(input, 1, cantMovimientos);
 
-                                    if (posicion1 == Posiciones.Defensivo && validez == 1 && jugador.Caracteristica.Salud == maxSalud && pregunta)
-                                    {
-                                        Console.WriteLine("¿Estás seguro de utilizar este hechizo? Tienes 100 de salud, no hay daño que curar");
-                                        Console.WriteLine("Ingresa nuevamente la opción de conjuro que quieras");
-                                        pregunta = false;
-                                        validez = 0;
-                                    }
-                                } while (validez == 0);
-
-                                movimientoSeleccionado = filtrados[validez - 1];
+                                movimientoSeleccionado = filtrados[index - 1];
                                 Console.WriteLine($"Seleccionaste {movimientoSeleccionado.Hechizo}");
                                 danioCalculado = Duelo.CalcularDanio(posicion1, movimientoSeleccionado, jugador);
 
@@ -165,7 +153,7 @@ namespace EspacioJuego
                             else
                             {
                                 filtrados = claseMovimiento.FiltrarMovimientos(movimientos, posicion2);
-                                int randIndex = rand.Next(0, 4);
+                                int randIndex = rand.Next(0, cantMovimientos);
                                 movimientoSeleccionado = filtrados[randIndex];
                                 Console.WriteLine($"{enemigo.Dato.Nombre} ha utilizado {movimientoSeleccionado.Hechizo}");
                                 danioCalculado = Duelo.CalcularDanio(posicion2, movimientoSeleccionado, enemigo);

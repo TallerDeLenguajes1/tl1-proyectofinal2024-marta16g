@@ -79,6 +79,27 @@ namespace EspacioDuelo
 
             }
         }
+        public static int TurnoJugador(Personaje jugador, int cantMovimientos, Posiciones posicion, int maxSalud)
+        {
+            var pregunta = true;
+            do
+            {
+                var input = Console.ReadLine();
+                var numero = Duelo.ValidarEntrada(input, 1, cantMovimientos);
+                if (numero != 0)
+                {
+                    if (posicion == Posiciones.Defensivo && numero == 1 && jugador.Caracteristica.Salud == maxSalud && pregunta)
+                    {
+                        Console.WriteLine("¿Estás seguro de utilizar este hechizo? Tienes 100 de salud, no hay daño que curar");
+                        Console.WriteLine("Ingresa nuevamente la opción de conjuro que quieras");
+                        pregunta = false;
+                    }else{
+                        return numero;
+                    }
+                }
+                    
+            }while(true);
+        }
         public static int CalcularDanio(Posiciones posicion, Movimiento movimiento, Personaje jugador)
         {
             string propiedadDestacada;
@@ -122,6 +143,7 @@ namespace EspacioDuelo
                 return movimiento.Danio;
             }
         }
+
 
         public static void AtacarPersonaje(Personaje personaje, int saludPersonaje, int danioCalculado)
         {
@@ -197,7 +219,7 @@ namespace EspacioDuelo
         {
             ConsoleKeyInfo keyInfo = new();
             Console.WriteLine($"Parece que el poder de {jugador.Dato.Nombre} ha llegado a su fin. No queda más magia en él");
-            while(true)
+            while (true)
             {
                 Console.WriteLine("¿Deseas jugar de nuevo?[y/n]");
                 keyInfo = Console.ReadKey();
@@ -205,7 +227,7 @@ namespace EspacioDuelo
                 var caracter = keyInfo.KeyChar;
                 if (caracter == 'Y' || caracter == 'y')
                 {
- 
+
                     return true;
                 }
 
