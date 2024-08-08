@@ -1,5 +1,5 @@
 # DUELO MÁGICO
-***
+
 ## Descripción
 Duelo mágico es un juego de consola creado para aquellos magos valientes que se animen a combatir 10 enemigos en busca de la victoria. Inspirado en los clásicos duelos de varitas del juego móvil "Hogwart´s Mystery", en cada turno, el jugador deberá optar por una posición antes de poder hacer un movimiento de varita; quien tiene la ventaja de lanzar un conjuro dependerá de la posición elegida por cada mago. 
 
@@ -11,7 +11,6 @@ El juego consiste en 10 rondas contra 10 diferentes enemigos donde se atacarán 
 4. Si tuviste la suerte de vencer la posición de tu contricante, elegirás un conjuro a utilizar.
 
 ### Información importante
-***
 
 **Comparación de Posiciones**
 - Agresivo vence a Furtivo
