@@ -45,7 +45,6 @@ namespace EspacioJuego
         private int validez;
         private bool jugar;
         private bool bandera;
-        private bool pregunta;
 
         public void Inicializar()
         {
@@ -55,7 +54,6 @@ namespace EspacioJuego
             puntos = 0;
             jugar = false;
             bandera = true;
-            pregunta = true;
             validez = 0;
         }
         public async Task Jugar()
