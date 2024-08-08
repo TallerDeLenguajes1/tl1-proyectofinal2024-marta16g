@@ -159,6 +159,8 @@ namespace EspacioDuelo
             Console.WriteLine($"{personaje.Dato.Nombre} recibe {danioCalculado} de daño");
             personaje.Caracteristica.Salud = saludPersonaje;
             Console.WriteLine($"Salud de {personaje.Dato.Nombre}: {personaje.Caracteristica.Salud}");
+            Console.WriteLine();
+
         }
 
         public static void SanarPersonaje(Personaje personaje, int saludPersonaje, int danioCalculado, int maxSalud)
@@ -177,7 +179,7 @@ namespace EspacioDuelo
             }
             personaje.Caracteristica.Salud = saludPersonaje;
             Console.WriteLine($"Salud de {personaje.Dato.Nombre}: {personaje.Caracteristica.Salud}");
-
+            Console.WriteLine();
         }
 
         public static void MostrarPosiciones()
@@ -193,7 +195,7 @@ namespace EspacioDuelo
         {
             for (int i = 0; i < cantMovimientos; i++)
             {
-                Console.WriteLine($"{i + 1}");
+                Console.WriteLine($"||{i + 1}||");
                 Console.WriteLine(lista[i]);
             }
         }
