@@ -1,10 +1,55 @@
 ﻿[
   {
     "Dato": {
-      "Nombre": "Fiona Ravenshade",
-      "Apodo": "Doble cara",
+      "Nombre": "Luna Brightwood",
+      "Apodo": "Tiqui-Taca",
+      "Casa": "Hufflepuff",
+      "Varita": "Cerezo y pelos de Veela"
+    },
+    "Caracteristica": {
+      "Violencia": 3,
+      "Resistencia": 4,
+      "Discrecion": 1,
+      "Salud": 100,
+      "Vidas": 3
+    }
+  },
+  {
+    "Dato": {
+      "Nombre": "Lilith Hawthorne",
+      "Apodo": "Caramelo de cianuro",
+      "Casa": "Ravenclaw",
+      "Varita": "Roble y pelo de Veela"
+    },
+    "Caracteristica": {
+      "Violencia": 3,
+      "Resistencia": 2,
+      "Discrecion": 4,
+      "Salud": 100,
+      "Vidas": 3
+    }
+  },
+  {
+    "Dato": {
+      "Nombre": "Cedric Thistledown",
+      "Apodo": "Rayo McQueen",
       "Casa": "Slytherin",
-      "Varita": "Cedro y plumas de cola de ave del trueno"
+      "Varita": "Pino y pelo de gato Wampus"
+    },
+    "Caracteristica": {
+      "Violencia": 5,
+      "Resistencia": 2,
+      "Discrecion": 3,
+      "Salud": 100,
+      "Vidas": 3
+    }
+  },
+  {
+    "Dato": {
+      "Nombre": "Thaddeus Stormrider",
+      "Apodo": "Coraz\u00F3n de Piedra",
+      "Casa": "Ravenclaw",
+      "Varita": "Pino y pelo de gato Wampus"
     },
     "Caracteristica": {
       "Violencia": 1,
@@ -16,14 +61,89 @@
   },
   {
     "Dato": {
-      "Nombre": "Rowan Frostwood",
-      "Apodo": "Espectro del bosque",
+      "Nombre": "Jasper Nightshade",
+      "Apodo": "Fantasma de Canterville",
       "Casa": "Slytherin",
-      "Varita": "Cerezo y pluma de cola de ave Fénix"
+      "Varita": "Acebo y pelo de kelpie"
     },
     "Caracteristica": {
       "Violencia": 4,
+      "Resistencia": 3,
+      "Discrecion": 3,
+      "Salud": 100,
+      "Vidas": 3
+    }
+  },
+  {
+    "Dato": {
+      "Nombre": "Selene Emberheart",
+      "Apodo": "Cat\u00E1strofe",
+      "Casa": "Ravenclaw",
+      "Varita": "Arce y pelo de cola de thestral"
+    },
+    "Caracteristica": {
+      "Violencia": 5,
       "Resistencia": 2,
+      "Discrecion": 4,
+      "Salud": 100,
+      "Vidas": 3
+    }
+  },
+  {
+    "Dato": {
+      "Nombre": "Fiona Ravenshade",
+      "Apodo": "Diablo en botella",
+      "Casa": "Ravenclaw",
+      "Varita": "Cedro y plumas de cola de ave del trueno"
+    },
+    "Caracteristica": {
+      "Violencia": 4,
+      "Resistencia": 4,
+      "Discrecion": 4,
+      "Salud": 100,
+      "Vidas": 3
+    }
+  },
+  {
+    "Dato": {
+      "Nombre": "Orion Ashcroft",
+      "Apodo": "Lince",
+      "Casa": "Ravenclaw",
+      "Varita": "Cerezo y pelos de Veela"
+    },
+    "Caracteristica": {
+      "Violencia": 1,
+      "Resistencia": 3,
+      "Discrecion": 2,
+      "Salud": 100,
+      "Vidas": 3
+    }
+  },
+  {
+    "Dato": {
+      "Nombre": "Ivy Greenbriar",
+      "Apodo": "Chispa de Luz",
+      "Casa": "Slytherin",
+      "Varita": "Acebo y pelo de kelpie"
+    },
+    "Caracteristica": {
+      "Violencia": 1,
+      "Resistencia": 1,
+      "Discrecion": 1,
+      "Salud": 100,
+      "Vidas": 3
+    }
+  },
+  {
+    "Dato": {
+      "Nombre": "Lysander Blackthorn",
+      "Apodo": "Espectro del bosque",
+      "Casa": "Gryffindor",
+      "Varita": "Arce y pelo de cola de thestral"
+    },
+    "Caracteristica": {
+      "Violencia": 3,
+      "Resistencia": 5,
       "Discrecion": 3,
       "Salud": 100,
       "Vidas": 3
