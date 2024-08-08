@@ -30,23 +30,25 @@ namespace EspacioDuelo
             }
 
         }
-        public static int ValidarEntrada(string? input, int min, int max)
+        public static int ValidarEntrada(int min, int max)
         {
-            if (int.TryParse(input, out int numero) && numero <= max && numero >= min)
+            while (true)
             {
-                return numero;
-            }
-            else
-            {
-                if (string.IsNullOrWhiteSpace(input))
+                var input = Console.ReadLine();
+                if (int.TryParse(input, out int numero) && numero <= max && numero >= min)
                 {
-                    Console.WriteLine("Por favor no intente romper el juego e ingrese algo.");
-                    return 0;
+                    return numero;
                 }
                 else
                 {
-                    Console.WriteLine("Por favor ingrese un número válido");
-                    return 0;
+                    if (string.IsNullOrWhiteSpace(input))
+                    {
+                        Console.WriteLine("Por favor no intente romper el juego e ingrese algo.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Por favor ingrese un número válido");
+                    }
                 }
             }
         }
@@ -86,8 +88,7 @@ namespace EspacioDuelo
             var pregunta = true;
             do
             {
-                var input = Console.ReadLine();
-                var numero = Duelo.ValidarEntrada(input, 1, cantMovimientos);
+                var numero = Duelo.ValidarEntrada(1, cantMovimientos);
                 if (numero != 0)
                 {
                     if (posicion == Posiciones.Defensivo && numero == 1 && jugador.Caracteristica.Salud == maxSalud && pregunta)
@@ -147,7 +148,6 @@ namespace EspacioDuelo
                 return movimiento.Danio;
             }
         }
-
 
         public static void AtacarPersonaje(Personaje personaje, int saludPersonaje, int danioCalculado)
         {
@@ -251,7 +251,7 @@ namespace EspacioDuelo
             Console.BackgroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("¡¡¡FELICIDADES, HAS GANADO EL DUELO!!!");
             Console.ResetColor();
-          
+
             do
             {
                 Console.WriteLine("Ingrese su nombre o apodo (menos de 10 caracteres)");
@@ -276,7 +276,7 @@ namespace EspacioDuelo
                         validez = true;
                     }
                 }
-            }while (!validez);
+            } while (!validez);
 
 
 
