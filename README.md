@@ -11,6 +11,7 @@ El juego consiste en 10 rondas contra 10 diferentes enemigos donde se atacarán 
 4. Si tuviste la suerte de vencer la posición de tu contricante, elegirás un conjuro a utilizar.
 
 ### Información importante
+***
 
 **Comparación de Posiciones**
 - Agresivo vence a Furtivo
