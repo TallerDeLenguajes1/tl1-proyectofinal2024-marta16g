@@ -123,8 +123,10 @@ namespace EspacioFabricaDePersonajes
         {
             for (int i = 0; i < cantPersonajes; i++)
             {
+                Console.BackgroundColor = ConsoleColor.DarkCyan;
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine($"--{tipoLista} NÚMERO {i+1}--");
-
+                Console.ResetColor();
                 Console.WriteLine($"Nombre: {listaPersonajes[i].Dato.Nombre}");
                 Console.WriteLine($"Apodo: {listaPersonajes[i].Dato.Apodo}");
                 Console.WriteLine($"Casa: {listaPersonajes[i].Dato.Casa}");
